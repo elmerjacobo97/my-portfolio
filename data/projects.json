@@ -1,0 +1,67 @@
+{
+  "statistics": {
+    "totalTechnologies": 12,
+    "totalUsers": 1500,
+    "satisfactionRate": 96
+  },
+  "projects": [
+    {
+      "id": "1",
+      "title": "Tarjetly",
+      "description": "Plataforma digital para crear y compartir tarjetas de presentación inteligentes.",
+      "longDescription": "Tarjetly permite a empresas y profesionales crear tarjetas de presentación digitales con información interactiva, enlaces directos y análisis de interacciones. El proyecto incluye panel de administración, editor visual y API REST con autenticación segura.",
+      "image": "https://res.cloudinary.com/elmerjacobo/image/upload/v1761232911/My%20Portfolio/tarjetly_b9tpgq.png",
+      "category": "Aplicación web",
+      "featured": true,
+      "technologies": ["React", "TypeScript", "Tailwind CSS", "PHP", "Laravel", "MySQL"],
+      "liveUrl": "https://tarjetly.com",
+      "githubUrl": null,
+      "highlights": [
+        "Sistema de registro multiempresa",
+        "Generación automática de QR",
+        "Dashboard con métricas en tiempo real"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Sismol",
+      "description": "Panel administrativo web para la gestión y monitoreo del sistema de captación de agua.",
+      "image": "https://res.cloudinary.com/elmerjacobo/image/upload/v1761232912/My%20Portfolio/sismol_reucx0.png",
+      "category": "Aplicación web",
+      "featured": true,
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "PHP",
+        "Laravel",
+        "PostgreSQL",
+        "TanStack (Query, Table, Router)"
+      ],
+      "liveUrl": "https://sismol.c2e.mx/",
+      "githubUrl": null,
+      "highlights": [
+        "Dashboard con métricas en tiempo real de sensores de captación",
+        "Gestión de usuarios, permisos y roles administrativos",
+        "Visualización de datos con tablas interactivas y filtros avanzados",
+        "Diseño responsivo y accesible optimizado para escritorio y tablets"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "SmartPOS",
+      "description": "Sistema POS para gestión de ventas, inventario y clientes.",
+      "longDescription": "SmartPOS es una solución integral para pequeños negocios que necesitan controlar su inventario, ventas y clientes desde una interfaz simple e intuitiva. Incluye reportes, autenticación JWT y manejo de permisos.",
+      "category": "Aplicación móvil",
+      "featured": false,
+      "technologies": ["React Native", "TypeScript", "Node.js", "Express", "MongoDB", "Sass"],
+      "liveUrl": null,
+      "githubUrl": "https://github.com/elmerotiniano/smartpos",
+      "highlights": [
+        "Gestión de stock en tiempo real",
+        "Reportes PDF y exportación a Excel",
+        "Módulo de roles y permisos"
+      ]
+    }
+  ]
+}

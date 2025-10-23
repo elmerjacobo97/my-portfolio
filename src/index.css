@@ -1,0 +1,252 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+/* ============================================
+   🎨 PALETA DE COLORES - TEMA CLARO
+   ============================================ */
+:root {
+  --radius: 0.625rem; /* 10px - Border radius global */
+
+  /* 🌟 COLORES BASE */
+  --background: oklch(98% 0.002 280); /* #FAFAFF - Fondo blanco con tinte púrpura */
+  --foreground: oklch(12% 0.03 280); /* #0D0626 - Negro púrpura profundo */
+
+  /* 📦 CARDS Y POPOVERS */
+  --card: oklch(100% 0 0); /* #FFFFFF - Tarjetas blanco puro */
+  --card-foreground: oklch(12% 0.03 280); /* #0D0626 - Texto en tarjetas */
+  --popover: oklch(100% 0 0); /* #FFFFFF - Fondo popovers */
+  --popover-foreground: oklch(12% 0.03 280); /* #0D0626 - Texto popovers */
+
+  /* 🎯 COLOR PRINCIPAL (TU PÚRPURA) */
+  --primary: oklch(35% 0.22 280); /* #3206A4 - Tu color favorito! */
+  --primary-foreground: oklch(98% 0.002 280); /* #FAFAFF - Texto sobre primary */
+
+  /* 🎨 COLOR SECUNDARIO (Púrpura más claro) */
+  --secondary: oklch(92% 0.04 280); /* #EDE8FA - Púrpura muy suave */
+  --secondary-foreground: oklch(25% 0.1 280); /* #1F0B5C - Púrpura oscuro */
+
+  /* 🔇 COLORES NEUTROS (Grises con tinte púrpura) */
+  --muted: oklch(94% 0.01 280); /* #F0F0F5 - Gris púrpura claro */
+  --muted-foreground: oklch(48% 0.04 280); /* #6B6287 - Gris púrpura medio */
+
+  /* ✨ ACCENT (Hover states, highlights) */
+  --accent: oklch(90% 0.05 280); /* #E3DAF7 - Púrpura pastel */
+  --accent-foreground: oklch(20% 0.08 280); /* #170947 - Púrpura muy oscuro */
+
+  /* ⚠️ ESTADOS (Error, Success, Warning) */
+  --destructive: oklch(58% 0.2 15); /* #E74C3C - Rojo para errores */
+  --success: oklch(62% 0.15 145); /* #27AE60 - Verde para éxito */
+  --warning: oklch(72% 0.18 65); /* #F39C12 - Naranja para advertencias */
+
+  /* 🖼️ BORDES Y ELEMENTOS */
+  --border: oklch(88% 0.02 280); /* #D9D4E5 - Borde púrpura suave */
+  --input: oklch(88% 0.02 280); /* #D9D4E5 - Bordes de inputs */
+  --ring: oklch(35% 0.22 280); /* #3206A4 - Focus rings (tu púrpura) */
+}
+
+/* ============================================
+   🌙 PALETA DE COLORES - TEMA OSCURO
+   ============================================ */
+.dark {
+  /* 🌟 COLORES BASE */
+  --background: oklch(8% 0.04 280); /* #0A0520 - Negro púrpura (AJUSTADO) */
+  --foreground: oklch(95% 0.005 280); /* #F5F5F8 - Texto claro con tinte púrpura */
+
+  /* 📦 CARDS Y POPOVERS */
+  --card: oklch(12% 0.05 280); /* #120931 - Tarjetas púrpura oscuro elevado */
+  --card-foreground: oklch(95% 0.005 280); /* #F5F5F8 - Texto en tarjetas */
+  --popover: oklch(12% 0.05 280); /* #120931 - Fondo popovers */
+  --popover-foreground: oklch(95% 0.005 280); /* #F5F5F8 - Texto popovers */
+
+  /* 🎯 COLOR PRINCIPAL (Púrpura más brillante para contraste) */
+  --primary: oklch(58% 0.22 280); /* #6B2AE8 - Versión brillante de tu púrpura */
+  --primary-foreground: oklch(98% 0.002 280); /* #FAFAFF - Texto sobre primary */
+
+  /* 🎨 COLOR SECUNDARIO */
+  --secondary: oklch(18% 0.08 280); /* #1A0D42 - Púrpura oscuro profundo */
+  --secondary-foreground: oklch(90% 0.02 280); /* #E6E3F0 - Texto claro púrpura */
+
+  /* 🔇 COLORES NEUTROS */
+  --muted: oklch(15% 0.04 280); /* #140A30 - Gris púrpura oscuro */
+  --muted-foreground: oklch(60% 0.03 280); /* #8E84A8 - Gris púrpura medio */
+
+  /* ✨ ACCENT */
+  --accent: oklch(20% 0.08 280); /* #1D0F47 - Púrpura oscuro para hover */
+  --accent-foreground: oklch(90% 0.02 280); /* #E6E3F0 - Texto sobre accent */
+
+  /* ⚠️ ESTADOS */
+  --destructive: oklch(65% 0.18 15); /* #E74C3C - Rojo más brillante */
+  --success: oklch(65% 0.13 145); /* #2ECC71 - Verde más brillante */
+  --warning: oklch(75% 0.16 65); /* #F1C40F - Amarillo más brillante */
+
+  /* 🖼️ BORDES Y ELEMENTOS */
+  --border: oklch(25% 0.05 280); /* #221652 - Borde púrpura oscuro */
+  --input: oklch(22% 0.06 280); /* #1C1147 - Input púrpura oscuro */
+  --ring: oklch(58% 0.22 280); /* #6B2AE8 - Focus rings púrpura brillante */
+}
+
+/* ============================================
+   🎨 CLASES UTILITARIAS PERSONALIZADAS
+   ============================================ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* 🎬 ANIMACIONES */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  /* 🎯 EFECTOS HOVER */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(107, 42, 232, 0.4);
+  }
+
+  /* 🌈 GRADIENTES PERSONALIZADOS */
+  .gradient-primary {
+    background: linear-gradient(135deg, #3206a4 0%, #6b2ae8 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #0a0520 0%, #1a0d42 50%, #0a0520 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(180deg, #120931 0%, #0a0520 100%);
+  }
+
+  /* ✨ EFECTOS DE BRILLO PÚRPURA */
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(107, 42, 232, 0.3);
+  }
+
+  .border-glow {
+    border: 1px solid rgba(107, 42, 232, 0.2);
+    box-shadow: 0 0 10px rgba(107, 42, 232, 0.1);
+  }
+}
+
+/* ============================================
+   🎬 KEYFRAMES
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(107, 42, 232, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(107, 42, 232, 0.6);
+  }
+}
+
+/* ============================================
+   📊 REFERENCIA RÁPIDA HEX
+   ============================================
+   
+   🎨 TU PÚRPURA BASE: #3206A4
+   
+   TEMA CLARO:
+   -----------
+   Background:    #FAFAFF (blanco con tinte púrpura)
+   Foreground:    #0D0626 (negro púrpura)
+   Primary:       #3206A4 (TU PÚRPURA - oscuro e intenso)
+   Secondary:     #EDE8FA (púrpura muy claro)
+   Accent:        #E3DAF7 (púrpura pastel)
+   Muted:         #F0F0F5 (gris púrpura claro)
+   Border:        #D9D4E5 (borde púrpura suave)
+   
+   TEMA OSCURO:
+   ------------
+   Background:    #0A0520 (negro púrpura profundo - MEJORADO)
+   Foreground:    #F5F5F8 (blanco con tinte púrpura)
+   Primary:       #6B2AE8 (púrpura brillante - versión clara)
+   Secondary:     #1A0D42 (púrpura oscuro)
+   Card:          #120931 (tarjetas elevadas)
+   Muted:         #140A30 (gris púrpura oscuro)
+   Border:        #221652 (borde púrpura oscuro)
+   
+   GRADIENTES SUGERIDOS:
+   ---------------------
+   Hero:          #0A0520 → #1A0D42 → #0A0520
+   Primary:       #3206A4 → #6B2AE8
+   Cards:         #120931 → #0A0520
+   
+   ESTADOS (ambos temas):
+   ----------------------
+   Error:         #E74C3C (rojo)
+   Success:       #27AE60 / #2ECC71 (verde)
+   Warning:       #F39C12 / #F1C40F (amarillo)
+   
+   EFECTOS ESPECIALES:
+   -------------------
+   Glow/Shadow:   rgba(107, 42, 232, 0.3-0.6)
+   Hover Lift:    rgba(107, 42, 232, 0.4)
+   
+   ============================================ */
