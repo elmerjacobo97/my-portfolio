@@ -167,43 +167,45 @@ function AboutComponent() {
 
   const experience = [
     {
-      title: 'Senior Full Stack Developer',
-      company: 'TechCorp Solutions',
-      period: '2022 - Presente',
-      description:
-        'Lidero el desarrollo de aplicaciones web escalables, implementando arquitecturas modernas y mejorando la experiencia del usuario.',
-      achievements: [
-        'Implementé una arquitectura de microservicios que mejoró el rendimiento en un 40%',
-        'Desarrollé un sistema de autenticación SSO que redujo los tickets de soporte en un 60%',
-        'Mentoré a 5 desarrolladores junior en mejores prácticas de desarrollo',
-      ],
-      technologies: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'AWS'],
-    },
-    {
       title: 'Full Stack Developer',
-      company: 'Digital Innovations',
-      period: '2020 - 2022',
+      company: 'ABEHA',
+      period: '2023 - Presente',
       description:
-        'Desarrollé aplicaciones web completas desde el diseño hasta el despliegue, trabajando estrechamente con equipos de UX/UI.',
+        'Desarrollo de aplicaciones web y móviles, creación de APIs con Laravel, integración con servicios externos y construcción de interfaces modernas y responsivas.',
       achievements: [
-        'Creé una plataforma de e-commerce que generó $2M en ventas el primer año',
-        'Optimicé el tiempo de carga de la aplicación principal en un 65%',
-        'Implementé un pipeline CI/CD que redujo el tiempo de despliegue de 4 horas a 15 minutos',
+        'Diseño y desarrollo de dashboards administrativos para gestión interna',
+        'Creación y mantenimiento de APIs REST con Laravel para productos en producción',
+        'Implementación de flujos completos de autenticación, registro y manejo de usuarios',
+        'Optimización visual y de rendimiento utilizando Tailwind CSS y buenas prácticas de UI/UX',
+        'Participación en la documentación técnica de módulos y componentes',
       ],
-      technologies: ['React', 'Python', 'Django', 'MySQL', 'Docker'],
+      technologies: [
+        'React',
+        'Next.js',
+        'React Native',
+        'TypeScript',
+        'Vite',
+        'TanStack (Query, Router, Table)',
+        'Laravel',
+        'PostgreSQL',
+        'Tailwind CSS',
+        'REST APIs',
+        'Google Cloud',
+      ],
     },
     {
-      title: 'Frontend Developer',
-      company: 'Creative Studio',
-      period: '2019 - 2020',
+      title: 'Full Stack Developer – Freelancer',
+      project: 'Service Management Platform',
+      period: '2022 - 2023',
       description:
-        'Me especialicé en crear interfaces de usuario atractivas y responsivas para clientes de diversos sectores.',
+        'Desarrollé una plataforma web completa para la gestión de clientes, servicios y soporte técnico, integrando un backend robusto con una interfaz moderna y fácil de usar.',
       achievements: [
-        'Desarrollé más de 20 sitios web responsive con altos estándares de calidad',
-        'Implementé un sistema de design tokens que mejoró la consistencia visual',
-        'Logré un puntaje promedio de 95+ en Google PageSpeed Insights',
+        'Creación de un sistema de autenticación seguro con roles y permisos',
+        'Diseño de dashboard administrativo para seguimiento de actividades',
+        'Implementación de CRUD completos para usuarios, servicios y tickets de soporte',
+        'Despliegue en producción con integración a base de datos y logs de actividad',
       ],
-      technologies: ['JavaScript', 'Vue.js', 'SASS', 'Figma'],
+      technologies: ['React', 'TypeScript', 'Laravel', 'PostgreSQL', 'Bootstrap', 'Sass', 'REST APIs', 'Vercel'],
     },
   ];
 
@@ -342,7 +344,7 @@ function AboutComponent() {
                   {skills.map((skill) => (
                     <HoverCard key={skill.name}>
                       <HoverCardTrigger asChild>
-                        <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-card/50">
+                        <Card className="group hover-lift shadow-sm bg-card/50">
                           <CardContent className="p-4 flex flex-col items-center text-center gap-3">
                             <div className="w-10 h-10 sm:w-12 sm:h-12 text-primary">
                               <skill.icon className="w-full h-full" />
@@ -412,18 +414,28 @@ function AboutComponent() {
                     }`}
                   >
                     <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-card/50">
-                      <CardHeader className="p-4 md:p-6">
+                      <CardHeader>
                         <div className="flex flex-col gap-2">
                           <Badge variant="secondary" className="w-fit text-xs">
                             {exp.period}
                           </Badge>
                           <CardTitle className="text-lg md:text-xl">{exp.title}</CardTitle>
-                          <CardDescription className="text-base md:text-lg font-medium text-primary">
-                            {exp.company}
-                          </CardDescription>
+                          {exp.company && (
+                            <Button asChild variant="link" className="justify-start w-fit p-0">
+                              <a
+                                href="https://abeha.mx"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-base md:text-lg font-medium text-primary"
+                              >
+                                {exp.company}
+                              </a>
+                            </Button>
+                          )}
                         </div>
                       </CardHeader>
-                      <CardContent className="p-4 md:p-6 pt-0">
+
+                      <CardContent>
                         <p className="text-muted-foreground mb-4 md:mb-6">{exp.description}</p>
 
                         <div className="mb-4 md:mb-6">
@@ -471,14 +483,14 @@ function AboutComponent() {
 
           <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
             {education.map((edu, index) => (
-              <Card key={index} className="hover-lift shadow-sm bg-card/50 transition-all duration-300 hover:shadow-md">
-                <CardHeader className="p-4 md:p-6">
+              <Card key={index} className="group hover-lift shadow-sm bg-card/50">
+                <CardHeader>
                   <CardTitle className="text-lg md:text-xl">{edu.degree}</CardTitle>
                   <CardDescription className="text-base md:text-lg font-medium text-primary">
                     {edu.institution}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
+                <CardContent>
                   <div className="flex items-center gap-2 mb-3 md:mb-4">
                     <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                     <span className="text-muted-foreground text-sm md:text-base">{edu.period}</span>
@@ -507,10 +519,7 @@ function AboutComponent() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {interests.map((interest, index) => (
-              <Card
-                key={index}
-                className="hover-lift shadow-sm bg-card/50 backdrop-blur-sm text-center transition-all duration-300 hover:shadow-md"
-              >
+              <Card key={index} className="group hover-lift shadow-sm bg-card/50">
                 <CardContent className="p-4 sm:p-6">
                   <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-gradient-primary rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4">
                     <interest.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
