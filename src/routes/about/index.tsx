@@ -36,6 +36,9 @@ import {
   GitLogo,
   AstroLogo,
   MongoDBLogo,
+  NextJSLogo,
+  NestJSLogo,
+  SQLiteLogo,
 } from '@/components/tech-logos';
 import ProfileImage from '@/assets/images/profile-about.png';
 import { GitHubActivity } from '@/components/github-activity';
@@ -55,6 +58,19 @@ function AboutComponent() {
         experience: '4+ años',
       },
       {
+        name: 'Next.js',
+        icon: NextJSLogo,
+        description:
+          'Framework de React para construir aplicaciones web rápidas, con renderizado híbrido (SSR/SSG), rutas optimizadas y excelente rendimiento.',
+        experience: '3+ años',
+      },
+      {
+        name: 'Astro',
+        icon: AstroLogo,
+        description: 'Framework de utilidades para diseños responsivos y personalizados.',
+        experience: '2+ años',
+      },
+      {
         name: 'TypeScript',
         icon: TypeScriptLogo,
         description: 'Tipado estático para código más robusto y mantenible.',
@@ -63,12 +79,6 @@ function AboutComponent() {
       {
         name: 'Tailwind CSS',
         icon: TailwindLogo,
-        description: 'Framework de utilidades para diseños responsivos y personalizados.',
-        experience: '2+ años',
-      },
-      {
-        name: 'Astro',
-        icon: AstroLogo,
         description: 'Framework de utilidades para diseños responsivos y personalizados.',
         experience: '2+ años',
       },
@@ -85,6 +95,13 @@ function AboutComponent() {
         icon: ExpressLogo,
         description: 'Framework minimalista para crear APIs RESTful rápidas.',
         experience: '3+ años',
+      },
+      {
+        name: 'NestJS',
+        icon: NestJSLogo,
+        description:
+          'Framework para Node.js con arquitectura modular y soporte nativo para TypeScript, ideal para APIs escalables y mantenibles.',
+        experience: '2+ años',
       },
       {
         name: 'PHP',
@@ -116,6 +133,13 @@ function AboutComponent() {
         name: 'MongoDB',
         icon: MongoDBLogo,
         description: 'Base de datos NoSQL para aplicaciones modernas.',
+        experience: '2+ años',
+      },
+      {
+        name: 'SQLite',
+        icon: SQLiteLogo,
+        description:
+          'Base de datos relacional ligera y embebida, ideal para aplicaciones móviles y de escritorio sin necesidad de un servidor dedicado.',
         experience: '2+ años',
       },
     ],
