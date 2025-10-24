@@ -86,7 +86,7 @@ function ProjectsComponent() {
             {/* Loading State */}
             {isLoading && (
               <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xs:gap-6 md:gap-8">
-                {Array.from({ length: 5 }).map((_, index) => (
+                {Array.from({ length: 4 }).map((_, index) => (
                   <ProjectCardSkeleton key={index} />
                 ))}
               </div>
