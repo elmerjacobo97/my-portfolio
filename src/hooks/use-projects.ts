@@ -1,5 +1,5 @@
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
-import { api } from '@/lib/axios';
+import axios from 'axios';
 import { sleep } from '@/lib/utils';
 
 // ============================================
@@ -42,7 +42,8 @@ export type ProjectsResponse = ApiResponse<Project[]>;
 async function fetchProjects(): Promise<ProjectsResponse> {
   // Simular un delay
   await sleep(1000);
-  const response = await api.get<ProjectsResponse>('/projects.json');
+  // Usar axios con ruta absoluta para archivos estáticos en /public
+  const response = await axios.get<ProjectsResponse>('/projects.json');
   return response.data;
 }
 
