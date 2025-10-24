@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
-import { Separator } from '@/components/ui/separator';
 import {
   User,
   MapPin,
@@ -21,7 +20,6 @@ import {
   Download,
   Mail,
   ExternalLink,
-  CheckCircle,
 } from 'lucide-react';
 import {
   ReactLogo,
@@ -30,8 +28,14 @@ import {
   PHPLogo,
   PostgreSQLLogo,
   TailwindLogo,
-  AWSLogo,
   DockerLogo,
+  ExpressLogo,
+  MySQLLogo,
+  LaravelLogo,
+  GoogleCloudLogo,
+  GitLogo,
+  AstroLogo,
+  MongoDBLogo,
 } from '@/components/tech-logos';
 import ProfileImage from '@/assets/images/profile-about.png';
 import { GitHubActivity } from '@/components/github-activity';
@@ -41,114 +45,101 @@ export const Route = createFileRoute('/about/')({
 });
 
 function AboutComponent() {
-  const skills = [
-    {
-      name: 'React & Next.js',
-      category: 'Frontend',
-      icon: ReactLogo,
-      description:
-        'Desarrollo de interfaces de usuario modernas y reactivas con React y aplicaciones web completas con Next.js.',
-      experience: '4+ años',
-      projects: [
-        'Plataforma de e-commerce con React y Redux',
-        'Aplicación web de gestión de proyectos con Next.js',
-        'Dashboard administrativo con React y Material UI',
-      ],
-      strengths: ['Componentes reutilizables', 'Hooks personalizados', 'Server-side rendering'],
-    },
-    {
-      name: 'TypeScript',
-      category: 'Frontend',
-      icon: TypeScriptLogo,
-      description:
-        'Implementación de tipado estático para JavaScript, mejorando la calidad del código y previniendo errores.',
-      experience: '3+ años',
-      projects: [
-        'Migración de aplicación JavaScript a TypeScript',
-        'Desarrollo de librería de componentes tipados',
-        'API REST con Express y TypeScript',
-      ],
-      strengths: ['Interfaces avanzadas', 'Genéricos', 'Type guards'],
-    },
-    {
-      name: 'Node.js',
-      category: 'Backend',
-      icon: NodejsLogo,
-      description:
-        'Desarrollo de servidores y APIs RESTful con Node.js, Express y NestJS para aplicaciones escalables.',
-      experience: '3+ años',
-      projects: [
-        'API para aplicación de comercio electrónico',
-        'Sistema de autenticación con JWT',
-        'Microservicios con NestJS',
-      ],
-      strengths: ['Express', 'NestJS', 'Manejo de streams'],
-    },
-    {
-      name: 'PHP',
-      category: 'Backend',
-      icon: PHPLogo,
-      description: 'Desarrollo de scripts, automatizaciones y aplicaciones backend con PHP, Laravel y CodeIgniter.',
-      experience: '2+ años',
-      projects: ['API REST con FastAPI', 'Automatización de procesos ETL', 'Web scraping con Beautiful Soup'],
-      strengths: ['Laravel', 'CodeIgniter', 'Data processing'],
-    },
-    {
-      name: 'PostgreSQL',
-      category: 'Database',
-      icon: PostgreSQLLogo,
-      description:
-        'Diseño e implementación de bases de datos relacionales con PostgreSQL para aplicaciones de alto rendimiento.',
-      experience: '3+ años',
-      projects: [
-        'Optimización de consultas complejas',
-        'Implementación de procedimientos almacenados',
-        'Migración de MySQL a PostgreSQL',
-      ],
-      strengths: ['Consultas avanzadas', 'Indexación', 'Optimización'],
-    },
-    {
-      name: 'Tailwind CSS',
-      category: 'Frontend',
-      icon: TailwindLogo,
-      description:
-        'Creación de interfaces de usuario modernas y responsivas utilizando el framework de utilidades Tailwind CSS.',
-      experience: '2+ años',
-      projects: [
-        'Rediseño de sitio web corporativo',
-        'Implementación de sistema de diseño con Tailwind',
-        'Desarrollo de componentes reutilizables',
-      ],
-      strengths: ['Responsive design', 'Personalización', 'Optimización'],
-    },
-    {
-      name: 'AWS',
-      category: 'DevOps',
-      icon: AWSLogo,
-      description:
-        'Implementación y gestión de infraestructura en la nube utilizando diversos servicios de Amazon Web Services.',
-      experience: '2+ años',
-      projects: [
-        'Arquitectura serverless con Lambda y API Gateway',
-        'Implementación de CI/CD con CodePipeline',
-        'Migración de aplicación a contenedores con ECS',
-      ],
-      strengths: ['EC2', 'S3', 'Lambda', 'CloudFormation'],
-    },
-    {
-      name: 'Docker',
-      category: 'DevOps',
-      icon: DockerLogo,
-      description: 'Containerización de aplicaciones para facilitar el desarrollo, despliegue y escalado de servicios.',
-      experience: '2+ años',
-      projects: [
-        'Configuración de entorno de desarrollo con Docker Compose',
-        'Implementación de microservicios containerizados',
-        'Optimización de imágenes Docker',
-      ],
-      strengths: ['Docker Compose', 'Multi-stage builds', 'Optimización'],
-    },
-  ];
+  // Organizado por categorías para mejor visualización
+  const skillsByCategory = {
+    Frontend: [
+      {
+        name: 'React',
+        icon: ReactLogo,
+        description: 'Desarrollo de interfaces modernas con componentes reutilizables y gestión de estado eficiente.',
+        experience: '4+ años',
+      },
+      {
+        name: 'TypeScript',
+        icon: TypeScriptLogo,
+        description: 'Tipado estático para código más robusto y mantenible.',
+        experience: '3+ años',
+      },
+      {
+        name: 'Tailwind CSS',
+        icon: TailwindLogo,
+        description: 'Framework de utilidades para diseños responsivos y personalizados.',
+        experience: '2+ años',
+      },
+      {
+        name: 'Astro',
+        icon: AstroLogo,
+        description: 'Framework de utilidades para diseños responsivos y personalizados.',
+        experience: '2+ años',
+      },
+    ],
+    Backend: [
+      {
+        name: 'Node.js',
+        icon: NodejsLogo,
+        description: 'Desarrollo de APIs y servicios backend escalables.',
+        experience: '3+ años',
+      },
+      {
+        name: 'Express',
+        icon: ExpressLogo,
+        description: 'Framework minimalista para crear APIs RESTful rápidas.',
+        experience: '3+ años',
+      },
+      {
+        name: 'PHP',
+        icon: PHPLogo,
+        description: 'Desarrollo backend con enfoque en aplicaciones empresariales.',
+        experience: '2+ años',
+      },
+      {
+        name: 'Laravel',
+        icon: LaravelLogo,
+        description: 'Framework PHP elegante para aplicaciones web robustas.',
+        experience: '2+ años',
+      },
+    ],
+    Database: [
+      {
+        name: 'PostgreSQL',
+        icon: PostgreSQLLogo,
+        description: 'Base de datos relacional avanzada con optimización de consultas.',
+        experience: '3+ años',
+      },
+      {
+        name: 'MySQL',
+        icon: MySQLLogo,
+        description: 'Sistema de gestión de bases de datos relacional.',
+        experience: '2+ años',
+      },
+      {
+        name: 'MongoDB',
+        icon: MongoDBLogo,
+        description: 'Base de datos NoSQL para aplicaciones modernas.',
+        experience: '2+ años',
+      },
+    ],
+    DevOps: [
+      {
+        name: 'Docker',
+        icon: DockerLogo,
+        description: 'Containerización para desarrollo y despliegue consistente.',
+        experience: '2+ años',
+      },
+      {
+        name: 'Google Cloud',
+        icon: GoogleCloudLogo,
+        description: 'Infraestructura cloud escalable y servicios en la nube.',
+        experience: '1+ año',
+      },
+      {
+        name: 'Git',
+        icon: GitLogo,
+        description: 'Control de versiones y colaboración en equipo.',
+        experience: '4+ años',
+      },
+    ],
+  };
 
   const experience = [
     {
@@ -312,62 +303,50 @@ function AboutComponent() {
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Tecnologías y herramientas</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Mi stack tecnológico actual, con experiencia práctica en proyectos reales
+              Mi stack tecnológico actual, organizado por categorías
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6">
-            {skills.map((skill) => (
-              <HoverCard key={skill.name}>
-                <HoverCardTrigger asChild>
-                  <Card className="shadow-sm bg-card/50">
-                    <CardContent className="p-4 sm:p-6 flex flex-col items-center text-center">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-4 text-primary">
-                        <skill.icon className="w-full h-full" />
-                      </div>
-                      <h3 className="font-semibold text-base mb-2">{skill.name}</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        {skill.category}
-                      </Badge>
-                    </CardContent>
-                  </Card>
-                </HoverCardTrigger>
-                <HoverCardContent className="w-80">
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <h4 className="text-sm font-semibold">{skill.name}</h4>
-                        <Badge variant="outline" className="text-xs">
-                          {skill.experience}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-muted-foreground">{skill.description}</p>
-                    </div>
-
-                    <Separator />
-
-                    <div className="space-y-2">
-                      <h5 className="text-xs font-medium">Proyectos destacados:</h5>
-                      <ul className="space-y-1">
-                        {skill.projects.map((project, index) => (
-                          <li key={index} className="text-xs flex items-start gap-2">
-                            <CheckCircle className="h-3 w-3 text-primary flex-shrink-0 mt-0.5" />
-                            <span>{project}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-wrap gap-1">
-                      {skill.strengths.map((strength, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {strength}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
+          <div className="space-y-8 md:space-y-12">
+            {Object.entries(skillsByCategory).map(([category, skills]) => (
+              <div key={category}>
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-2">
+                  <span className="text-primary">{category}</span>
+                  <div className="flex-1 h-px bg-border"></div>
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+                  {skills.map((skill) => (
+                    <HoverCard key={skill.name}>
+                      <HoverCardTrigger asChild>
+                        <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-card/50">
+                          <CardContent className="p-4 flex flex-col items-center text-center gap-3">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 text-primary">
+                              <skill.icon className="w-full h-full" />
+                            </div>
+                            <div className="space-y-1">
+                              <h4 className="font-semibold text-sm">{skill.name}</h4>
+                              <Badge variant="secondary" className="text-xs">
+                                {skill.experience}
+                              </Badge>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </HoverCardTrigger>
+                      <HoverCardContent className="w-72" side="top">
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between">
+                            <h4 className="text-sm font-semibold">{skill.name}</h4>
+                            <Badge variant="outline" className="text-xs">
+                              {skill.experience}
+                            </Badge>
+                          </div>
+                          <p className="text-xs text-muted-foreground">{skill.description}</p>
+                        </div>
+                      </HoverCardContent>
+                    </HoverCard>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

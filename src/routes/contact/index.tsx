@@ -104,7 +104,7 @@ function ContactComponent() {
     <div className="w-full min-h-screen">
       {/* Hero Section */}
       <section className="pt-8 sm:pt-12 lg:pt-20 pb-12 lg:pb-16 bg-gradient-to-br from-background via-background to-muted/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6 lg:space-y-8 animate-fade-in">
             <Badge variant="outline" className="mx-auto">
               <MessageCircle className="w-3 h-3 mr-1" />
@@ -145,7 +145,7 @@ function ContactComponent() {
 
       {/* Contact Form & Info Section */}
       <section className="py-12 lg:py-20 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Form */}
             <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">

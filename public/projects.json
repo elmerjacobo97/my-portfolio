@@ -62,6 +62,22 @@
         "Reportes PDF y exportación a Excel",
         "Módulo de roles y permisos"
       ]
+    },
+    {
+      "id": "4",
+      "title": "Tendero",
+      "description": "Sistema POS para gestión de ventas, inventario y clientes.",
+      "longDescription": "Tendero es una solución integral para pequeños negocios que necesitan controlar su inventario, ventas y clientes desde una interfaz simple e intuitiva. Incluye reportes, autenticación JWT y manejo de permisos.",
+      "category": "Aplicación móvil",
+      "featured": false,
+      "technologies": ["React Native", "TypeScript", "Node.js", "Express", "MongoDB", "Sass"],
+      "liveUrl": null,
+      "githubUrl": "https://github.com/elmerotiniano/tendero",
+      "highlights": [
+        "Gestión de stock en tiempo real",
+        "Reportes PDF y exportación a Excel",
+        "Módulo de roles y permisos"
+      ]
     }
   ]
 }

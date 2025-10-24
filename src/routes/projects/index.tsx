@@ -23,7 +23,7 @@ function ProjectsComponent() {
     <div className="w-full min-h-screen">
       {/* Hero Section */}
       <section className="pt-8 sm:pt-12 lg:pt-20 pb-12 lg:pb-16 bg-gradient-to-br from-background via-background to-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6 lg:space-y-8 animate-fade-in">
             <Badge variant="outline" className="mx-auto">
               <Code className="w-3 h-3 mr-1" />
@@ -81,11 +81,11 @@ function ProjectsComponent() {
 
       {/* Projects Section */}
       <section className="py-12 lg:py-20 bg-background">
-        <div className="container max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12 lg:space-y-16">
             {/* Loading State */}
             {isLoading && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
+              <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xs:gap-6 md:gap-8">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <ProjectCardSkeleton key={index} />
                 ))}
@@ -121,7 +121,7 @@ function ProjectsComponent() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xs:gap-6 md:gap-8">
                   {projects.projects.map((project) => (
                     <ProjectCard key={project.id} project={project} />
                   ))}
