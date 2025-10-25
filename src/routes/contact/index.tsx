@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
+import emailjs from '@emailjs/browser';
 import { typeschemaResolver } from '@hookform/resolvers/typeschema';
 import { Briefcase, Calendar, Clock, Coffee, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { z } from 'zod';
@@ -11,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useToast } from '@/hooks/use-toast';
 
 export const Route = createFileRoute('/contact/')({
   component: ContactComponent,
@@ -62,6 +65,9 @@ const ContactSchema = z.object({
 });
 
 function ContactComponent() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof ContactSchema>>({
     resolver: typeschemaResolver(ContactSchema),
     defaultValues: {
@@ -71,16 +77,47 @@ function ContactComponent() {
       message: '',
       projectType: projectTypes[0],
     },
-    mode: 'onChange',
+    // mode: 'onChange',
   });
 
   const onSubmit = async (data: z.infer<typeof ContactSchema>) => {
-    console.log(data);
-    // Simular envío del formulario
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsSubmitting(true);
 
-    // Resetear formulario
-    form.reset();
+    try {
+      // Inicializar EmailJS con la clave pública
+      emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
+      // Enviar email usando EmailJS
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+          project_type: data.projectType || 'No especificado',
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        form.reset();
+
+        toast({
+          title: '¡Mensaje enviado!',
+          description: '¡Gracias por escribirme! Me pondré en contacto contigo muy pronto.',
+        });
+      }
+    } catch {
+      toast({
+        variant: 'destructive',
+        title: 'Error al enviar',
+        description: 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctame directamente.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -237,9 +274,18 @@ function ContactComponent() {
                         )}
                       />
 
-                      <Button type="submit" size="lg" className="w-full hover-lift" disabled={false}>
-                        <Send className="w-5 h-5 mr-2 text-primary-foreground" />
-                        Enviar mensaje
+                      <Button type="submit" size="lg" className="w-full hover-lift" disabled={isSubmitting}>
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2" />
+                            Enviando...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5 mr-2 text-primary-foreground" />
+                            Enviar mensaje
+                          </>
+                        )}
                       </Button>
                     </form>
                   </Form>
