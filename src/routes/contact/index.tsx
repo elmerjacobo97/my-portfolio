@@ -334,7 +334,7 @@ function ContactComponent() {
 
       {/* FAQ Section */}
       <section className="py-12 lg:py-20 bg-muted/20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
             <Badge variant="outline" className="mb-4">
               <MessageCircle className="w-3 h-3 mr-1 text-primary" />
