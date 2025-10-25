@@ -56,6 +56,7 @@ function AboutComponent() {
         icon: ReactLogo,
         description: 'Desarrollo de interfaces modernas con componentes reutilizables y gestión de estado eficiente.',
         experience: '4+ años',
+        color: '#61DAFB', // Cyan oficial de React
       },
       {
         name: 'Next.js',
@@ -63,24 +64,28 @@ function AboutComponent() {
         description:
           'Framework de React para construir aplicaciones web rápidas, con renderizado híbrido (SSR/SSG), rutas optimizadas y excelente rendimiento.',
         experience: '3+ años',
+        color: 'currentColor', // Negro/Blanco según tema
       },
       {
         name: 'Astro',
         icon: AstroLogo,
         description: 'Framework de utilidades para diseños responsivos y personalizados.',
         experience: '2+ años',
+        color: '#FF5D01', // Naranja oficial de Astro
       },
       {
         name: 'TypeScript',
         icon: TypeScriptLogo,
         description: 'Tipado estático para código más robusto y mantenible.',
         experience: '3+ años',
+        color: '#3178C6', // Azul oficial de TypeScript
       },
       {
         name: 'Tailwind CSS',
         icon: TailwindLogo,
         description: 'Framework de utilidades para diseños responsivos y personalizados.',
         experience: '2+ años',
+        color: '#06B6D4', // Cyan oficial de Tailwind
       },
     ],
     Backend: [
@@ -89,12 +94,14 @@ function AboutComponent() {
         icon: NodejsLogo,
         description: 'Desarrollo de APIs y servicios backend escalables.',
         experience: '3+ años',
+        color: '#339933', // Verde oficial de Node.js
       },
       {
         name: 'Express',
         icon: ExpressLogo,
         description: 'Framework minimalista para crear APIs RESTful rápidas.',
         experience: '3+ años',
+        color: 'currentColor', // Negro/Blanco según tema
       },
       {
         name: 'NestJS',
@@ -102,18 +109,21 @@ function AboutComponent() {
         description:
           'Framework para Node.js con arquitectura modular y soporte nativo para TypeScript, ideal para APIs escalables y mantenibles.',
         experience: '2+ años',
+        color: '#E0234E', // Rojo oficial de NestJS
       },
       {
         name: 'PHP',
         icon: PHPLogo,
         description: 'Desarrollo backend con enfoque en aplicaciones empresariales.',
         experience: '2+ años',
+        color: '#777BB4', // Púrpura oficial de PHP
       },
       {
         name: 'Laravel',
         icon: LaravelLogo,
         description: 'Framework PHP elegante para aplicaciones web robustas.',
         experience: '2+ años',
+        color: '#FF2D20', // Rojo oficial de Laravel
       },
     ],
     Database: [
@@ -122,18 +132,21 @@ function AboutComponent() {
         icon: PostgreSQLLogo,
         description: 'Base de datos relacional avanzada con optimización de consultas.',
         experience: '3+ años',
+        color: '#4169E1', // Azul oficial de PostgreSQL
       },
       {
         name: 'MySQL',
         icon: MySQLLogo,
         description: 'Sistema de gestión de bases de datos relacional.',
         experience: '2+ años',
+        color: '#4479A1', // Azul oficial de MySQL
       },
       {
         name: 'MongoDB',
         icon: MongoDBLogo,
         description: 'Base de datos NoSQL para aplicaciones modernas.',
         experience: '2+ años',
+        color: '#47A248', // Verde oficial de MongoDB
       },
       {
         name: 'SQLite',
@@ -141,6 +154,7 @@ function AboutComponent() {
         description:
           'Base de datos relacional ligera y embebida, ideal para aplicaciones móviles y de escritorio sin necesidad de un servidor dedicado.',
         experience: '2+ años',
+        color: '#0F80CC', // Azul más claro para mejor contraste
       },
     ],
     DevOps: [
@@ -149,18 +163,21 @@ function AboutComponent() {
         icon: DockerLogo,
         description: 'Containerización para desarrollo y despliegue consistente.',
         experience: '2+ años',
+        color: '#2496ED', // Azul oficial de Docker
       },
       {
         name: 'Google Cloud',
         icon: GoogleCloudLogo,
         description: 'Infraestructura cloud escalable y servicios en la nube.',
         experience: '1+ año',
+        color: '#4285F4', // Azul oficial de Google Cloud
       },
       {
         name: 'Git',
         icon: GitLogo,
         description: 'Control de versiones y colaboración en equipo.',
         experience: '4+ años',
+        color: '#F05032', // Naranja/Rojo oficial de Git
       },
     ],
   };
@@ -225,10 +242,34 @@ function AboutComponent() {
   ];
 
   const interests = [
-    { name: 'Fotografía', icon: Camera, description: 'Capturando momentos únicos' },
-    { name: 'Música', icon: Music, description: 'Toco la guitarra en mi tiempo libre' },
-    { name: 'Café', icon: Coffee, description: 'Apasionado del café de especialidad' },
-    { name: 'Viajes', icon: Globe, description: 'Explorando nuevas culturas' },
+    {
+      name: 'Fotografía',
+      icon: Camera,
+      description: 'Capturando momentos únicos',
+      color: 'text-primary',
+      bgColor: 'bg-primary/10',
+    },
+    {
+      name: 'Música',
+      icon: Music,
+      description: 'Toco la guitarra en mi tiempo libre',
+      color: 'text-accent-foreground',
+      bgColor: 'bg-accent',
+    },
+    {
+      name: 'Café',
+      icon: Coffee,
+      description: 'Apasionado del café de especialidad',
+      color: 'text-success',
+      bgColor: 'bg-success/10',
+    },
+    {
+      name: 'Viajes',
+      icon: Globe,
+      description: 'Explorando nuevas culturas',
+      color: 'text-warning',
+      bgColor: 'bg-warning/10',
+    },
   ];
 
   return (
@@ -236,9 +277,9 @@ function AboutComponent() {
       {/* Hero Section */}
       <section className="pt-20 pb-16 bg-gradient-to-br from-background via-background to-muted/30">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Profile Info */}
-            <div className="space-y-6 md:space-y-8 animate-fade-in">
+            <div className="space-y-6 md:space-y-8 animate-fade-in sm:order-2 lg:order-1">
               <div className="space-y-4">
                 <Badge variant="outline" className="w-fit">
                   <User className="w-3 h-3 mr-1" />
@@ -263,15 +304,15 @@ function AboutComponent() {
                   <span>Trujillo, Perú</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <Calendar className="w-4 h-4 text-primary flex-shrink-0" />
+                  <Calendar className="w-4 h-4 text-accent-foreground flex-shrink-0" />
                   <span>4+ años experiencia</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <Heart className="w-4 h-4 text-primary flex-shrink-0" />
+                  <Heart className="w-4 h-4 text-success flex-shrink-0" />
                   <span>Disponible para proyectos</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <Award className="w-4 h-4 text-primary flex-shrink-0" />
+                  <Award className="w-4 h-4 text-warning flex-shrink-0" />
                   <span>AWS Certified</span>
                 </div>
               </div>
@@ -279,19 +320,19 @@ function AboutComponent() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="hover-lift">
-                  <Mail className="w-5 h-5 mr-2" />
+                  <Mail className="w-5 h-5 mr-2 text-primary-foreground" />
                   Contáctame
                 </Button>
                 <Button variant="outline" size="lg" className="hover-lift">
-                  <Download className="w-5 h-5 mr-2" />
+                  <Download className="w-5 h-5 mr-2 text-success" />
                   Descargar CV
                 </Button>
               </div>
             </div>
 
             {/* Profile Image */}
-            <div className="relative mt-8 lg:mt-0">
-              <div className="relative mx-auto lg:mx-0 w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80">
+            <div className="relative mt-8 lg:mt-0 sm:order-1 lg:order-2 hidden sm:block">
+              <div className="relative mx-auto lg:mx-0 w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
                 {/* Background decoration */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl rotate-6" />
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl -rotate-3" />
@@ -299,7 +340,7 @@ function AboutComponent() {
                 {/* Main image container */}
                 <div className="relative w-full h-full bg-card rounded-2xl overflow-hidden border shadow-xl">
                   <Avatar className="w-full h-full rounded-2xl">
-                    <AvatarImage src={ProfileImage} alt="Profile" className="object-cover" />
+                    <AvatarImage src={ProfileImage} alt="Profile" className="object-cover pointer-events-none" />
                     <AvatarFallback className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-primary text-primary-foreground rounded-2xl">
                       EJ
                     </AvatarFallback>
@@ -308,7 +349,7 @@ function AboutComponent() {
 
                 {/* Floating badges */}
                 <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-2 sm:p-3 rounded-xl shadow-lg">
-                  <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                 </div>
                 <div className="absolute -bottom-4 -left-4 bg-accent text-accent-foreground p-2 sm:p-3 rounded-xl shadow-lg">
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -346,7 +387,10 @@ function AboutComponent() {
                       <HoverCardTrigger asChild>
                         <Card className="group hover-lift shadow-sm bg-card/50">
                           <CardContent className="p-4 flex flex-col items-center text-center gap-3">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 text-primary">
+                            <div
+                              className="w-10 h-10 sm:w-12 sm:h-12 transition-all dark:brightness-110 dark:contrast-90"
+                              style={{ color: skill.color }}
+                            >
                               <skill.icon className="w-full h-full" />
                             </div>
                             <div className="space-y-1">
@@ -521,8 +565,10 @@ function AboutComponent() {
             {interests.map((interest, index) => (
               <Card key={index} className="group hover-lift shadow-sm bg-card/50">
                 <CardContent className="p-4 sm:p-6">
-                  <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-gradient-primary rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4">
-                    <interest.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                  <div
+                    className={`mx-auto w-12 h-12 sm:w-16 sm:h-16 ${interest.bgColor} rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4`}
+                  >
+                    <interest.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${interest.color}`} />
                   </div>
                   <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">{interest.name}</h3>
                   <p className="text-muted-foreground text-xs sm:text-sm">{interest.description}</p>
@@ -549,11 +595,11 @@ function AboutComponent() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 hover-lift">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-primary-foreground" />
                 Envíame un mensaje
               </Button>
               <Button variant="outline" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 hover-lift">
-                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-success" />
                 Ver mi LinkedIn
               </Button>
             </div>

@@ -36,7 +36,7 @@ export function HeroSection({ skills }: HeroSectionProps) {
 
           {/* Status Badge */}
           <Badge variant="secondary" className="mx-auto text-sm">
-            <Sparkles className="w-3 h-3 mr-1" />
+            <Sparkles className="w-3 h-3 mr-1 text-success" />
             Disponible para nuevos proyectos
           </Badge>
 
@@ -73,11 +73,11 @@ export function HeroSection({ skills }: HeroSectionProps) {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <Button size="lg" className="text-lg px-8 py-6 hover-lift">
-              <Rocket className="w-5 h-5 mr-2" />
+              <Rocket className="w-5 h-5 mr-2 text-primary-foreground" />
               Ver mis proyectos
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
-              <Download className="w-5 h-5 mr-2" />
+              <Download className="w-5 h-5 mr-2 text-success" />
               Descargar CV
             </Button>
           </div>
@@ -85,13 +85,13 @@ export function HeroSection({ skills }: HeroSectionProps) {
           {/* Social Links */}
           <div className="flex justify-center gap-4">
             <Button variant="ghost" size="icon" className="hover-lift">
-              <Github className="w-5 h-5" />
+              <Github className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
             </Button>
             <Button variant="ghost" size="icon" className="hover-lift">
-              <Linkedin className="w-5 h-5" />
+              <Linkedin className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
             </Button>
             <Button variant="ghost" size="icon" className="hover-lift">
-              <Mail className="w-5 h-5" />
+              <Mail className="w-5 h-5 text-success hover:text-success/80 transition-colors" />
             </Button>
           </div>
         </div>

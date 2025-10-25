@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 
@@ -73,6 +74,7 @@ function ContactComponent() {
       value: 'ejacobotiniano@gmail.com',
       description: 'Respondo en menos de 24 horas',
       link: 'mailto:ejacobotiniano@gmail.com',
+      color: 'text-primary',
     },
     {
       icon: Phone,
@@ -80,6 +82,7 @@ function ContactComponent() {
       value: '+51 92 7347 691',
       description: 'Lun - Vie, 9:00 AM - 6:00 PM',
       link: 'tel:+51927347691',
+      color: 'text-success',
     },
     {
       icon: MapPin,
@@ -87,6 +90,7 @@ function ContactComponent() {
       value: 'Trujillo, Perú',
       description: 'Disponible para trabajo remoto',
       link: null,
+      color: 'text-warning',
     },
   ];
 
@@ -107,7 +111,7 @@ function ContactComponent() {
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6 lg:space-y-8 animate-fade-in">
             <Badge variant="outline" className="mx-auto">
-              <MessageCircle className="w-3 h-3 mr-1" />
+              <MessageCircle className="w-3 h-3 mr-1 text-success" />
               Contacto
             </Badge>
 
@@ -131,11 +135,11 @@ function ContactComponent() {
                 <span className="text-sm">Respuesta en 24h</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Coffee className="w-4 h-4 text-primary" />
+                <Coffee className="w-4 h-4 text-success" />
                 <span className="text-sm">Consulta gratuita</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Briefcase className="w-4 h-4 text-primary" />
+                <Briefcase className="w-4 h-4 text-accent-foreground" />
                 <span className="text-sm">Propuesta personalizada</span>
               </div>
             </div>
@@ -264,7 +268,7 @@ function ContactComponent() {
                           </>
                         ) : (
                           <>
-                            <Send className="w-5 h-5 mr-2" />
+                            <Send className="w-5 h-5 mr-2 text-primary-foreground" />
                             Enviar mensaje
                           </>
                         )}
@@ -291,7 +295,7 @@ function ContactComponent() {
                     <CardContent className="p-4 lg:p-6">
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted">
-                          <method.icon className="w-6 h-6 text-primary" />
+                          <method.icon className={`w-6 h-6 ${method.color}`} />
                         </div>
                         <div className="flex-1">
                           <h3 className="font-semibold mb-1">{method.title}</h3>
@@ -319,7 +323,7 @@ function ContactComponent() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
             <Badge variant="outline" className="mb-4">
-              <MessageCircle className="w-3 h-3 mr-1" />
+              <MessageCircle className="w-3 h-3 mr-1 text-accent-foreground" />
               FAQ
             </Badge>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Preguntas frecuentes</h2>
@@ -328,7 +332,8 @@ function ContactComponent() {
             </p>
           </div>
 
-          <div className="space-y-4 lg:space-y-6">
+          {/* Mobile: Cards */}
+          <div className="space-y-4 md:hidden">
             {[
               {
                 q: '¿Cuánto tiempo toma desarrollar un proyecto?',
@@ -348,13 +353,44 @@ function ContactComponent() {
               },
             ].map((faq, index) => (
               <Card key={index} className="shadow-sm bg-card/50">
-                <CardContent className="p-4 lg:p-6">
-                  <h3 className="font-semibold text-base lg:text-lg mb-3">{faq.q}</h3>
-                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">{faq.a}</p>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-base mb-3">{faq.q}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
+
+          {/* Tablet/Desktop: Accordion */}
+          <Accordion type="single" collapsible className="hidden md:block">
+            {[
+              {
+                q: '¿Cuánto tiempo toma desarrollar un proyecto?',
+                a: 'Depende de la complejidad del proyecto. Un sitio web simple puede tomar 2-4 semanas, mientras que una aplicación compleja puede tomar 2-6 meses. Te daré un timeline detallado después de evaluar tu proyecto.',
+              },
+              {
+                q: '¿Trabajas con clientes internacionales?',
+                a: '¡Absolutamente! Trabajo con clientes de todo el mundo. Estoy acostumbrado a trabajar en diferentes zonas horarias y mantengo comunicación regular a través de video llamadas y herramientas colaborativas.',
+              },
+              {
+                q: '¿Ofreces mantenimiento post-lanzamiento?',
+                a: 'Sí, ofrezco diferentes planes de mantenimiento que incluyen actualizaciones de seguridad, optimizaciones de rendimiento, y nuevas funcionalidades según tus necesidades.',
+              },
+              {
+                q: '¿Cuál es tu stack tecnológico preferido?',
+                a: 'Trabajo principalmente con React/Next.js para frontend, Node.js/Python para backend, y PostgreSQL para bases de datos. Sin embargo, me adapto a las necesidades específicas de cada proyecto.',
+              },
+            ].map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
+                <AccordionTrigger className="text-left hover:no-underline py-4 lg:py-6">
+                  <h3 className="font-semibold text-base lg:text-lg pr-4">{faq.q}</h3>
+                </AccordionTrigger>
+                <AccordionContent className="pb-4 lg:pb-6">
+                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">{faq.a}</p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
@@ -375,11 +411,11 @@ function ContactComponent() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
-                <Calendar className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
+                <Calendar className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-primary-foreground" />
                 Agendar llamada
               </Button>
               <Button variant="outline" size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
-                <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
+                <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-success" />
                 Enviar email
               </Button>
             </div>

@@ -1,6 +1,7 @@
 import { createRootRoute } from '@tanstack/react-router';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { ScrollToTop } from '@/components/scroll-to-top';
 import { Outlet } from '@tanstack/react-router';
 
 export const Route = createRootRoute({
@@ -16,6 +17,9 @@ export const Route = createRootRoute({
 
         <Footer />
       </div>
+
+      {/* Scroll to top button */}
+      <ScrollToTop />
     </div>
   ),
 });
