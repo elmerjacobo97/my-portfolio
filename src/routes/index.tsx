@@ -9,11 +9,9 @@ export const Route = createFileRoute('/')({
 });
 
 function HomeComponent() {
-  const skills = ['React', 'TypeScript', 'Next.js', 'Node.js', 'Tailwind CSS', 'PHP', 'Laravel'];
-
   return (
     <div className="w-full">
-      <HeroSection skills={skills} />
+      <HeroSection />
       <ServicesSection />
       <ProjectsSection />
       <ContactSection />

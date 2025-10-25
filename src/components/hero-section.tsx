@@ -4,11 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Rocket, Github, Linkedin, Mail, Download, Sparkles } from 'lucide-react';
 import avatar from '@/assets/images/avatar.png';
 
-type HeroSectionProps = {
-  skills: string[];
-};
-
-export function HeroSection({ skills }: HeroSectionProps) {
+export function HeroSection() {
   return (
     <section className="min-h-dvh flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
@@ -56,22 +52,8 @@ export function HeroSection({ skills }: HeroSectionProps) {
             </p>
           </div>
 
-          {/* Skills preview */}
-          <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
-            {skills.map((skill, index) => (
-              <Badge
-                key={skill}
-                variant="outline"
-                className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {skill}
-              </Badge>
-            ))}
-          </div>
-
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 hover-lift">
               <Rocket className="w-5 h-5 mr-2 text-primary-foreground" />
               Ver mis proyectos

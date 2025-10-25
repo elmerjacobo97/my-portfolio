@@ -1,3 +1,4 @@
+import { useNavigate } from '@tanstack/react-router';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Code, Rocket } from 'lucide-react';
@@ -6,6 +7,7 @@ import { useProjects } from '@/hooks/use-projects';
 import { ProjectCardSkeleton } from '@/components/project-card-skeleton';
 
 export function ProjectsSection() {
+  const navigate = useNavigate();
   const { data: projects, isLoading } = useProjects();
 
   return (
@@ -39,7 +41,7 @@ export function ProjectsSection() {
         )}
 
         <div className="text-center mt-12">
-          <Button size="lg" className="hover-lift">
+          <Button type="button" size="lg" className="hover-lift" onClick={() => navigate({ to: '/projects' })}>
             <Rocket className="w-5 h-5 mr-2" />
             Ver todos los proyectos
           </Button>

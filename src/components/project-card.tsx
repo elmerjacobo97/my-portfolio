@@ -45,7 +45,7 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
       {/* Card Content */}
       <CardHeader>
         <div className="space-y-2">
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle className="text-xl group-hover:text-primary transition-colors">{project.title}</CardTitle>
             {/* Categoría más pequeña */}
             <Badge variant="outline" className="text-xs shrink-0">

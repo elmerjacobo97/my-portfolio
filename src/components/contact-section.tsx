@@ -1,8 +1,11 @@
+import { useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Mail, ArrowRight } from 'lucide-react';
 
 export function ContactSection() {
+  const navigate = useNavigate();
+
   return (
     <section className="py-20 bg-gradient-to-br from-muted/20 to-background relative overflow-hidden">
       {/* Background decoration */}
@@ -30,11 +33,16 @@ export function ContactSection() {
 
           {/* Contact methods */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button size="lg" className="text-lg px-8 py-6 hover-lift">
+            <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/contact' })}>
               <Mail className="w-5 h-5 mr-2 text-primary-foreground" />
               Hablemos
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-lg px-8 py-6 hover-lift"
+              onClick={() => navigate({ to: '/about' })}
+            >
               Ver mi perfil
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>

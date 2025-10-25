@@ -23,7 +23,7 @@ const services = [
   },
   {
     title: 'Optimización & UX',
-    description: 'Rendimiento y experiencia premium',
+    description: 'Experiencia rápida, intuitiva y accesible',
     icon: Zap,
     content: 'Optimizo cada detalle para lograr la máxima velocidad y usabilidad',
     skills: ['SEO', 'Web Vitals', 'A11y'],
