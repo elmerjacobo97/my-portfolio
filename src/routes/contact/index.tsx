@@ -82,7 +82,7 @@ function ContactComponent() {
       value: '+51 92 7347 691',
       description: 'Lun - Vie, 9:00 AM - 6:00 PM',
       link: 'tel:+51927347691',
-      color: 'text-success',
+      color: 'text-primary',
     },
     {
       icon: MapPin,
@@ -90,7 +90,7 @@ function ContactComponent() {
       value: 'Trujillo, Perú',
       description: 'Disponible para trabajo remoto',
       link: null,
-      color: 'text-warning',
+      color: 'text-primary',
     },
   ];
 
@@ -111,7 +111,7 @@ function ContactComponent() {
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6 lg:space-y-8 animate-fade-in">
             <Badge variant="outline" className="mx-auto">
-              <MessageCircle className="w-3 h-3 mr-1 text-success" />
+              <MessageCircle className="w-3 h-3 mr-1 text-primary" />
               Contacto
             </Badge>
 
@@ -135,11 +135,11 @@ function ContactComponent() {
                 <span className="text-sm">Respuesta en 24h</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Coffee className="w-4 h-4 text-success" />
+                <Coffee className="w-4 h-4 text-primary" />
                 <span className="text-sm">Consulta gratuita</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Briefcase className="w-4 h-4 text-accent-foreground" />
+                <Briefcase className="w-4 h-4 text-primary" />
                 <span className="text-sm">Propuesta personalizada</span>
               </div>
             </div>
@@ -323,7 +323,7 @@ function ContactComponent() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
             <Badge variant="outline" className="mb-4">
-              <MessageCircle className="w-3 h-3 mr-1 text-accent-foreground" />
+              <MessageCircle className="w-3 h-3 mr-1 text-primary" />
               FAQ
             </Badge>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Preguntas frecuentes</h2>
@@ -415,7 +415,7 @@ function ContactComponent() {
                 Agendar llamada
               </Button>
               <Button variant="outline" size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
-                <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-success" />
+                <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
                 Enviar email
               </Button>
             </div>

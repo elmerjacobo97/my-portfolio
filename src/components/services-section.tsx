@@ -18,8 +18,8 @@ const services = [
     icon: Terminal,
     content: 'Arquitecturas sólidas que soportan aplicaciones de alta demanda',
     skills: ['Node.js', 'Python', 'PostgreSQL'],
-    iconColor: 'text-success',
-    bgColor: 'bg-success/10',
+    iconColor: 'text-primary',
+    bgColor: 'bg-primary/10',
   },
   {
     title: 'Optimización & UX',
@@ -27,8 +27,8 @@ const services = [
     icon: Zap,
     content: 'Optimizo cada detalle para lograr la máxima velocidad y usabilidad',
     skills: ['SEO', 'Web Vitals', 'A11y'],
-    iconColor: 'text-accent-foreground',
-    bgColor: 'bg-accent',
+    iconColor: 'text-primary',
+    bgColor: 'bg-primary/10',
   },
 ];
 
@@ -38,7 +38,7 @@ export function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-slide-up">
           <Badge variant="outline" className="mb-4">
-            <Zap className="w-3 h-3 mr-1 text-success" />
+            <Zap className="w-3 h-3 mr-1 text-primary" />
             Servicios
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Lo que hago</h2>

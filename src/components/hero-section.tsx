@@ -36,7 +36,7 @@ export function HeroSection({ skills }: HeroSectionProps) {
 
           {/* Status Badge */}
           <Badge variant="secondary" className="mx-auto text-sm">
-            <Sparkles className="w-3 h-3 mr-1 text-success" />
+            <Sparkles className="w-3 h-3 mr-1 text-primary" />
             Disponible para nuevos proyectos
           </Badge>
 
@@ -77,7 +77,7 @@ export function HeroSection({ skills }: HeroSectionProps) {
               Ver mis proyectos
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
-              <Download className="w-5 h-5 mr-2 text-success" />
+              <Download className="w-5 h-5 mr-2" />
               Descargar CV
             </Button>
           </div>
@@ -91,7 +91,7 @@ export function HeroSection({ skills }: HeroSectionProps) {
               <Linkedin className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
             </Button>
             <Button variant="ghost" size="icon" className="hover-lift">
-              <Mail className="w-5 h-5 text-success hover:text-success/80 transition-colors" />
+              <Mail className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
             </Button>
           </div>
         </div>

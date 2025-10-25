@@ -31,8 +31,6 @@ export function ScrollToTop() {
     });
   };
 
-  if (!isVisible) return null;
-
   // Radio del círculo
   const radius = 24;
   const circumference = 2 * Math.PI * radius;
@@ -41,7 +39,9 @@ export function ScrollToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-8 right-8 z-50 h-14 w-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
+      className={`fixed bottom-8 right-8 z-50 h-14 w-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 flex items-center justify-center group ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+      }`}
       aria-label="Volver arriba"
     >
       {/* SVG del círculo de progreso como border */}

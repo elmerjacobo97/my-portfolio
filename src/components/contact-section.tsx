@@ -13,7 +13,7 @@ export function ContactSection() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8 animate-fade-in">
           <Badge variant="outline" className="mx-auto">
-            <Mail className="w-3 h-3 mr-1 text-success" />
+            <Mail className="w-3 h-3 mr-1 text-primary" />
             Colaboremos
           </Badge>
 
@@ -36,7 +36,7 @@ export function ContactSection() {
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
               Ver mi perfil
-              <ArrowRight className="w-5 h-5 ml-2 text-success" />
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
         </div>

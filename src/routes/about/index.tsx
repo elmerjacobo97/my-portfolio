@@ -253,22 +253,22 @@ function AboutComponent() {
       name: 'Música',
       icon: Music,
       description: 'Toco la guitarra en mi tiempo libre',
-      color: 'text-accent-foreground',
-      bgColor: 'bg-accent',
+      color: 'text-primary',
+      bgColor: 'bg-primary/10',
     },
     {
       name: 'Café',
       icon: Coffee,
       description: 'Apasionado del café de especialidad',
-      color: 'text-success',
-      bgColor: 'bg-success/10',
+      color: 'text-primary',
+      bgColor: 'bg-primary/10',
     },
     {
       name: 'Viajes',
       icon: Globe,
       description: 'Explorando nuevas culturas',
-      color: 'text-warning',
-      bgColor: 'bg-warning/10',
+      color: 'text-primary',
+      bgColor: 'bg-primary/10',
     },
   ];
 
@@ -304,15 +304,15 @@ function AboutComponent() {
                   <span>Trujillo, Perú</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <Calendar className="w-4 h-4 text-accent-foreground flex-shrink-0" />
+                  <Calendar className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>4+ años experiencia</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <Heart className="w-4 h-4 text-success flex-shrink-0" />
+                  <Heart className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>Disponible para proyectos</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <Award className="w-4 h-4 text-warning flex-shrink-0" />
+                  <Award className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>AWS Certified</span>
                 </div>
               </div>
@@ -324,7 +324,7 @@ function AboutComponent() {
                   Contáctame
                 </Button>
                 <Button variant="outline" size="lg" className="hover-lift">
-                  <Download className="w-5 h-5 mr-2 text-success" />
+                  <Download className="w-5 h-5 mr-2" />
                   Descargar CV
                 </Button>
               </div>
@@ -349,9 +349,9 @@ function AboutComponent() {
 
                 {/* Floating badges */}
                 <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-2 sm:p-3 rounded-xl shadow-lg">
-                  <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                  <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div className="absolute -bottom-4 -left-4 bg-accent text-accent-foreground p-2 sm:p-3 rounded-xl shadow-lg">
+                <div className="absolute -bottom-4 -left-4 bg-primary text-primary-foreground p-2 sm:p-3 rounded-xl shadow-lg">
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
               </div>
@@ -599,7 +599,7 @@ function AboutComponent() {
                 Envíame un mensaje
               </Button>
               <Button variant="outline" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 hover-lift">
-                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-success" />
+                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Ver mi LinkedIn
               </Button>
             </div>

@@ -52,7 +52,7 @@ function ProjectsComponent() {
               </div>
 
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-success">
+                <div className="text-2xl md:text-3xl font-bold text-primary">
                   <NumberFlow value={projects?.statistics.totalTechnologies || 0} />
                   <span>+</span>
                 </div>
@@ -60,7 +60,7 @@ function ProjectsComponent() {
               </div>
 
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-accent-foreground">
+                <div className="text-2xl md:text-3xl font-bold text-primary">
                   <NumberFlow value={shortValue} />
                   <span>{suffix}</span>
                 </div>
@@ -68,7 +68,7 @@ function ProjectsComponent() {
               </div>
 
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-warning">
+                <div className="text-2xl md:text-3xl font-bold text-primary">
                   <NumberFlow value={projects?.statistics.satisfactionRate || 0} />
                   <span>%</span>
                 </div>
@@ -111,7 +111,7 @@ function ProjectsComponent() {
               <div className="space-y-8 lg:space-y-10">
                 <div className="text-center max-w-3xl mx-auto">
                   <Badge variant="outline" className="mb-4">
-                    <Code className="w-3 h-3 mr-1 text-success" />
+                    <Code className="w-3 h-3 mr-1 text-primary" />
                     Portafolio completo
                   </Badge>
                   <h2 className="text-2xl lg:text-3xl font-bold mb-4">Todos los proyectos</h2>
@@ -163,7 +163,7 @@ function ProjectsComponent() {
                 Iniciar proyecto
               </Button>
               <Button variant="outline" size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
-                <Code className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-success" />
+                <Code className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
                 Ver en GitHub
               </Button>
             </div>
