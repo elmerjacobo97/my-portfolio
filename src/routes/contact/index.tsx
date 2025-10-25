@@ -26,6 +26,7 @@ const contactMethods = [
     value: 'ejacobotiniano@gmail.com',
     description: 'Respondo en menos de 24 horas',
     link: 'mailto:ejacobotiniano@gmail.com',
+    external: false,
     color: 'text-primary',
   },
   {
@@ -34,6 +35,7 @@ const contactMethods = [
     value: '+51 92 7347 691',
     description: 'Lun - Vie, 9:00 AM - 6:00 PM',
     link: 'tel:+51927347691',
+    external: false,
     color: 'text-primary',
   },
   {
@@ -41,7 +43,8 @@ const contactMethods = [
     title: 'Ubicación',
     value: 'Trujillo, Perú',
     description: 'Disponible para trabajo remoto',
-    link: null,
+    link: 'https://www.google.com/maps?q=Trujillo,+Perú',
+    external: true,
     color: 'text-primary',
   },
 ];
@@ -176,7 +179,7 @@ function ContactComponent() {
                 </p>
               </div>
 
-              <Card className="border-0 shadow-sm bg-card/50 backdrop-blur-sm">
+              <Card className="shadow-sm bg-card/50 overflow-hidden">
                 <CardContent>
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
@@ -305,7 +308,7 @@ function ContactComponent() {
               {/* Contact Methods */}
               <div className="space-y-3 lg:space-y-4">
                 {contactMethods.map((method, index) => (
-                  <Card key={index} className="hover-lift shadow-sm bg-card/50">
+                  <Card key={index} className="shadow-sm bg-card/50 overflow-hidden">
                     <CardContent>
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted">
@@ -314,7 +317,12 @@ function ContactComponent() {
                         <div className="flex-1">
                           <h3 className="font-semibold mb-1">{method.title}</h3>
                           {method.link ? (
-                            <a href={method.link} className="text-primary hover:underline font-medium">
+                            <a
+                              href={method.link}
+                              target={method.external ? '_blank' : '_self'}
+                              rel={method.external ? 'noopener noreferrer' : undefined}
+                              className="text-primary hover:underline font-medium"
+                            >
                               {method.value}
                             </a>
                           ) : (
@@ -355,7 +363,7 @@ function ContactComponent() {
               },
               {
                 q: '¿Trabajas con clientes internacionales?',
-                a: '¡Absolutamente! Trabajo con clientes de todo el mundo. Estoy acostumbrado a trabajar en diferentes zonas horarias y mantengo comunicación regular a través de video llamadas y herramientas colaborativas.',
+                a: 'Trabajo con clientes de todo el mundo, pero mi comunicación principal es en español. Si tu equipo habla español, estaré encantado de colaborar y coordinar horarios en distintas zonas horarias.',
               },
               {
                 q: '¿Ofreces mantenimiento post-lanzamiento?',
@@ -363,10 +371,10 @@ function ContactComponent() {
               },
               {
                 q: '¿Cuál es tu stack tecnológico preferido?',
-                a: 'Trabajo principalmente con React/Next.js para frontend, Node.js/Python para backend, y PostgreSQL para bases de datos. Sin embargo, me adapto a las necesidades específicas de cada proyecto.',
+                a: 'Trabajo principalmente con React/Next.js para frontend, Node.js/NestJS o PHP/Laravel para backend, y PostgreSQL o MySQL para bases de datos. Sin embargo, me adapto a las necesidades específicas de cada proyecto.',
               },
             ].map((faq, index) => (
-              <Card key={index} className="shadow-sm bg-card/50">
+              <Card key={index} className="shadow-sm bg-card/50 overflow-hidden">
                 <CardContent>
                   <h3 className="font-semibold text-base mb-3">{faq.q}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
@@ -384,7 +392,7 @@ function ContactComponent() {
               },
               {
                 q: '¿Trabajas con clientes internacionales?',
-                a: '¡Absolutamente! Trabajo con clientes de todo el mundo. Estoy acostumbrado a trabajar en diferentes zonas horarias y mantengo comunicación regular a través de video llamadas y herramientas colaborativas.',
+                a: 'Trabajo con clientes de todo el mundo, pero mi comunicación principal es en español. Si tu equipo habla español, estaré encantado de colaborar y coordinar horarios en distintas zonas horarias.',
               },
               {
                 q: '¿Ofreces mantenimiento post-lanzamiento?',
@@ -392,7 +400,7 @@ function ContactComponent() {
               },
               {
                 q: '¿Cuál es tu stack tecnológico preferido?',
-                a: 'Trabajo principalmente con React/Next.js para frontend, Node.js/Python para backend, y PostgreSQL para bases de datos. Sin embargo, me adapto a las necesidades específicas de cada proyecto.',
+                a: 'Trabajo principalmente con React/Next.js para frontend, Node.js/NestJS o PHP/Laravel para backend, y PostgreSQL o MySQL para bases de datos. Sin embargo, me adapto a las necesidades específicas de cada proyecto.',
               },
             ].map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">

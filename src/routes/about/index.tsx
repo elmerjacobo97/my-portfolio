@@ -12,7 +12,6 @@ import {
   Briefcase,
   Code2,
   Globe,
-  Award,
   Heart,
   Coffee,
   Music,
@@ -20,6 +19,7 @@ import {
   Download,
   Mail,
   ExternalLink,
+  Users,
 } from 'lucide-react';
 import {
   ReactLogo,
@@ -228,16 +228,18 @@ function AboutComponent() {
 
   const education = [
     {
-      degree: 'Ingeniería en Sistemas Computacionales',
-      institution: 'Universidad Tecnológica',
-      period: '2015 - 2019',
-      description: 'Especialización en desarrollo de software y arquitectura de sistemas.',
+      degree: 'Formación Superior Autodidacta en Desarrollo Web',
+      institution: 'Recursos de la Industria',
+      period: '2020 - Actualidad',
+      description:
+        'He desarrollado habilidades avanzadas en desarrollo web y móvil de manera autodidacta, abarcando tanto Frontend como Backend, con un enfoque práctico en proyectos reales.',
     },
     {
-      degree: 'Certificación AWS Solutions Architect',
-      institution: 'Amazon Web Services',
-      period: '2022',
-      description: 'Certificación en diseño de arquitecturas cloud escalables y seguras.',
+      degree: 'Especialización Práctica en Tecnologías Modernas',
+      institution: 'Udemy / Platzi / freeCodeCamp',
+      period: '2020 - Actualidad',
+      description:
+        'He profundizado mis conocimientos mediante cursos y proyectos prácticos, trabajando con frameworks y librerías modernas, buenas prácticas de desarrollo y metodologías ágiles.',
     },
   ];
 
@@ -312,8 +314,8 @@ function AboutComponent() {
                   <span>Disponible para proyectos</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <Award className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>AWS Certified</span>
+                  <Users className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>Trabajo en equipo</span>
                 </div>
               </div>
 
@@ -522,7 +524,10 @@ function AboutComponent() {
               <GraduationCap className="w-3 h-3 mr-1" />
               Educación
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Formación académica</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Más allá del código</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Aprendizaje continuo que impulsa mi desarrollo técnico y creativo
+            </p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
