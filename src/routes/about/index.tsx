@@ -441,19 +441,19 @@ function AboutComponent() {
 
           {/* Timeline Container */}
           <div className="relative max-w-5xl mx-auto">
-            {/* Vertical Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/70 to-primary/40 md:transform md:-translate-x-1/2"></div>
+            {/* Vertical Line - Solo visible en tablets y desktop */}
+            <div className="hidden md:block absolute md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/70 to-primary/40 md:transform md:-translate-x-1/2"></div>
 
             {/* Timeline Items */}
-            <div className="space-y-12 md:space-y-16">
+            <div className="space-y-6 md:space-y-16">
               {experience.map((exp, index) => (
                 <div key={index} className="relative">
-                  {/* Timeline Dot */}
-                  <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-background border-4 border-primary rounded-full md:transform md:-translate-x-1/2 shadow-lg z-10"></div>
+                  {/* Timeline Dot - Solo visible en tablets y desktop */}
+                  <div className="hidden md:block absolute md:left-1/2 w-4 h-4 bg-background border-4 border-primary rounded-full md:transform md:-translate-x-1/2 shadow-lg z-10"></div>
 
                   {/* Content Card */}
                   <div
-                    className={`ml-20 md:ml-0 md:w-[calc(50%-3rem)] ${
+                    className={`md:w-[calc(50%-3rem)] ${
                       index % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'
                     }`}
                   >
