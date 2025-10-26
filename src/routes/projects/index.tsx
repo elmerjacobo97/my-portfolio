@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ProjectCard } from '@/components/project-card';
@@ -13,6 +13,7 @@ export const Route = createFileRoute('/projects/')({
 });
 
 function ProjectsComponent() {
+  const navigate = useNavigate();
   const { data: projects, isLoading, error, refetch } = useProjects();
 
   const totalUsers = projects?.statistics.totalUsers || 0;
@@ -158,13 +159,24 @@ function ProjectsComponent() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
+              <Button
+                size="lg"
+                className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift"
+                onClick={() => navigate({ to: '/contact' })}
+              >
                 <Zap className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-primary-foreground" />
                 Iniciar proyecto
               </Button>
-              <Button variant="outline" size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
-                <Code className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
-                Ver en GitHub
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift"
+              >
+                <a href="https://github.com/elmerjacobo97" target="_blank" rel="noopener noreferrer">
+                  <Code className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
+                  Ver en GitHub
+                </a>
               </Button>
             </div>
           </div>

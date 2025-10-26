@@ -3,7 +3,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import { typeschemaResolver } from '@hookform/resolvers/typeschema';
-import { Briefcase, Calendar, Clock, Coffee, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
+import { Briefcase, Clock, Coffee, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { z } from 'zod';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -432,13 +432,26 @@ function ContactComponent() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
-                <Calendar className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-primary-foreground" />
-                Agendar llamada
+              <Button asChild size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
+                <a
+                  href="https://wa.me/51927347691?text=Hola%20Elmer!%20Vi%20tu%20portafolio%20y%20quiero%20agendar%20una%20llamada"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-primary-foreground" />
+                  Contactar por WhatsApp
+                </a>
               </Button>
-              <Button variant="outline" size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
-                <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
-                Enviar email
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift"
+              >
+                <a href="mailto:ejacobotiniano@gmail.com?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
+                  <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
+                  Enviar email
+                </a>
               </Button>
             </div>
           </div>
