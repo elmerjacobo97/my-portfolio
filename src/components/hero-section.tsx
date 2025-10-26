@@ -1,3 +1,4 @@
+import { useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -5,6 +6,8 @@ import { Rocket, Github, Linkedin, Mail, Download, Sparkles } from 'lucide-react
 import avatar from '@/assets/images/avatar.png';
 
 export function HeroSection() {
+  const navigate = useNavigate();
+
   return (
     <section className="min-h-dvh flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
@@ -54,7 +57,7 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="text-lg px-8 py-6 hover-lift">
+            <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/projects' })}>
               <Rocket className="w-5 h-5 mr-2 text-primary-foreground" />
               Ver mis proyectos
             </Button>
@@ -66,14 +69,20 @@ export function HeroSection() {
 
           {/* Social Links */}
           <div className="flex justify-center gap-4">
-            <Button variant="ghost" size="icon" className="hover-lift">
-              <Github className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
+            <Button asChild variant="ghost" size="icon" className="hover-lift">
+              <a href="https://github.com/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
+                <Github className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
+              </a>
             </Button>
-            <Button variant="ghost" size="icon" className="hover-lift">
-              <Linkedin className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
+            <Button asChild variant="ghost" size="icon" className="hover-lift">
+              <a href="https://www.linkedin.com/in/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
+              </a>
             </Button>
-            <Button variant="ghost" size="icon" className="hover-lift">
-              <Mail className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
+            <Button asChild variant="ghost" size="icon" className="hover-lift">
+              <a href="mailto:ejacobotiniano@gmail.com">
+                <Mail className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
+              </a>
             </Button>
           </div>
         </div>
