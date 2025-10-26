@@ -2,6 +2,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Rocket, Github, Linkedin, Mail, Download, Sparkles } from 'lucide-react';
 import avatar from '@/assets/images/avatar.png';
 
@@ -10,47 +11,47 @@ export function HeroSection() {
 
   return (
     <section className="min-h-dvh flex items-center justify-center relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30" />
+      {/* Simple background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-6 animate-fade-in">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
+        <div className="space-y-8 animate-fade-in">
           {/* Avatar */}
           <div className="flex justify-center w-full">
-            <div className="relative group">
-              <Avatar className="w-40 h-40 border-4 border-primary/20 hover:border-primary/40 transition-all duration-300 overflow-hidden">
-                <AvatarImage
-                  src={avatar}
-                  alt="Elmer Jacobo"
-                  className="object-cover w-full h-full"
-                  width={160}
-                  height={160}
-                />
-                <AvatarFallback className="text-2xl font-bold bg-gradient-primary text-primary-foreground">
-                  EJ
-                </AvatarFallback>
-              </Avatar>
-            </div>
+            <Avatar className="w-40 h-40 border-4 border-primary/20 shadow-lg">
+              <AvatarImage
+                src={avatar}
+                alt="Elmer Jacobo"
+                className="object-cover w-full h-full"
+                width={160}
+                height={160}
+              />
+              <AvatarFallback className="text-2xl font-bold bg-gradient-primary text-primary-foreground">
+                EJ
+              </AvatarFallback>
+            </Avatar>
           </div>
 
           {/* Status Badge */}
-          <Badge variant="secondary" className="mx-auto text-sm">
-            <Sparkles className="w-3 h-3 mr-1 text-primary" />
+          <Badge variant="secondary" className="mx-auto text-sm px-4 py-1.5">
+            <Sparkles className="w-3 h-3 mr-1.5 text-primary" />
             Disponible para nuevos proyectos
           </Badge>
 
           {/* Main heading */}
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-              Hola, soy{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-accent">
-                Desarrollador
-              </span>{' '}
-              <span className="text-accent font-bold">Full Stack</span>
+          <div className="space-y-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight">
+              <span className="block text-lg font-normal mb-4">👋 Hola, soy Elmer Jacobo</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                Desarrollador Full Stack
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Transformo ideas en experiencias digitales excepcionales. Especializado en crear aplicaciones web modernas
-              con <span className="text-primary font-semibold">código limpio</span> y{' '}
+
+            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Transformo ideas en experiencias digitales excepcionales.
+              <br className="hidden md:block" />
+              Especializado en crear aplicaciones web modernas con{' '}
+              <span className="text-primary font-semibold">código limpio</span> y{' '}
               <span className="text-primary font-semibold">diseño elegante</span>.
             </p>
           </div>
@@ -61,6 +62,7 @@ export function HeroSection() {
               <Rocket className="w-5 h-5 mr-2 text-primary-foreground" />
               Ver mis proyectos
             </Button>
+
             <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
               <Download className="w-5 h-5 mr-2" />
               Descargar CV
@@ -68,22 +70,62 @@ export function HeroSection() {
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-4">
-            <Button asChild variant="ghost" size="icon" className="hover-lift">
-              <a href="https://github.com/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
-                <Github className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
-              </a>
-            </Button>
-            <Button asChild variant="ghost" size="icon" className="hover-lift">
-              <a href="https://www.linkedin.com/in/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
-              </a>
-            </Button>
-            <Button asChild variant="ghost" size="icon" className="hover-lift">
-              <a href="mailto:ejacobotiniano@gmail.com">
-                <Mail className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
-              </a>
-            </Button>
+          <div className="flex justify-center gap-3">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    asChild
+                    variant="ghost"
+                    size="icon"
+                    className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
+                  >
+                    <a href="https://github.com/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
+                      <Github className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>GitHub</p>
+                </TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    asChild
+                    variant="ghost"
+                    size="icon"
+                    className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
+                  >
+                    <a href="https://www.linkedin.com/in/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>LinkedIn</p>
+                </TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    asChild
+                    variant="ghost"
+                    size="icon"
+                    className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
+                  >
+                    <a href="mailto:ejacobotiniano@gmail.com">
+                      <Mail className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Email</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
       </div>

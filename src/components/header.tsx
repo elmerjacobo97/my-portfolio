@@ -29,13 +29,22 @@ export function Header() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="relative flex items-center justify-center gap-2 px-4 py-2 text-muted-foreground hover:text-foreground transition-colors duration-200 group [&.active]:text-primary"
-                activeProps={{ className: 'text-primary' }}
+                className="relative flex items-center justify-center gap-2 px-4 py-2 text-muted-foreground hover:text-primary transition-colors duration-200 group"
+                activeProps={{
+                  className: 'text-primary',
+                }}
               >
-                <item.icon className="w-4 h-4" />
-                <span className="font-medium">{item.name}</span>
-                {/* Border animado en hover */}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-[calc(100%-2rem)] group-[.active]:w-[calc(100%-2rem)]" />
+                {({ isActive }) => (
+                  <>
+                    <item.icon className="w-4 h-4" />
+                    <span className="font-medium">{item.name}</span>
+                    <span
+                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 ${
+                        isActive ? 'w-[calc(100%-2rem)]' : 'w-0 group-hover:w-[calc(100%-2rem)]'
+                      }`}
+                    />
+                  </>
+                )}
               </Link>
             ))}
           </nav>
