@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Link: https://simpleicons.org/
+
 interface TechLogoProps {
   className?: string;
 }

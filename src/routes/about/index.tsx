@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -48,7 +48,8 @@ export const Route = createFileRoute('/about/')({
 });
 
 function AboutComponent() {
-  // Organizado por categorías para mejor visualización
+  const navigate = useNavigate();
+
   const skillsByCategory = {
     Frontend: [
       {
@@ -320,7 +321,7 @@ function AboutComponent() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-row justify-between xs:justify-start gap-4">
                 <Button size="lg" className="hover-lift">
                   <Mail className="w-5 h-5 mr-2 text-primary-foreground" />
                   Contáctame
@@ -598,14 +599,16 @@ function AboutComponent() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 hover-lift">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-primary-foreground" />
-                Envíame un mensaje
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+              <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/contact' })}>
+                <Mail className="w-5 h-5 mr-2" />
+                Hablemos
               </Button>
-              <Button variant="outline" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 hover-lift">
-                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                Ver mi LinkedIn
+              <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
+                <a href="https://www.linkedin.com/in/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-5 h-5 mr-2" />
+                  Ver mi LinkedIn
+                </a>
               </Button>
             </div>
           </div>
