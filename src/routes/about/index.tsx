@@ -321,7 +321,7 @@ function AboutComponent() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-row justify-between xs:justify-start gap-4">
+              <div className="flex flex-row justify-start gap-4">
                 <Button size="lg" className="hover-lift">
                   <Mail className="w-5 h-5 mr-2 text-primary-foreground" />
                   Contáctame
