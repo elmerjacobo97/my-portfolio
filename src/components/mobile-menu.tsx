@@ -1,12 +1,12 @@
-import * as React from 'react';
 import { Link } from '@tanstack/react-router';
+import { type LucideIcon } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { socialLinks } from '@/constants/navigation';
 
 interface NavigationItem {
   name: string;
   href: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: LucideIcon;
 }
 
 interface MobileMenuProps {

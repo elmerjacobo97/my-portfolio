@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Link } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { Menu, Code } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { VisuallyHidden } from '@/components/ui/visually-hidden';
 import { MobileMenu } from '@/components/mobile-menu';
 import { navigation, brandInfo } from '@/constants/navigation';
 import { ModeToggle } from '@/components/mode-toggle';
@@ -52,6 +53,10 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <VisuallyHidden>
+                  <SheetTitle>Menú de navegación</SheetTitle>
+                  <SheetDescription>Navega por las diferentes secciones del sitio web</SheetDescription>
+                </VisuallyHidden>
                 <MobileMenu navigation={navigation} onClose={() => setIsMenuOpen(false)} />
               </SheetContent>
             </Sheet>
