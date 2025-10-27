@@ -3,7 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Rocket, Github, Linkedin, Mail, Download, Sparkles } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Rocket, Github, Linkedin, Mail, Download, Sparkles, Eye, FileText, ChevronDown } from 'lucide-react';
 import avatar from '@/assets/images/avatar.png';
 
 export function HeroSection() {
@@ -63,10 +69,38 @@ export function HeroSection() {
               Ver mis proyectos
             </Button>
 
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
-              <Download className="w-5 h-5 mr-2" />
-              Descargar CV
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
+                  <FileText className="w-5 h-5 mr-2" />
+                  Currículum
+                  <ChevronDown className="w-4 h-4 ml-2" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-48">
+                <DropdownMenuItem asChild>
+                  <a
+                    href="/ELMER-JACOBO-OTINIANO-CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center cursor-pointer"
+                  >
+                    <Eye className="w-4 h-4 mr-2" />
+                    Abrir en nueva pestaña
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a
+                    href="/ELMER-JACOBO-OTINIANO-CV.pdf"
+                    download="Elmer-Jacobo-CV.pdf"
+                    className="flex items-center cursor-pointer"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Descargar PDF
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Social Links */}
