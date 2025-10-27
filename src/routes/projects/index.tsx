@@ -28,7 +28,7 @@ function ProjectsComponent() {
           <div className="text-center space-y-6 lg:space-y-8 animate-fade-in">
             <Badge variant="outline" className="mx-auto">
               <Code className="w-3 h-3 mr-1 text-primary" />
-              Portfolio
+              Portafolio
             </Badge>
 
             <div className="space-y-4 lg:space-y-6">
