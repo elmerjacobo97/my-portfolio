@@ -17,8 +17,8 @@ export function HeroSection() {
 
   return (
     <section className="min-h-dvh flex items-center justify-center relative overflow-hidden">
-      {/* Simple background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/30 dark:from-background dark:via-primary/10 dark:to-secondary/40" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
         <div className="space-y-4 sm:space-y-8 animate-fade-in">
