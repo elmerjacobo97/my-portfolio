@@ -23,9 +23,9 @@ const contactMethods = [
   {
     icon: Mail,
     title: 'Email',
-    value: 'ejacobotiniano@gmail.com',
+    value: 'contacto@elmerjacobo.dev',
     description: 'Respondo en menos de 24 horas',
-    link: 'mailto:ejacobotiniano@gmail.com',
+    link: 'mailto:contacto@elmerjacobo.dev',
     external: false,
     color: 'text-primary',
   },
@@ -448,7 +448,7 @@ function ContactComponent() {
                 size="lg"
                 className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift"
               >
-                <a href="mailto:ejacobotiniano@gmail.com?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
+                <a href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
                   <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
                   Enviar email
                 </a>

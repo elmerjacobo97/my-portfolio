@@ -116,7 +116,7 @@ export function HeroSection() {
                     size="icon"
                     className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
                   >
-                    <a href="mailto:ejacobotiniano@gmail.com?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
+                    <a href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
                       <Mail className="w-5 h-5" />
                     </a>
                   </Button>

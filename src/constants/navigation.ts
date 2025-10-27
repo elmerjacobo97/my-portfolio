@@ -15,7 +15,7 @@ export const socialLinks = [
 export const services = ['Desarrollo Web', 'Aplicaciones Móviles', 'E-commerce', 'Consultoría Técnica'];
 
 export const contactInfo = {
-  email: 'ejacobotiniano@gmail.com',
+  email: 'contacto@elmerjacobo.dev',
   phone: '+51 92 7347 691',
   location: 'Trujillo, Perú',
   availability: 'Disponible para proyectos',
