@@ -18,7 +18,7 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
   const hasMoreTechs = remainingTechs.length > 0;
 
   return (
-    <Card className={`group hover-lift shadow-sm bg-card/50 ${className}`}>
+    <Card className={`group hover-lift shadow-sm bg-card/50 overflow-hidden py-0 gap-0 ${className}`}>
       {/* Project Preview Image */}
       <div className="relative h-48 overflow-hidden">
         {/* Imagen principal */}
@@ -43,7 +43,7 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
       </div>
 
       {/* Card Content */}
-      <CardHeader>
+      <CardHeader className="pt-6 pb-0">
         <div className="space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle className="text-xl group-hover:text-primary transition-colors">{project.title}</CardTitle>
@@ -56,7 +56,7 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 pb-6">
         {/* Technologies con Tooltip */}
         <div className="flex flex-wrap gap-1.5">
           {project.technologies.slice(0, maxTechBadges).map((tech: string) => (

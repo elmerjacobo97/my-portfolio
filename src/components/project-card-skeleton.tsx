@@ -8,7 +8,7 @@ interface ProjectCardSkeletonProps {
 
 export function ProjectCardSkeleton({ featured = false, className = '' }: ProjectCardSkeletonProps) {
   return (
-    <Card className={`group shadow-sm bg-card/50 ${className}`}>
+    <Card className={`group shadow-sm bg-card/50 overflow-hidden py-0 gap-0 ${className}`}>
       {/* Project Preview Image Skeleton */}
       <div className="relative h-48 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 overflow-hidden">
         {/* Background pattern */}
@@ -17,17 +17,11 @@ export function ProjectCardSkeleton({ featured = false, className = '' }: Projec
         {/* Top badges skeleton */}
         <div className="absolute top-3 left-3 flex gap-2">
           {featured && <Skeleton className="h-6 w-24" />}
-          <Skeleton className="h-6 w-16" />
-        </div>
-
-        {/* Status badge skeleton (optional) */}
-        <div className="absolute top-3 right-3">
-          <Skeleton className="h-6 w-20" />
         </div>
       </div>
 
       {/* Card Content */}
-      <CardHeader className="pb-3">
+      <CardHeader className="pt-6 pb-0">
         <div className="space-y-2">
           <div className="flex items-start justify-between gap-3">
             {/* Title skeleton */}
@@ -43,7 +37,7 @@ export function ProjectCardSkeleton({ featured = false, className = '' }: Projec
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 pb-6">
         {/* Technologies skeleton */}
         <div className="flex flex-wrap gap-1.5">
           <Skeleton className="h-5 w-16" />
