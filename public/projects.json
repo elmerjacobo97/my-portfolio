@@ -48,6 +48,23 @@
       ]
     },
     {
+      "id": "4",
+      "title": "Tendero",
+      "description": "Aplicación móvil POS para gestión de ventas e inventario en pequeños negocios.",
+      "image": "https://res.cloudinary.com/elmerjacobo/image/upload/v1761625731/My%20Portfolio/tendero_stfcji.png",
+      "category": "Aplicación móvil",
+      "featured": false,
+      "technologies": ["React Native", "TypeScript", "C#", "Microsoft SQL Server", "Redux Toolkit", "TanStack Query"],
+      "liveUrl": "https://tendero.app",
+      "githubUrl": null,
+      "highlights": [
+        "Registro de ventas con cálculo automático",
+        "Gestión de productos e inventario básico",
+        "Autenticación JWT con roles de usuario"
+      ]
+    },
+
+    {
       "id": "3",
       "title": "SmartPOS",
       "description": "Sistema POS para gestión de ventas, inventario y clientes.",
@@ -55,24 +72,8 @@
       "category": "Aplicación móvil",
       "featured": false,
       "technologies": ["React Native", "TypeScript", "Node.js", "Express", "MongoDB", "Sass"],
-      "liveUrl": null,
-      "githubUrl": "https://github.com/elmerotiniano/smartpos",
-      "highlights": [
-        "Gestión de stock en tiempo real",
-        "Reportes PDF y exportación a Excel",
-        "Módulo de roles y permisos"
-      ]
-    },
-    {
-      "id": "4",
-      "title": "Tendero",
-      "description": "Sistema POS para gestión de ventas, inventario y clientes.",
-      "longDescription": "Tendero es una solución integral para pequeños negocios que necesitan controlar su inventario, ventas y clientes desde una interfaz simple e intuitiva. Incluye reportes, autenticación JWT y manejo de permisos.",
-      "category": "Aplicación móvil",
-      "featured": false,
-      "technologies": ["React Native", "TypeScript", "Node.js", "Express", "MongoDB", "Sass"],
-      "liveUrl": null,
-      "githubUrl": "https://github.com/elmerotiniano/tendero",
+      "liveUrl": "https://smartpos.app",
+      "githubUrl": null,
       "highlights": [
         "Gestión de stock en tiempo real",
         "Reportes PDF y exportación a Excel",
