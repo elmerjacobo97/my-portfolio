@@ -1,62 +1,61 @@
-# My Portfolio
+# 🌐 My Portfolio — Elmer Jacobo
 
-Welcome to my personal portfolio website! This is a modern, responsive web application built with React, TypeScript, and Vite.
+Welcome to my personal portfolio website! This is a modern, responsive and performance-focused web application where I showcase my work, skills, and experience as a frontend and mobile developer.
+
+🔗 **Live Website:** https://elmerjacobo.dev
+
+## ✨ Preview
+
+> _Screenshot of the portfolio in production_
+
+![Portfolio Screenshot](./public/preview.png)
 
 ## 🚀 Features
 
-- **Modern Stack**: Built with React 19, TypeScript, and Vite for optimal performance
-- **Responsive Design**: Works seamlessly on all devices
-- **Type Safety**: Full TypeScript support for better developer experience
-- **Fast Refresh**: Instant feedback during development
-- **ESLint & Prettier**: Clean and consistent code
+- **Modern Stack**: React 19, TypeScript, Vite
+- **Responsive UI**: Fully optimized for all screen sizes
+- **Fast Refresh**: Instant development changes
+- **Clean Codebase**: ESLint & Prettier included
+- **High Performance**: Lightning-fast build and deploy
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React 19, TypeScript, TailwindCSS
-- **Build Tool**: Vite
-- **Linting**: ESLint with TypeScript support
-- **Styling**: TailwindCSS
-- **Deployment**: Vercel
+| Category   | Technologies                      |
+| ---------- | --------------------------------- |
+| Frontend   | React 19, TypeScript, TailwindCSS |
+| Build Tool | Vite                              |
+| Deployment | Vercel                            |
+| Linting    | ESLint (TS Support)               |
 
-## 🚀 Getting Started
+## 📥 Getting Started
 
-### Prerequisites
+### ✅ Requirements
 
-- Node.js (v20 or later)
+- Node.js v20 or later
 - pnpm
 
-### Installation
+### 🔧 Installation
 
-1. Clone the repository:
+```bash
+git clone https://github.com/elmerjacobo97/my-portfolio.git
+cd my-portfolio
+pnpm install
+pnpm run dev
+```
 
-   ```bash
-   git clone https://github.com/elmerjacobo97/my-portfolio.git
-   cd my-portfolio
-   ```
+### 🚀 Development Server
 
-2. Install dependencies:
+```bash
+pnpm run dev
+```
 
-   ```bash
-   pnpm install
-   ```
-
-3. Start the development server:
-
-   ```bash
-   pnpm run dev
-   ```
-
-4. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
-
-## 📦 Building for Production
-
-To create a production build:
+### 🏗️ Production Build
 
 ```bash
 pnpm run build
 ```
 
-## 📄 License
+### 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
