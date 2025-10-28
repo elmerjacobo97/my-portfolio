@@ -7,13 +7,14 @@ import { Toaster } from '@/components/ui/toaster';
 import { Toaster as SonnerToaster } from '@/components/ui/sonner';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { ScrollToTop } from '@/components/scroll-to-top';
+import { ScrollProgressBar } from '@/components/scroll-progress-bar';
 import NotFoundError from '@/components/errors/not-found-error';
 import GeneralError from '@/components/errors/general-error';
 
 export const Route = createRootRoute({
   component: () => (
     <React.Fragment>
+      <ScrollProgressBar />
       <div className="min-h-screen bg-background relative overflow-hidden">
         <div className="relative z-10">
           <Header />
@@ -22,7 +23,6 @@ export const Route = createRootRoute({
           </main>
           <Footer />
         </div>
-        <ScrollToTop />
       </div>
       <Toaster />
       <SonnerToaster />
