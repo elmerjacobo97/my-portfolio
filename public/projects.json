@@ -63,21 +63,20 @@
         "Autenticación JWT con roles de usuario"
       ]
     },
-
     {
       "id": "3",
-      "title": "SmartPOS",
-      "description": "Sistema POS para gestión de ventas, inventario y clientes.",
-      "longDescription": "SmartPOS es una solución integral para pequeños negocios que necesitan controlar su inventario, ventas y clientes desde una interfaz simple e intuitiva. Incluye reportes, autenticación JWT y manejo de permisos.",
+      "title": "Tlalocapp",
+      "description": "Plataforma móvil para supervisar y gestionar la captación y distribución de recursos hídricos.",
+      "image": "https://res.cloudinary.com/elmerjacobo/image/upload/v1761665056/My%20Portfolio/tlalocapp_oiyye6.png",
       "category": "Aplicación móvil",
       "featured": false,
-      "technologies": ["React Native", "TypeScript", "Node.js", "Express", "MongoDB", "Sass"],
-      "liveUrl": "https://smartpos.app",
+      "technologies": ["React Native", "TypeScript", "Laravel", "PostgreSQL", "Redux Toolkit", "TanStack Query"],
+      "liveUrl": "https://admin.tlalocapp.com/",
       "githubUrl": null,
       "highlights": [
-        "Gestión de stock en tiempo real",
-        "Reportes PDF y exportación a Excel",
-        "Módulo de roles y permisos"
+        "Registro de usuarios y puntos de captación",
+        "Historial de consumos y mediciones",
+        "Reportes operativos y panel administrativo"
       ]
     }
   ]

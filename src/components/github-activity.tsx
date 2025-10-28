@@ -28,7 +28,7 @@ export function GitHubActivity({ username }: GitHubActivityProps) {
         </div>
 
         <Card className="shadow-sm bg-card/50 overflow-hidden">
-          <CardContent className="p-6 md:p-8">
+          <CardContent>
             <div className="flex justify-center overflow-x-auto">
               <GitHubCalendar
                 username={username}

@@ -20,7 +20,6 @@ import {
   Globe,
   Heart,
   Coffee,
-  Music,
   Camera,
   Download,
   Mail,
@@ -29,6 +28,7 @@ import {
   Eye,
   ChevronDown,
   FileText,
+  Cpu,
 } from 'lucide-react';
 import {
   ReactLogo,
@@ -269,30 +269,30 @@ function AboutComponent() {
 
   const interests = [
     {
-      name: 'Fotografía',
-      icon: Camera,
-      description: 'Capturando momentos únicos',
+      name: 'Tecnología',
+      icon: Cpu,
+      description: 'Siempre aprendiendo nuevas herramientas',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
-      name: 'Música',
-      icon: Music,
-      description: 'Toco la guitarra en mi tiempo libre',
+      name: 'Fotografía',
+      icon: Camera,
+      description: 'Transformando momentos cotidianos en recuerdos especiales',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
       name: 'Café',
       icon: Coffee,
-      description: 'Apasionado del café de especialidad',
+      description: 'Café mientras programo, el combo perfecto',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
       name: 'Viajes',
       icon: Globe,
-      description: 'Explorando nuevas culturas',
+      description: 'Conociendo nuevos lugares cuando puedo',
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
@@ -441,7 +441,7 @@ function AboutComponent() {
                     <HoverCard key={skill.name}>
                       <HoverCardTrigger asChild>
                         <Card className="group hover-lift shadow-sm bg-card/50">
-                          <CardContent className="p-4 flex flex-col items-center text-center gap-3">
+                          <CardContent className="flex flex-col items-center text-center gap-3">
                             <div
                               className="w-10 h-10 sm:w-12 sm:h-12 transition-all dark:brightness-110 dark:contrast-90"
                               style={{ color: skill.color }}
@@ -622,7 +622,7 @@ function AboutComponent() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {interests.map((interest, index) => (
               <Card key={index} className="group hover-lift shadow-sm bg-card/50">
-                <CardContent className="p-4 sm:p-6">
+                <CardContent className="text-center flex flex-col items-center">
                   <div
                     className={`mx-auto w-12 h-12 sm:w-16 sm:h-16 ${interest.bgColor} rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4`}
                   >

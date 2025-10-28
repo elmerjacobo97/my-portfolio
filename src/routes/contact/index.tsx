@@ -149,15 +149,15 @@ function ContactComponent() {
 
             {/* Quick Response Promise */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4">
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
                 <Clock className="w-4 h-4 text-primary" />
                 <span className="text-sm">Respuesta en 24h</span>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
                 <Coffee className="w-4 h-4 text-primary" />
                 <span className="text-sm">Consulta gratuita</span>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
                 <Briefcase className="w-4 h-4 text-primary" />
                 <span className="text-sm">Propuesta personalizada</span>
               </div>
@@ -310,7 +310,7 @@ function ContactComponent() {
                 {contactMethods.map((method, index) => (
                   <Card key={index} className="shadow-sm bg-card/50 overflow-hidden">
                     <CardContent>
-                      <div className="flex items-start gap-4">
+                      <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted">
                           <method.icon className={`w-6 h-6 ${method.color}`} />
                         </div>
