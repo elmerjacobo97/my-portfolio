@@ -5,6 +5,12 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
   User,
   MapPin,
   Calendar,
@@ -20,6 +26,9 @@ import {
   Mail,
   ExternalLink,
   Users,
+  Eye,
+  ChevronDown,
+  FileText,
 } from 'lucide-react';
 import {
   ReactLogo,
@@ -55,7 +64,8 @@ function AboutComponent() {
       {
         name: 'React',
         icon: ReactLogo,
-        description: 'Biblioteca de JavaScript para crear interfaces de usuario interactivas con componentes reutilizables y gestión eficiente del estado.',
+        description:
+          'Biblioteca de JavaScript para crear interfaces de usuario interactivas con componentes reutilizables y gestión eficiente del estado.',
         experience: '4+ años',
         color: '#61DAFB', // Cyan oficial de React
       },
@@ -70,21 +80,24 @@ function AboutComponent() {
       {
         name: 'Astro',
         icon: AstroLogo,
-        description: 'Framework moderno para sitios web ultra-rápidos con arquitectura de islas y contenido estático optimizado.',
+        description:
+          'Framework moderno para sitios web ultra-rápidos con arquitectura de islas y contenido estático optimizado.',
         experience: '2+ años',
         color: '#FF5D01', // Naranja oficial de Astro
       },
       {
         name: 'TypeScript',
         icon: TypeScriptLogo,
-        description: 'Superset de JavaScript con tipado estático que permite escribir código más seguro, robusto y fácil de mantener.',
+        description:
+          'Superset de JavaScript con tipado estático que permite escribir código más seguro, robusto y fácil de mantener.',
         experience: '3+ años',
         color: '#3178C6', // Azul oficial de TypeScript
       },
       {
         name: 'Tailwind CSS',
         icon: TailwindLogo,
-        description: 'Framework CSS utility-first para crear diseños modernos y responsivos de forma rápida sin salir del HTML.',
+        description:
+          'Framework CSS utility-first para crear diseños modernos y responsivos de forma rápida sin salir del HTML.',
         experience: '2+ años',
         color: '#06B6D4', // Cyan oficial de Tailwind
       },
@@ -93,14 +106,16 @@ function AboutComponent() {
       {
         name: 'Node.js',
         icon: NodejsLogo,
-        description: 'Entorno de ejecución de JavaScript del lado del servidor para construir aplicaciones backend rápidas y escalables.',
+        description:
+          'Entorno de ejecución de JavaScript del lado del servidor para construir aplicaciones backend rápidas y escalables.',
         experience: '3+ años',
         color: '#339933', // Verde oficial de Node.js
       },
       {
         name: 'Express',
         icon: ExpressLogo,
-        description: 'Framework minimalista y flexible para Node.js, ideal para crear APIs RESTful y aplicaciones web de forma rápida.',
+        description:
+          'Framework minimalista y flexible para Node.js, ideal para crear APIs RESTful y aplicaciones web de forma rápida.',
         experience: '3+ años',
         color: 'currentColor', // Negro/Blanco según tema
       },
@@ -115,14 +130,16 @@ function AboutComponent() {
       {
         name: 'PHP',
         icon: PHPLogo,
-        description: 'Lenguaje de programación del lado del servidor, ampliamente usado para desarrollo web dinámico y aplicaciones empresariales.',
+        description:
+          'Lenguaje de programación del lado del servidor, ampliamente usado para desarrollo web dinámico y aplicaciones empresariales.',
         experience: '2+ años',
         color: '#777BB4', // Púrpura oficial de PHP
       },
       {
         name: 'Laravel',
         icon: LaravelLogo,
-        description: 'Framework PHP moderno y elegante con sintaxis expresiva, ideal para desarrollar aplicaciones web robustas y escalables.',
+        description:
+          'Framework PHP moderno y elegante con sintaxis expresiva, ideal para desarrollar aplicaciones web robustas y escalables.',
         experience: '2+ años',
         color: '#FF2D20', // Rojo oficial de Laravel
       },
@@ -131,21 +148,24 @@ function AboutComponent() {
       {
         name: 'PostgreSQL',
         icon: PostgreSQLLogo,
-        description: 'Sistema de base de datos relacional avanzado y open-source con potentes características de rendimiento y confiabilidad.',
+        description:
+          'Sistema de base de datos relacional avanzado y open-source con potentes características de rendimiento y confiabilidad.',
         experience: '3+ años',
         color: '#4169E1', // Azul oficial de PostgreSQL
       },
       {
         name: 'MySQL',
         icon: MySQLLogo,
-        description: 'Sistema de gestión de bases de datos relacional open-source, ampliamente utilizado para aplicaciones web de alto tráfico.',
+        description:
+          'Sistema de gestión de bases de datos relacional open-source, ampliamente utilizado para aplicaciones web de alto tráfico.',
         experience: '2+ años',
         color: '#4479A1', // Azul oficial de MySQL
       },
       {
         name: 'MongoDB',
         icon: MongoDBLogo,
-        description: 'Base de datos NoSQL orientada a documentos, flexible y escalable, ideal para aplicaciones modernas con datos no estructurados.',
+        description:
+          'Base de datos NoSQL orientada a documentos, flexible y escalable, ideal para aplicaciones modernas con datos no estructurados.',
         experience: '2+ años',
         color: '#47A248', // Verde oficial de MongoDB
       },
@@ -162,21 +182,24 @@ function AboutComponent() {
       {
         name: 'Docker',
         icon: DockerLogo,
-        description: 'Plataforma de contenedores que permite empaquetar aplicaciones con todas sus dependencias para un despliegue consistente.',
+        description:
+          'Plataforma de contenedores que permite empaquetar aplicaciones con todas sus dependencias para un despliegue consistente.',
         experience: '2+ años',
         color: '#2496ED', // Azul oficial de Docker
       },
       {
         name: 'Google Cloud',
         icon: GoogleCloudLogo,
-        description: 'Plataforma de servicios en la nube con infraestructura escalable, almacenamiento y soluciones de computación empresarial.',
+        description:
+          'Plataforma de servicios en la nube con infraestructura escalable, almacenamiento y soluciones de computación empresarial.',
         experience: '1+ año',
         color: '#4285F4', // Azul oficial de Google Cloud
       },
       {
         name: 'Git',
         icon: GitLogo,
-        description: 'Sistema de control de versiones distribuido para rastrear cambios en el código y facilitar la colaboración en equipo.',
+        description:
+          'Sistema de control de versiones distribuido para rastrear cambios en el código y facilitar la colaboración en equipo.',
         experience: '4+ años',
         color: '#F05032', // Naranja/Rojo oficial de Git
       },
@@ -322,14 +345,43 @@ function AboutComponent() {
 
               {/* CTA Buttons */}
               <div className="flex flex-row justify-start gap-4">
-                <Button size="lg" className="hover-lift">
-                  <Mail className="w-5 h-5 mr-2 text-primary-foreground" />
+                <Button className="hover-lift" onClick={() => navigate({ to: '/contact' })}>
+                  <Mail className="w-4 h-4 mr-2 text-primary-foreground" />
                   Contáctame
                 </Button>
-                <Button variant="outline" size="lg" className="hover-lift">
-                  <Download className="w-5 h-5 mr-2" />
-                  Descargar CV
-                </Button>
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="hover-lift">
+                      <FileText className="w-4 h-4 mr-2" />
+                      Currículum
+                      <ChevronDown className="w-3 h-3 ml-2" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-48">
+                    <DropdownMenuItem asChild>
+                      <a
+                        href="/ELMER-JACOBO-OTINIANO-CV.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center cursor-pointer"
+                      >
+                        <Eye className="w-4 h-4 mr-2" />
+                        Ver PDF
+                      </a>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <a
+                        href="/ELMER-JACOBO-OTINIANO-CV.pdf"
+                        download="Elmer-Jacobo-CV.pdf"
+                        className="flex items-center cursor-pointer"
+                      >
+                        <Download className="w-4 h-4 mr-2" />
+                        Descargar PDF
+                      </a>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
 

@@ -25,10 +25,13 @@ export function HeroSection() {
       </div>
 
       {/* Puntos decorativos sutiles */}
-      <div className="absolute inset-0 opacity-20 dark:opacity-15" style={{
-        backgroundImage: 'radial-gradient(circle at 2px 2px, oklch(var(--primary) / 0.15) 1px, transparent 0)',
-        backgroundSize: '48px 48px'
-      }} />
+      <div
+        className="absolute inset-0 opacity-20 dark:opacity-15"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, oklch(var(--primary) / 0.15) 1px, transparent 0)',
+          backgroundSize: '48px 48px',
+        }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
         <div className="space-y-6 sm:space-y-8 animate-fade-in">
@@ -109,7 +112,7 @@ export function HeroSection() {
                     className="flex items-center cursor-pointer"
                   >
                     <Eye className="w-4 h-4 mr-2" />
-                    Abrir en nueva pestaña
+                    Ver PDF
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
