@@ -55,7 +55,7 @@ function AboutComponent() {
       {
         name: 'React',
         icon: ReactLogo,
-        description: 'Desarrollo de interfaces modernas con componentes reutilizables y gestión de estado eficiente.',
+        description: 'Biblioteca de JavaScript para crear interfaces de usuario interactivas con componentes reutilizables y gestión eficiente del estado.',
         experience: '4+ años',
         color: '#61DAFB', // Cyan oficial de React
       },
@@ -70,21 +70,21 @@ function AboutComponent() {
       {
         name: 'Astro',
         icon: AstroLogo,
-        description: 'Framework de utilidades para diseños responsivos y personalizados.',
+        description: 'Framework moderno para sitios web ultra-rápidos con arquitectura de islas y contenido estático optimizado.',
         experience: '2+ años',
         color: '#FF5D01', // Naranja oficial de Astro
       },
       {
         name: 'TypeScript',
         icon: TypeScriptLogo,
-        description: 'Tipado estático para código más robusto y mantenible.',
+        description: 'Superset de JavaScript con tipado estático que permite escribir código más seguro, robusto y fácil de mantener.',
         experience: '3+ años',
         color: '#3178C6', // Azul oficial de TypeScript
       },
       {
         name: 'Tailwind CSS',
         icon: TailwindLogo,
-        description: 'Framework de utilidades para diseños responsivos y personalizados.',
+        description: 'Framework CSS utility-first para crear diseños modernos y responsivos de forma rápida sin salir del HTML.',
         experience: '2+ años',
         color: '#06B6D4', // Cyan oficial de Tailwind
       },
@@ -93,14 +93,14 @@ function AboutComponent() {
       {
         name: 'Node.js',
         icon: NodejsLogo,
-        description: 'Desarrollo de APIs y servicios backend escalables.',
+        description: 'Entorno de ejecución de JavaScript del lado del servidor para construir aplicaciones backend rápidas y escalables.',
         experience: '3+ años',
         color: '#339933', // Verde oficial de Node.js
       },
       {
         name: 'Express',
         icon: ExpressLogo,
-        description: 'Framework minimalista para crear APIs RESTful rápidas.',
+        description: 'Framework minimalista y flexible para Node.js, ideal para crear APIs RESTful y aplicaciones web de forma rápida.',
         experience: '3+ años',
         color: 'currentColor', // Negro/Blanco según tema
       },
@@ -115,14 +115,14 @@ function AboutComponent() {
       {
         name: 'PHP',
         icon: PHPLogo,
-        description: 'Desarrollo backend con enfoque en aplicaciones empresariales.',
+        description: 'Lenguaje de programación del lado del servidor, ampliamente usado para desarrollo web dinámico y aplicaciones empresariales.',
         experience: '2+ años',
         color: '#777BB4', // Púrpura oficial de PHP
       },
       {
         name: 'Laravel',
         icon: LaravelLogo,
-        description: 'Framework PHP elegante para aplicaciones web robustas.',
+        description: 'Framework PHP moderno y elegante con sintaxis expresiva, ideal para desarrollar aplicaciones web robustas y escalables.',
         experience: '2+ años',
         color: '#FF2D20', // Rojo oficial de Laravel
       },
@@ -131,21 +131,21 @@ function AboutComponent() {
       {
         name: 'PostgreSQL',
         icon: PostgreSQLLogo,
-        description: 'Base de datos relacional avanzada con optimización de consultas.',
+        description: 'Sistema de base de datos relacional avanzado y open-source con potentes características de rendimiento y confiabilidad.',
         experience: '3+ años',
         color: '#4169E1', // Azul oficial de PostgreSQL
       },
       {
         name: 'MySQL',
         icon: MySQLLogo,
-        description: 'Sistema de gestión de bases de datos relacional.',
+        description: 'Sistema de gestión de bases de datos relacional open-source, ampliamente utilizado para aplicaciones web de alto tráfico.',
         experience: '2+ años',
         color: '#4479A1', // Azul oficial de MySQL
       },
       {
         name: 'MongoDB',
         icon: MongoDBLogo,
-        description: 'Base de datos NoSQL para aplicaciones modernas.',
+        description: 'Base de datos NoSQL orientada a documentos, flexible y escalable, ideal para aplicaciones modernas con datos no estructurados.',
         experience: '2+ años',
         color: '#47A248', // Verde oficial de MongoDB
       },
@@ -162,21 +162,21 @@ function AboutComponent() {
       {
         name: 'Docker',
         icon: DockerLogo,
-        description: 'Containerización para desarrollo y despliegue consistente.',
+        description: 'Plataforma de contenedores que permite empaquetar aplicaciones con todas sus dependencias para un despliegue consistente.',
         experience: '2+ años',
         color: '#2496ED', // Azul oficial de Docker
       },
       {
         name: 'Google Cloud',
         icon: GoogleCloudLogo,
-        description: 'Infraestructura cloud escalable y servicios en la nube.',
+        description: 'Plataforma de servicios en la nube con infraestructura escalable, almacenamiento y soluciones de computación empresarial.',
         experience: '1+ año',
         color: '#4285F4', // Azul oficial de Google Cloud
       },
       {
         name: 'Git',
         icon: GitLogo,
-        description: 'Control de versiones y colaboración en equipo.',
+        description: 'Sistema de control de versiones distribuido para rastrear cambios en el código y facilitar la colaboración en equipo.',
         experience: '4+ años',
         color: '#F05032', // Naranja/Rojo oficial de Git
       },
