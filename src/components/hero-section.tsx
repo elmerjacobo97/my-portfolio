@@ -35,15 +35,18 @@ export function HeroSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
         <div className="space-y-6 sm:space-y-8 animate-fade-in">
-          {/* Avatar - más grande y con efecto glow */}
+          {/* Avatar - diseño limpio con borde degradado */}
           <div className="flex justify-center w-full">
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
-              <Avatar className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 border-4 border-primary/30 shadow-2xl ring-4 ring-primary/10">
+              {/* Borde degradado animado */}
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 blur-sm transition-all duration-300" />
+
+              {/* Avatar */}
+              <Avatar className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 ring-4 ring-background">
                 <AvatarImage
                   src={avatar}
                   alt="Elmer Jacobo"
-                  className="object-cover w-full h-full"
+                  className="object-cover object-center w-full h-full pointer-events-none"
                   width={192}
                   height={192}
                 />
