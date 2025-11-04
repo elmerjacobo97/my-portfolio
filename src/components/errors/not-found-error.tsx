@@ -1,24 +1,41 @@
-import { useNavigate, useRouter } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
+import { ArrowLeftCircle } from 'lucide-react';
+import { Link } from '@tanstack/react-router';
+import './glitch.css';
 
 export default function NotFoundError() {
-  const navigate = useNavigate();
-  const { history } = useRouter();
-
   return (
-    <div className="h-svh">
-      <div className="m-auto flex h-full w-full flex-col items-center justify-center gap-2">
-        <h1 className="text-[7rem] font-bold leading-tight">404</h1>
-        <span className="font-medium">¡Ups! Página no encontrada</span>
-        <p className="text-center text-muted-foreground">
-          Parece que la página que buscas <br />
-          no existe o pudo haber sido eliminada.
-        </p>
-        <div className="mt-6 flex gap-4">
-          <Button variant="outline" onClick={() => history.go(-1)}>
-            Volver
+    <div className="fixed inset-0 bg-background text-foreground flex items-center justify-center p-4 overflow-hidden z-[100]">
+      <div className="text-center space-y-8 max-w-2xl mx-auto">
+        {/* Glitchy 404 Text */}
+        <div className="relative">
+          <h1 className="text-9xl md:text-[12rem] font-black glitch-text select-none text-primary">404</h1>
+          <h1 className="absolute inset-0 text-9xl md:text-[12rem] font-black glitch-text-shadow select-none text-accent-foreground/70">
+            404
+          </h1>
+          <h1 className="absolute inset-0 text-9xl md:text-[12rem] font-black glitch-text-shadow-2 select-none text-destructive/60">
+            404
+          </h1>
+        </div>
+
+        {/* Glitchy Message */}
+        <div className="space-y-4">
+          <p className="text-xl md:text-2xl glitch-message font-light text-foreground/90">
+            Esta página se ha perdido en el vacío digital.
+          </p>
+          <p className="text-sm md:text-base glitch-subtitle font-mono text-destructive">
+            {'// 404: Ruta no encontrada en el portafolio'}
+          </p>
+        </div>
+
+        {/* Glitchy Button */}
+        <div className="pt-4">
+          <Button asChild variant="default" size="lg">
+            <Link to="/" className="flex items-center">
+              <ArrowLeftCircle className="w-4 h-4" />
+              Volver al inicio
+            </Link>
           </Button>
-          <Button onClick={() => navigate({ to: '/' })}>Volver al inicio</Button>
         </div>
       </div>
     </div>
