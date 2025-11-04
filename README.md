@@ -8,7 +8,7 @@ Welcome to my personal portfolio website! This is a modern, responsive and perfo
 
 > _Screenshot of the portfolio in production_
 
-![Portfolio Screenshot](./public/preview.png)
+![Portfolio Screenshot](./public/preview.webp)
 
 ## 🚀 Features
 

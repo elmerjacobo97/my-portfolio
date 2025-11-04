@@ -50,7 +50,7 @@ import {
   NestJSLogo,
   SQLiteLogo,
 } from '@/components/tech-logos';
-import ProfileImage from '@/assets/images/profile-about.png';
+import ProfileImage from '@/assets/images/profile-about.webp';
 import { GitHubActivity } from '@/components/github-activity';
 
 export const Route = createFileRoute('/about/')({

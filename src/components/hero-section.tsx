@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Rocket, Github, Linkedin, Mail, Download, Sparkles, Eye, FileText, ChevronDown } from 'lucide-react';
 import { trackDownload, trackSelectContent, trackEvent } from '@/lib/analytics';
-import avatar from '@/assets/images/avatar.png';
+import avatar from '@/assets/images/avatar.webp';
 
 export function HeroSection() {
   const navigate = useNavigate();
