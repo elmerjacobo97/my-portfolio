@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createRootRoute } from '@tanstack/react-router';
+import { createRootRoute, useRouterState } from '@tanstack/react-router';
 import { Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -10,9 +10,28 @@ import { Footer } from '@/components/footer';
 import { ScrollProgressBar } from '@/components/scroll-progress-bar';
 import NotFoundError from '@/components/errors/not-found-error';
 import GeneralError from '@/components/errors/general-error';
+import { trackPageView } from '@/lib/analytics';
+import { usePageAnalytics } from '@/hooks/use-page-analytics';
 
-export const Route = createRootRoute({
-  component: () => (
+function RootComponent() {
+  const router = useRouterState();
+  const location = router.location;
+
+  // Trackear vista de página al cambiar de ruta
+  React.useEffect(() => {
+    if (location.pathname) {
+      trackPageView(location.pathname, document.title);
+    }
+  }, [location.pathname]);
+
+  // Trackear tiempo en página (sin scroll depth para evitar ruido)
+  usePageAnalytics({
+    pageName: location.pathname,
+    minTimeThreshold: 10, // 10 segundos mínimo
+    trackScroll: false, // Desactivado para portafolio
+  });
+
+  return (
     <React.Fragment>
       <ScrollProgressBar />
       <div className="min-h-screen bg-background relative overflow-hidden">
@@ -33,7 +52,11 @@ export const Route = createRootRoute({
         </>
       )}
     </React.Fragment>
-  ),
+  );
+}
+
+export const Route = createRootRoute({
+  component: RootComponent,
   pendingComponent: () => (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-2xl font-bold text-gray-500">Cargando...</div>

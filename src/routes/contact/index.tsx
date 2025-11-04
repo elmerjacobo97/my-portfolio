@@ -14,6 +14,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
+import { trackEvent } from '@/lib/analytics';
 
 export const Route = createFileRoute('/contact/')({
   component: ContactComponent,
@@ -107,12 +108,26 @@ function ContactComponent() {
       if (result.status === 200) {
         form.reset();
 
+        // Trackear envío exitoso del formulario
+        trackEvent('generate_lead', {
+          form_name: 'contact_form',
+          method: 'contact_form',
+          project_type: data.projectType || 'No especificado',
+          message_length: data.message.length,
+        });
+
         toast({
           title: '¡Mensaje enviado!',
           description: '¡Gracias por escribirme! Me pondré en contacto contigo muy pronto.',
         });
       }
     } catch {
+      // Trackear error en el envío
+      trackEvent('form_error', {
+        form_name: 'contact_form',
+        error_message: 'Email sending failed',
+      });
+
       toast({
         variant: 'destructive',
         title: 'Error al enviar',
@@ -322,6 +337,12 @@ function ContactComponent() {
                               target={method.external ? '_blank' : '_self'}
                               rel={method.external ? 'noopener noreferrer' : undefined}
                               className="text-primary hover:underline font-medium"
+                              onClick={() =>
+                                trackEvent('contact_method_click', {
+                                  method: method.title.toLowerCase(),
+                                  value: method.value,
+                                })
+                              }
                             >
                               {method.value}
                             </a>

@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Rocket, Github, Linkedin, Mail, Download, Sparkles, Eye, FileText, ChevronDown } from 'lucide-react';
+import { trackDownload, trackSelectContent, trackEvent } from '@/lib/analytics';
 import avatar from '@/assets/images/avatar.png';
 
 export function HeroSection() {
@@ -113,6 +114,7 @@ export function HeroSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center cursor-pointer"
+                    onClick={() => trackSelectContent('cv', 'view_pdf')}
                   >
                     <Eye className="w-4 h-4 mr-2" />
                     Ver PDF
@@ -123,6 +125,7 @@ export function HeroSection() {
                     href="/ELMER-JACOBO-OTINIANO-CV.pdf"
                     download="Elmer-Jacobo-CV.pdf"
                     className="flex items-center cursor-pointer"
+                    onClick={() => trackDownload('Elmer-Jacobo-CV.pdf')}
                   >
                     <Download className="w-4 h-4 mr-2" />
                     Descargar PDF
@@ -143,7 +146,12 @@ export function HeroSection() {
                     size="icon"
                     className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
                   >
-                    <a href="https://github.com/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://github.com/elmerjacobo97/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackEvent('social_click', { platform: 'github', location: 'hero' })}
+                    >
                       <Github className="w-5 h-5" />
                     </a>
                   </Button>
@@ -161,7 +169,12 @@ export function HeroSection() {
                     size="icon"
                     className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
                   >
-                    <a href="https://www.linkedin.com/in/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/elmerjacobo97/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackEvent('social_click', { platform: 'linkedin', location: 'hero' })}
+                    >
                       <Linkedin className="w-5 h-5" />
                     </a>
                   </Button>
@@ -179,7 +192,10 @@ export function HeroSection() {
                     size="icon"
                     className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
                   >
-                    <a href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
+                    <a
+                      href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo..."
+                      onClick={() => trackEvent('social_click', { platform: 'email', location: 'hero' })}
+                    >
                       <Mail className="w-5 h-5" />
                     </a>
                   </Button>

@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ExternalLink, Github, Star } from 'lucide-react';
 import type { Project } from '@/hooks/use-projects';
+import { trackLinkClick } from '@/lib/analytics';
 
 interface ProjectCardProps {
   project: Project;
@@ -102,7 +103,12 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
         <div className="flex gap-2 pt-2">
           {project.liveUrl && (
             <Button variant="default" size="sm" className="flex-1" asChild>
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackLinkClick(project.liveUrl!, project.title)}
+              >
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Ver proyecto
               </a>
@@ -110,7 +116,12 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
           )}
           {project.githubUrl && (
             <Button variant="outline" size="sm" className={project.liveUrl ? 'w-auto' : 'flex-1'} asChild>
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackLinkClick(project.githubUrl!, `${project.title} - GitHub`)}
+              >
                 <Github className="w-4 h-4" />
                 {!project.liveUrl && <span className="ml-2">Ver código</span>}
               </a>

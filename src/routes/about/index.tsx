@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { trackDownload, trackSelectContent, trackLinkClick } from '@/lib/analytics';
 import {
   User,
   MapPin,
@@ -365,6 +366,7 @@ function AboutComponent() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center cursor-pointer"
+                        onClick={() => trackSelectContent('cv', 'view_pdf_about_page')}
                       >
                         <Eye className="w-4 h-4 mr-2" />
                         Ver PDF
@@ -375,6 +377,7 @@ function AboutComponent() {
                         href="/ELMER-JACOBO-OTINIANO-CV.pdf"
                         download="Elmer-Jacobo-CV.pdf"
                         className="flex items-center cursor-pointer"
+                        onClick={() => trackDownload('Elmer-Jacobo-CV.pdf')}
                       >
                         <Download className="w-4 h-4 mr-2" />
                         Descargar PDF
@@ -526,6 +529,7 @@ function AboutComponent() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-base md:text-lg font-medium text-primary"
+                                onClick={() => trackLinkClick('https://abeha.mx', 'ABEHA Company')}
                               >
                                 {exp.company}
                               </a>
@@ -657,7 +661,12 @@ function AboutComponent() {
                 Hablemos
               </Button>
               <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
-                <a href="https://www.linkedin.com/in/elmerjacobo97/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.linkedin.com/in/elmerjacobo97/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackLinkClick('https://www.linkedin.com/in/elmerjacobo97/', 'LinkedIn CTA')}
+                >
                   <ExternalLink className="w-5 h-5 mr-2" />
                   Ver mi LinkedIn
                 </a>

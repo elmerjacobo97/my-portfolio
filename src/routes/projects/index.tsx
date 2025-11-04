@@ -7,6 +7,7 @@ import NumberFlow from '@number-flow/react';
 import { useProjects } from '@/hooks/use-projects';
 import { ProjectCardSkeleton } from '@/components/project-card-skeleton';
 import { getNumberSuffix } from '@/lib/utils';
+import { trackEvent } from '@/lib/analytics';
 
 export const Route = createFileRoute('/projects/')({
   component: ProjectsComponent,
@@ -173,7 +174,14 @@ function ProjectsComponent() {
                 size="lg"
                 className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift"
               >
-                <a href="https://github.com/elmerjacobo97" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/elmerjacobo97"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent('cta_click', { cta_name: 'view_github', location: 'projects_page' })
+                  }
+                >
                   <Code className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
                   Ver en GitHub
                 </a>

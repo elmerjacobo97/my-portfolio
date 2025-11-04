@@ -5,7 +5,11 @@ import { routeTree } from '@/routeTree.gen';
 import { ThemeProvider } from '@/components/theme-provider';
 import { queryClient } from '@/lib/query-client';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { initGA } from '@/lib/analytics';
 import './index.css';
+
+// Inicializar Google Analytics
+initGA();
 
 // Create a new router instance
 const router = createRouter({
