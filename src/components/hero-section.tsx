@@ -1,6 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
@@ -9,9 +8,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Rocket, Github, Linkedin, Mail, Download, Sparkles, Eye, FileText, ChevronDown } from 'lucide-react';
+import { Rocket, Github, Linkedin, Mail, Download, Eye, FileText, ChevronDown } from 'lucide-react';
 import { trackDownload, trackSelectContent, trackEvent } from '@/lib/analytics';
 import avatar from '@/assets/images/avatar.webp';
+import { Status, StatusIndicator, StatusLabel } from '@/components/status';
 
 export function HeroSection() {
   const navigate = useNavigate();
@@ -59,10 +59,10 @@ export function HeroSection() {
           </div>
 
           {/* Status Badge */}
-          <Badge variant="secondary" className="mx-auto text-xs sm:text-sm px-4 py-1.5 sm:px-4 sm:py-1.5 shadow-md">
-            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-primary animate-pulse" />
-            <span>Disponible para nuevos proyectos</span>
-          </Badge>
+          <Status status="online" className="mx-auto text-xs sm:text-sm px-4 py-1.5 sm:px-4 sm:py-1.5 shadow-md">
+            <StatusIndicator />
+            <StatusLabel>Disponible para nuevos proyectos</StatusLabel>
+          </Status>
 
           {/* Main heading - mejor jerarquía */}
           <div className="space-y-4 sm:space-y-6">
