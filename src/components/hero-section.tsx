@@ -246,7 +246,7 @@ export function HeroSection() {
                     className="object-cover object-center w-full h-full pointer-events-none"
                   />
                   <AvatarFallback className="text-6xl font-bold bg-gradient-to-br from-primary to-accent text-primary-foreground">
-                    EJ
+                    {''}
                   </AvatarFallback>
                 </Avatar>
 
