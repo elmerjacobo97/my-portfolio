@@ -1,213 +1,305 @@
 import { useNavigate } from '@tanstack/react-router';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Badge } from '@/components/ui/badge';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Rocket, Github, Linkedin, Mail, Download, Eye, FileText, ChevronDown } from 'lucide-react';
-import { trackDownload, trackSelectContent, trackEvent } from '@/lib/analytics';
-import avatar from '@/assets/images/avatar.webp';
+import { Rocket, Download, Eye, FileText, ChevronDown } from 'lucide-react';
+import { trackDownload, trackSelectContent } from '@/lib/analytics';
 import { Status, StatusIndicator, StatusLabel } from '@/components/status';
+import { HeroSocialLinks } from '@/components/hero-social-links';
+import avatar from '@/assets/images/avatar.webp';
 
 export function HeroSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="min-h-dvh flex items-center justify-center relative overflow-hidden py-16 sm:py-0">
-      {/* Fondo con resplandor radial púrpura - responsive */}
-      <div className="absolute inset-0 bg-background">
-        <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-96 sm:h-96 lg:w-[32rem] lg:h-[32rem] bg-primary/20 dark:bg-primary/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 lg:w-[32rem] lg:h-[32rem] bg-accent/25 dark:bg-accent/40 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl" />
+    <section className="min-h-dvh flex items-center justify-center relative overflow-hidden py-12 sm:py-16 lg:py-20">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30">
+        {/* Main gradient orbs */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-primary/30 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.4, 0.6, 0.4],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute bottom-0 right-1/4 w-[35rem] h-[35rem] bg-accent/40 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-primary/20 rounded-full blur-3xl"
+        />
       </div>
 
-      {/* Puntos decorativos sutiles */}
+      {/* Grid pattern overlay */}
       <div
-        className="absolute inset-0 opacity-20 dark:opacity-15"
+        className="absolute inset-0 opacity-[0.15] dark:opacity-10"
         style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, oklch(var(--primary) / 0.15) 1px, transparent 0)',
-          backgroundSize: '48px 48px',
+          backgroundImage: `
+            linear-gradient(to right, oklch(var(--primary) / 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, oklch(var(--primary) / 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px',
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
-        <div className="space-y-6 sm:space-y-8">
-          {/* Avatar - diseño limpio y profesional */}
-          <div className="flex justify-center w-full">
-            <div className="relative group">
-              {/* Borde degradado animado */}
-              <div className="absolute -inset-1 bg-gradient-to-br from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 blur-sm transition-all duration-300" />
-
-              {/* Avatar con ring doble */}
-              <Avatar className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 ring-[3px] ring-background/30 ring-offset-4 ring-offset-primary/30">
-                <AvatarImage
-                  src={avatar}
-                  alt="Elmer Jacobo"
-                  className="object-cover object-center w-full h-full pointer-events-none"
-                  width={192}
-                  height={192}
-                />
-                <AvatarFallback className="text-2xl sm:text-3xl font-bold bg-gradient-primary text-primary-foreground">
-                  EJ
-                </AvatarFallback>
-              </Avatar>
-            </div>
-          </div>
-
-          {/* Status Badge */}
-          <Status status="online" className="mx-auto text-xs sm:text-sm px-4 py-1.5 sm:px-4 sm:py-1.5 shadow-md">
-            <StatusIndicator />
-            <StatusLabel>Disponible para nuevos proyectos</StatusLabel>
-          </Status>
-
-          {/* Main heading - mejor jerarquía */}
-          <div className="space-y-4 sm:space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
-              <span className="block text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-muted-foreground">
-                👋 Hola, soy <span className="text-foreground">Elmer Jacobo</span>
-              </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                Desarrollador Full Stack
-              </span>
-            </h1>
-
-            <p className="text-base sm:text-xl md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
-              Transformo ideas en experiencias digitales excepcionales.
-              <br className="hidden xs:block" />
-              Especializado en crear aplicaciones web modernas con{' '}
-              <span className="text-primary font-semibold">código limpio</span> y{' '}
-              <span className="text-primary font-semibold">diseño elegante</span>.
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              className="text-base xs:text-lg px-6 py-5 xs:px-8 xs:py-6 hover-lift w-full xs:w-auto"
-              onClick={() => navigate({ to: '/projects' })}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1"
+          >
+            {/* Status Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="flex justify-center lg:justify-start"
             >
-              <Rocket className="w-4 h-4 mr-2" />
-              Ver proyectos
-            </Button>
+              <Status status="online" className="text-xs sm:text-sm px-4 py-1.5 shadow-lg">
+                <StatusIndicator />
+                <StatusLabel>Disponible para nuevos proyectos</StatusLabel>
+              </Status>
+            </motion.div>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-base xs:text-lg px-6 py-5 xs:px-8 xs:py-6 hover-lift w-full xs:w-auto"
+            {/* Main heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="space-y-4 sm:space-y-6"
+            >
+              <div className="space-y-3 sm:space-y-4">
+                <p className="block text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">
+                  <span className="text-muted-foreground">
+                    <motion.span
+                      animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                      style={{ display: 'inline-block', transformOrigin: '70% 70%' }}
+                    >
+                      👋
+                    </motion.span>{' '}
+                    Hola, soy
+                  </span>{' '}
+                  <span className="text-foreground/80">Elmer Jacobo</span>
+                </p>
+                <h1 className="font-black leading-[0.9]">
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-glow">
+                    Full Stack
+                  </span>
+                  <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-accent via-primary to-accent bg-[length:200%_auto] animate-glow">
+                    Developer
+                  </span>
+                </h1>
+              </div>
+
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                Creo <span className="text-primary font-semibold">experiencias digitales</span> que unen diseño y
+                desarrollo para convertir ideas en productos eficientes y atractivos.
+              </p>
+            </motion.div>
+
+            {/* Tech Stack Pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-wrap gap-2 justify-center lg:justify-start"
+            >
+              {['React', 'React Native', 'TypeScript', 'Node.js', 'PostgreSQL'].map((tech) => (
+                <Badge
+                  key={tech}
+                  variant="secondary"
+                  className="px-3 py-1 text-sm font-medium bg-primary/5 hover:bg-primary/10 transition-colors"
                 >
-                  <FileText className="w-4 h-4 mr-2" />
-                  Currículum
-                  <ChevronDown className="w-3 h-3 ml-2" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className="w-48">
-                <DropdownMenuItem asChild>
-                  <a
-                    href="/ELMER-JACOBO-OTINIANO-CV.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center cursor-pointer"
-                    onClick={() => trackSelectContent('cv', 'view_pdf')}
-                  >
-                    <Eye className="w-4 h-4 mr-2" />
-                    Ver PDF
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a
-                    href="/ELMER-JACOBO-OTINIANO-CV.pdf"
-                    download="Elmer-Jacobo-CV.pdf"
-                    className="flex items-center cursor-pointer"
-                    onClick={() => trackDownload('Elmer-Jacobo-CV.pdf')}
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Descargar PDF
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+                  {tech}
+                </Badge>
+              ))}
+            </motion.div>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-3">
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center lg:justify-start"
+            >
+              <Button
+                size="lg"
+                className="text-base xs:text-lg px-8 py-6 hover-lift w-full xs:w-auto shadow-lg shadow-primary/25"
+                onClick={() => navigate({ to: '/projects' })}
+              >
+                <Rocket className="w-5 h-5 mr-2" />
+                Ver proyectos
+              </Button>
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
                   <Button
-                    asChild
-                    variant="ghost"
-                    size="icon"
-                    className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
+                    variant="outline"
+                    size="lg"
+                    className="text-base xs:text-lg px-8 py-6 hover-lift w-full xs:w-auto"
                   >
+                    <FileText className="w-5 h-5 mr-2" />
+                    Currículum
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="w-48">
+                  <DropdownMenuItem asChild>
                     <a
-                      href="https://github.com/elmerjacobo97/"
+                      href="/ELMER-JACOBO-OTINIANO-CV.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => trackEvent('social_click', { platform: 'github', location: 'hero' })}
+                      className="flex items-center cursor-pointer"
+                      onClick={() => trackSelectContent('cv', 'view_pdf')}
                     >
-                      <Github className="w-5 h-5" />
+                      <Eye className="w-4 h-4 mr-2" />
+                      Ver PDF
                     </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>GitHub</p>
-                </TooltipContent>
-              </Tooltip>
-
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    asChild
-                    variant="ghost"
-                    size="icon"
-                    className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
-                  >
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
                     <a
-                      href="https://www.linkedin.com/in/elmerjacobo97/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => trackEvent('social_click', { platform: 'linkedin', location: 'hero' })}
+                      href="/ELMER-JACOBO-OTINIANO-CV.pdf"
+                      download="Elmer-Jacobo-CV.pdf"
+                      className="flex items-center cursor-pointer"
+                      onClick={() => trackDownload('Elmer-Jacobo-CV.pdf')}
                     >
-                      <Linkedin className="w-5 h-5" />
+                      <Download className="w-4 h-4 mr-2" />
+                      Descargar PDF
                     </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>LinkedIn</p>
-                </TooltipContent>
-              </Tooltip>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </motion.div>
 
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    asChild
-                    variant="ghost"
-                    size="icon"
-                    className="w-11 h-11 hover:bg-primary/10 hover:text-primary transition-colors"
-                  >
-                    <a
-                      href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo..."
-                      onClick={() => trackEvent('social_click', { platform: 'email', location: 'hero' })}
-                    >
-                      <Mail className="w-5 h-5" />
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Email</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
+            <HeroSocialLinks />
+          </motion.div>
+
+          {/* Right side - Avatar with decorative elements */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="relative flex justify-center lg:justify-end order-1 lg:order-2"
+          >
+            <div className="relative lg:p-16">
+              {/* Decorative rings - Hidden on mobile */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-0 m-4 hidden lg:block"
+              >
+                <div className="w-full h-full rounded-full border-2 border-primary/20 border-dashed" />
+              </motion.div>
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-0 hidden lg:block"
+              >
+                <div className="w-full h-full rounded-full border-2 border-accent/20 border-dashed" />
+              </motion.div>
+
+              {/* Main avatar container */}
+              <div className="relative group">
+                {/* Glow effect */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 blur-2xl transition-all duration-500" />
+
+                {/* Avatar - Responsive sizes */}
+                <Avatar className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 ring-4 ring-background shadow-2xl">
+                  <AvatarImage
+                    src={avatar}
+                    alt="Elmer Jacobo"
+                    className="object-cover object-center w-full h-full pointer-events-none"
+                  />
+                  <AvatarFallback className="text-6xl font-bold bg-gradient-to-br from-primary to-accent text-primary-foreground">
+                    EJ
+                  </AvatarFallback>
+                </Avatar>
+
+                {/* Floating badges around avatar - Hidden on small mobile */}
+                <motion.div
+                  animate={{ y: [-5, 5, -5] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-background/80 backdrop-blur-sm border-2 border-accent/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-xl hidden xs:block"
+                >
+                  <div className="text-center">
+                    <div className="text-xl sm:text-2xl font-bold text-primary">4+</div>
+                    <div className="text-[10px] sm:text-xs text-muted-foreground">Años</div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  animate={{ y: [5, -5, 5] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-background/80 backdrop-blur-sm border-2 border-accent/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-xl hidden xs:block"
+                >
+                  <div className="text-center">
+                    <div className="text-xl sm:text-2xl font-bold text-primary">15+</div>
+                    <div className="text-[10px] sm:text-xs text-muted-foreground">Proyectos</div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
+
+      {/* Scroll indicator - Only on large screens with enough vertical space */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 hidden xl:block"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+        >
+          <span className="text-xs font-medium">Scroll</span>
+          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-2">
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-1 h-2 bg-muted-foreground/50 rounded-full"
+            />
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
