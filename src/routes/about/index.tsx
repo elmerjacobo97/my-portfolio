@@ -52,6 +52,7 @@ import {
 } from '@/components/tech-logos';
 import ProfileImage from '@/assets/images/profile-about.webp';
 import { GitHubActivity } from '@/components/github-activity';
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/motion';
 
 export const Route = createFileRoute('/about/')({
   component: AboutComponent,
@@ -306,7 +307,7 @@ function AboutComponent() {
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Profile Info */}
-            <div className="space-y-6 md:space-y-8 animate-fade-in sm:order-2 lg:order-1">
+            <FadeIn direction="right" className="space-y-6 md:space-y-8 sm:order-2 lg:order-1">
               <div className="space-y-4">
                 <Badge variant="outline" className="w-fit">
                   <User className="w-3 h-3 mr-1" />
@@ -386,10 +387,10 @@ function AboutComponent() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
-            </div>
+            </FadeIn>
 
             {/* Profile Image */}
-            <div className="relative mt-8 lg:mt-0 sm:order-1 lg:order-2 hidden sm:block">
+            <FadeIn direction="left" className="relative mt-8 lg:mt-0 sm:order-1 lg:order-2 hidden sm:block">
               <div className="relative mx-auto lg:mx-0 w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
                 {/* Background decoration */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl rotate-6" />
@@ -413,7 +414,7 @@ function AboutComponent() {
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -421,60 +422,66 @@ function AboutComponent() {
       {/* Skills Section */}
       <section className="py-16 md:py-20 bg-muted/20">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <Badge variant="outline" className="mb-4">
-              <Code2 className="w-3 h-3 mr-1" />
-              Habilidades
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Tecnologías y herramientas</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Mi stack tecnológico actual, organizado por categorías
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-12 md:mb-16">
+              <Badge variant="outline" className="mb-4">
+                <Code2 className="w-3 h-3 mr-1" />
+                Habilidades
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Tecnologías y herramientas</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Mi stack tecnológico actual, organizado por categorías
+              </p>
+            </div>
+          </FadeIn>
 
           <div className="space-y-8 md:space-y-12">
-            {Object.entries(skillsByCategory).map(([category, skills]) => (
-              <div key={category}>
-                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-2">
-                  <span className="text-primary">{category}</span>
-                  <div className="flex-1 h-px bg-border"></div>
-                </h3>
+            {Object.entries(skillsByCategory).map(([category, skills], categoryIndex) => (
+              <StaggerContainer key={category} staggerDelay={0.08}>
+                <FadeIn delay={categoryIndex * 0.1}>
+                  <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-2">
+                    <span className="text-primary">{category}</span>
+                    <div className="flex-1 h-px bg-border"></div>
+                  </h3>
+                </FadeIn>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
                   {skills.map((skill) => (
-                    <HoverCard key={skill.name}>
-                      <HoverCardTrigger asChild>
-                        <Card className="group hover-lift shadow-sm bg-card/50">
-                          <CardContent className="flex flex-col items-center text-center gap-3">
-                            <div
-                              className="w-10 h-10 sm:w-12 sm:h-12 transition-all dark:brightness-110 dark:contrast-90"
-                              style={{ color: skill.color }}
-                            >
-                              <skill.icon className="w-full h-full" />
-                            </div>
-                            <div className="space-y-1">
-                              <h4 className="font-semibold text-sm">{skill.name}</h4>
-                              <Badge variant="secondary" className="text-xs">
+                    <StaggerItem key={skill.name}>
+                      <HoverCard>
+                        <HoverCardTrigger asChild>
+                          <Card className="group hover-lift shadow-sm bg-card/50">
+                            <CardContent className="flex flex-col items-center text-center gap-3">
+                              <div
+                                className="w-10 h-10 sm:w-12 sm:h-12 transition-all dark:brightness-110 dark:contrast-90"
+                                style={{ color: skill.color }}
+                              >
+                                <skill.icon className="w-full h-full" />
+                              </div>
+                              <div className="space-y-1">
+                                <h4 className="font-semibold text-sm">{skill.name}</h4>
+                                <Badge variant="secondary" className="text-xs">
+                                  {skill.experience}
+                                </Badge>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </HoverCardTrigger>
+                        <HoverCardContent className="w-72" side="top">
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                              <h4 className="text-sm font-semibold">{skill.name}</h4>
+                              <Badge variant="outline" className="text-xs">
                                 {skill.experience}
                               </Badge>
                             </div>
-                          </CardContent>
-                        </Card>
-                      </HoverCardTrigger>
-                      <HoverCardContent className="w-72" side="top">
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <h4 className="text-sm font-semibold">{skill.name}</h4>
-                            <Badge variant="outline" className="text-xs">
-                              {skill.experience}
-                            </Badge>
+                            <p className="text-xs text-muted-foreground">{skill.description}</p>
                           </div>
-                          <p className="text-xs text-muted-foreground">{skill.description}</p>
-                        </div>
-                      </HoverCardContent>
-                    </HoverCard>
+                        </HoverCardContent>
+                      </HoverCard>
+                    </StaggerItem>
                   ))}
                 </div>
-              </div>
+              </StaggerContainer>
             ))}
           </div>
         </div>
@@ -486,16 +493,18 @@ function AboutComponent() {
       {/* Experience Section */}
       <section className="py-16 md:py-20 bg-muted/20">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <Badge variant="outline" className="mb-4">
-              <Briefcase className="w-3 h-3 mr-1" />
-              Experiencia
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Mi trayectoria profesional</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Un recorrido por mi evolución como desarrollador y los proyectos que han marcado mi carrera
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-12 md:mb-16">
+              <Badge variant="outline" className="mb-4">
+                <Briefcase className="w-3 h-3 mr-1" />
+                Experiencia
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Mi trayectoria profesional</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Un recorrido por mi evolución como desarrollador y los proyectos que han marcado mi carrera
+              </p>
+            </div>
+          </FadeIn>
 
           {/* Timeline Container */}
           <div className="relative max-w-5xl mx-auto">
@@ -503,9 +512,9 @@ function AboutComponent() {
             <div className="hidden md:block absolute md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/70 to-primary/40 md:transform md:-translate-x-1/2"></div>
 
             {/* Timeline Items */}
-            <div className="space-y-6 md:space-y-16">
+            <StaggerContainer className="space-y-6 md:space-y-16" staggerDelay={0.15}>
               {experience.map((exp, index) => (
-                <div key={index} className="relative">
+                <StaggerItem key={index} className="relative">
                   {/* Timeline Dot - Solo visible en tablets y desktop */}
                   <div className="hidden md:block absolute md:left-1/2 w-4 h-4 bg-background border-4 border-primary rounded-full md:transform md:-translate-x-1/2 shadow-lg z-10"></div>
 
@@ -515,7 +524,7 @@ function AboutComponent() {
                       index % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'
                     }`}
                   >
-                    <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-card/50">
+                    <Card className="group hover-lift shadow-sm bg-card/50">
                       <CardHeader>
                         <div className="flex flex-col gap-2">
                           <Badge variant="secondary" className="w-fit text-xs">
@@ -566,9 +575,9 @@ function AboutComponent() {
                       </CardContent>
                     </Card>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
@@ -576,103 +585,116 @@ function AboutComponent() {
       {/* Education Section */}
       <section className="py-16 md:py-20 bg-background">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <Badge variant="outline" className="mb-4">
-              <GraduationCap className="w-3 h-3 mr-1" />
-              Educación
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Más allá del código</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Aprendizaje continuo que impulsa mi desarrollo técnico y creativo
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-12 md:mb-16">
+              <Badge variant="outline" className="mb-4">
+                <GraduationCap className="w-3 h-3 mr-1" />
+                Educación
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Más allá del código</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Aprendizaje continuo que impulsa mi desarrollo técnico y creativo
+              </p>
+            </div>
+          </FadeIn>
 
-          <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+          <StaggerContainer className="grid sm:grid-cols-2 gap-6 md:gap-8" staggerDelay={0.15}>
             {education.map((edu, index) => (
-              <Card key={index} className="group hover-lift shadow-sm bg-card/50">
-                <CardHeader>
-                  <CardTitle className="text-lg md:text-xl">{edu.degree}</CardTitle>
-                  <CardDescription className="text-base md:text-lg font-medium text-primary">
-                    {edu.institution}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-2 mb-3 md:mb-4">
-                    <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                    <span className="text-muted-foreground text-sm md:text-base">{edu.period}</span>
-                  </div>
-                  <p className="text-muted-foreground text-sm md:text-base">{edu.description}</p>
-                </CardContent>
-              </Card>
+              <StaggerItem key={index}>
+                <Card className="group hover-lift shadow-sm bg-card/50">
+                  <CardHeader>
+                    <CardTitle className="text-lg md:text-xl">{edu.degree}</CardTitle>
+                    <CardDescription className="text-base md:text-lg font-medium text-primary">
+                      {edu.institution}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center gap-2 mb-3 md:mb-4">
+                      <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm md:text-base">{edu.period}</span>
+                    </div>
+                    <p className="text-muted-foreground text-sm md:text-base">{edu.description}</p>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Interests Section */}
       <section className="py-16 md:py-20 bg-muted/20">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <Badge variant="outline" className="mb-4">
-              <Heart className="w-3 h-3 mr-1" />
-              Intereses
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Más allá del código</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Las pasiones que me inspiran y mantienen mi creatividad en constante movimiento
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-12 md:mb-16">
+              <Badge variant="outline" className="mb-4">
+                <Heart className="w-3 h-3 mr-1" />
+                Intereses
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Más allá del código</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Las pasiones que me inspiran y mantienen mi creatividad en constante movimiento
+              </p>
+            </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <StaggerContainer
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
+            staggerDelay={0.1}
+          >
             {interests.map((interest, index) => (
-              <Card key={index} className="group hover-lift shadow-sm bg-card/50">
-                <CardContent className="text-center flex flex-col items-center">
-                  <div
-                    className={`mx-auto w-12 h-12 sm:w-16 sm:h-16 ${interest.bgColor} rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4`}
-                  >
-                    <interest.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${interest.color}`} />
-                  </div>
-                  <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">{interest.name}</h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm">{interest.description}</p>
-                </CardContent>
-              </Card>
+              <StaggerItem key={index}>
+                <Card className="group hover-lift shadow-sm bg-card/50">
+                  <CardContent className="text-center flex flex-col items-center">
+                    <div
+                      className={`mx-auto w-12 h-12 sm:w-16 sm:h-16 ${interest.bgColor} rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4`}
+                    >
+                      <interest.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${interest.color}`} />
+                    </div>
+                    <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">{interest.name}</h3>
+                    <p className="text-muted-foreground text-xs sm:text-sm">{interest.description}</p>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-muted/20 to-background">
         <div className="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-6 md:space-y-8">
-            <div className="space-y-3 md:space-y-4">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-                ¿Trabajamos{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">juntos?</span>
-              </h2>
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-                Siempre estoy buscando nuevos desafíos y oportunidades para crear algo extraordinario.
-              </p>
-            </div>
+          <FadeIn>
+            <div className="space-y-6 md:space-y-8">
+              <div className="space-y-3 md:space-y-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                  ¿Trabajamos{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">juntos?</span>
+                </h2>
+                <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+                  Siempre estoy buscando nuevos desafíos y oportunidades para crear algo extraordinario.
+                </p>
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/contact' })}>
-                <Mail className="w-5 h-5 mr-2" />
-                Hablemos
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
-                <a
-                  href="https://www.linkedin.com/in/elmerjacobo97/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackLinkClick('https://www.linkedin.com/in/elmerjacobo97/', 'LinkedIn CTA')}
-                >
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  Ver mi LinkedIn
-                </a>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/contact' })}>
+                  <Mail className="w-5 h-5 mr-2" />
+                  Hablemos
+                </Button>
+                <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
+                  <a
+                    href="https://www.linkedin.com/in/elmerjacobo97/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackLinkClick('https://www.linkedin.com/in/elmerjacobo97/', 'LinkedIn CTA')}
+                  >
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    Ver mi LinkedIn
+                  </a>
+                </Button>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </div>

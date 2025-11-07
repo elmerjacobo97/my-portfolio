@@ -15,6 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { trackEvent } from '@/lib/analytics';
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/motion';
 
 export const Route = createFileRoute('/contact/')({
   component: ContactComponent,
@@ -143,41 +144,43 @@ function ContactComponent() {
       {/* Hero Section */}
       <section className="pt-8 sm:pt-12 lg:pt-20 pb-12 lg:pb-16 bg-gradient-to-br from-background via-background to-muted/30">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-6 lg:space-y-8 animate-fade-in">
-            <Badge variant="outline" className="mx-auto">
-              <MessageCircle className="w-3 h-3 mr-1 text-primary" />
-              Contacto
-            </Badge>
+          <FadeIn>
+            <div className="text-center space-y-6 lg:space-y-8">
+              <Badge variant="outline" className="mx-auto">
+                <MessageCircle className="w-3 h-3 mr-1 text-primary" />
+                Contacto
+              </Badge>
 
-            <div className="space-y-4 md:space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Hablemos sobre tu{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                  próximo proyecto
-                </span>
-              </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-                ¿Tienes una idea increíble? Me encantaría escucharla y ayudarte a convertirla en realidad. Trabajemos
-                juntos para crear algo extraordinario.
-              </p>
-            </div>
+              <div className="space-y-4 md:space-y-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  Hablemos sobre tu{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    próximo proyecto
+                  </span>
+                </h1>
+                <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
+                  ¿Tienes una idea increíble? Me encantaría escucharla y ayudarte a convertirla en realidad. Trabajemos
+                  juntos para crear algo extraordinario.
+                </p>
+              </div>
 
-            {/* Quick Response Promise */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4">
-              <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
-                <Clock className="w-4 h-4 text-primary" />
-                <span className="text-sm">Respuesta en 24h</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
-                <Coffee className="w-4 h-4 text-primary" />
-                <span className="text-sm">Consulta gratuita</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
-                <Briefcase className="w-4 h-4 text-primary" />
-                <span className="text-sm">Propuesta personalizada</span>
+              {/* Quick Response Promise */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4">
+                <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
+                  <Clock className="w-4 h-4 text-primary" />
+                  <span className="text-sm">Respuesta en 24h</span>
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
+                  <Coffee className="w-4 h-4 text-primary" />
+                  <span className="text-sm">Consulta gratuita</span>
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
+                  <Briefcase className="w-4 h-4 text-primary" />
+                  <span className="text-sm">Propuesta personalizada</span>
+                </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -186,7 +189,7 @@ function ContactComponent() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
-            <div className="space-y-6 md:space-y-8 order-2 md:order-1">
+            <FadeIn direction="right" className="space-y-6 md:space-y-8 order-2 md:order-1">
               <div>
                 <h2 className="text-2xl lg:text-3xl font-bold mb-4">Envíame un mensaje</h2>
                 <p className="text-muted-foreground leading-relaxed">
@@ -309,10 +312,10 @@ function ContactComponent() {
                   </Form>
                 </CardContent>
               </Card>
-            </div>
+            </FadeIn>
 
             {/* Contact Information */}
-            <div className="space-y-6 lg:space-y-8 order-1 lg:order-2">
+            <FadeIn direction="left" className="space-y-6 lg:space-y-8 order-1 lg:order-2">
               <div>
                 <h2 className="text-2xl lg:text-3xl font-bold mb-4">Información de contacto</h2>
                 <p className="text-muted-foreground leading-relaxed">
@@ -321,42 +324,44 @@ function ContactComponent() {
               </div>
 
               {/* Contact Methods */}
-              <div className="space-y-3 lg:space-y-4">
+              <StaggerContainer className="space-y-3 lg:space-y-4" staggerDelay={0.1}>
                 {contactMethods.map((method, index) => (
-                  <Card key={index} className="shadow-sm bg-card/50 overflow-hidden">
-                    <CardContent>
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted">
-                          <method.icon className={`w-6 h-6 ${method.color}`} />
+                  <StaggerItem key={index}>
+                    <Card className="shadow-sm bg-card/50 overflow-hidden">
+                      <CardContent>
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-muted">
+                            <method.icon className={`w-6 h-6 ${method.color}`} />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-semibold mb-1">{method.title}</h3>
+                            {method.link ? (
+                              <a
+                                href={method.link}
+                                target={method.external ? '_blank' : '_self'}
+                                rel={method.external ? 'noopener noreferrer' : undefined}
+                                className="text-primary hover:underline font-medium"
+                                onClick={() =>
+                                  trackEvent('contact_method_click', {
+                                    method: method.title.toLowerCase(),
+                                    value: method.value,
+                                  })
+                                }
+                              >
+                                {method.value}
+                              </a>
+                            ) : (
+                              <p className="font-medium">{method.value}</p>
+                            )}
+                            <p className="text-sm text-muted-foreground mt-1">{method.description}</p>
+                          </div>
                         </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold mb-1">{method.title}</h3>
-                          {method.link ? (
-                            <a
-                              href={method.link}
-                              target={method.external ? '_blank' : '_self'}
-                              rel={method.external ? 'noopener noreferrer' : undefined}
-                              className="text-primary hover:underline font-medium"
-                              onClick={() =>
-                                trackEvent('contact_method_click', {
-                                  method: method.title.toLowerCase(),
-                                  value: method.value,
-                                })
-                              }
-                            >
-                              {method.value}
-                            </a>
-                          ) : (
-                            <p className="font-medium">{method.value}</p>
-                          )}
-                          <p className="text-sm text-muted-foreground mt-1">{method.description}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </StaggerItem>
                 ))}
-              </div>
-            </div>
+              </StaggerContainer>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -364,19 +369,21 @@ function ContactComponent() {
       {/* FAQ Section */}
       <section className="py-12 lg:py-20 bg-muted/20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <Badge variant="outline" className="mb-4">
-              <MessageCircle className="w-3 h-3 mr-1 text-primary" />
-              FAQ
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Preguntas frecuentes</h2>
-            <p className="text-base lg:text-lg text-muted-foreground">
-              Respuestas a las dudas más comunes sobre mi proceso de trabajo
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-12 lg:mb-16">
+              <Badge variant="outline" className="mb-4">
+                <MessageCircle className="w-3 h-3 mr-1 text-primary" />
+                FAQ
+              </Badge>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Preguntas frecuentes</h2>
+              <p className="text-base lg:text-lg text-muted-foreground">
+                Respuestas a las dudas más comunes sobre mi proceso de trabajo
+              </p>
+            </div>
+          </FadeIn>
 
           {/* Mobile: Cards */}
-          <div className="space-y-4 md:hidden">
+          <StaggerContainer className="space-y-4 md:hidden" staggerDelay={0.1}>
             {[
               {
                 q: '¿Cuánto tiempo toma desarrollar un proyecto?',
@@ -395,17 +402,20 @@ function ContactComponent() {
                 a: 'Trabajo principalmente con React/Next.js para frontend, Node.js/NestJS o PHP/Laravel para backend, y PostgreSQL o MySQL para bases de datos. Sin embargo, me adapto a las necesidades específicas de cada proyecto.',
               },
             ].map((faq, index) => (
-              <Card key={index} className="shadow-sm bg-card/50 overflow-hidden">
-                <CardContent>
-                  <h3 className="font-semibold text-base mb-3">{faq.q}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-                </CardContent>
-              </Card>
+              <StaggerItem key={index}>
+                <Card className="shadow-sm bg-card/50 overflow-hidden">
+                  <CardContent>
+                    <h3 className="font-semibold text-base mb-3">{faq.q}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
           {/* Tablet/Desktop: Accordion */}
-          <Accordion type="single" collapsible className="hidden md:block">
+          <FadeIn delay={0.2}>
+            <Accordion type="single" collapsible className="hidden md:block">
             {[
               {
                 q: '¿Cuánto tiempo toma desarrollar un proyecto?',
@@ -434,48 +444,51 @@ function ContactComponent() {
               </AccordionItem>
             ))}
           </Accordion>
+          </FadeIn>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-12 lg:py-20 bg-gradient-to-br from-background to-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-6 lg:space-y-8">
-            <div className="space-y-4 lg:space-y-6">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                ¿Listo para{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">empezar?</span>
-              </h2>
-              <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-                No importa si tu idea está en etapa conceptual o ya tienes especificaciones detalladas. Podemos trabajar
-                juntos para hacerla realidad.
-              </p>
-            </div>
+          <FadeIn>
+            <div className="space-y-6 lg:space-y-8">
+              <div className="space-y-4 lg:space-y-6">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+                  ¿Listo para{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">empezar?</span>
+                </h2>
+                <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+                  No importa si tu idea está en etapa conceptual o ya tienes especificaciones detalladas. Podemos trabajar
+                  juntos para hacerla realidad.
+                </p>
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
-                <a
-                  href="https://wa.me/51927347691?text=Hola%20Elmer!%20Vi%20tu%20portafolio%20y%20quiero%20agendar%20una%20llamada"
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift">
+                  <a
+                    href="https://wa.me/51927347691?text=Hola%20Elmer!%20Vi%20tu%20portafolio%20y%20quiero%20agendar%20una%20llamada"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-primary-foreground" />
+                    Contactar por WhatsApp
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift"
                 >
-                  <MessageCircle className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-primary-foreground" />
-                  Contactar por WhatsApp
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 hover-lift"
-              >
-                <a href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
-                  <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
-                  Enviar email
-                </a>
-              </Button>
+                  <a href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
+                    <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
+                    Enviar email
+                  </a>
+                </Button>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </div>

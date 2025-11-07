@@ -2,6 +2,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Mail, ArrowRight } from 'lucide-react';
+import { FadeIn } from '@/components/ui/motion';
 
 export function ContactSection() {
   const navigate = useNavigate();
@@ -14,40 +15,42 @@ export function ContactSection() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-8 animate-fade-in">
-          <Badge variant="outline" className="mx-auto">
-            <Mail className="w-3 h-3 mr-1 text-primary" />
-            Colaboremos
-          </Badge>
+        <FadeIn>
+          <div className="space-y-8">
+            <Badge variant="outline" className="mx-auto">
+              <Mail className="w-3 h-3 mr-1 text-primary" />
+              Colaboremos
+            </Badge>
 
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-              ¿Tienes un proyecto{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">en mente?</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Me encantaría colaborar contigo para crear algo increíble. Transformemos tu visión en una realidad digital
-              excepcional.
-            </p>
-          </div>
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground">
+                ¿Tienes un proyecto{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">en mente?</span>
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Me encantaría colaborar contigo para crear algo increíble. Transformemos tu visión en una realidad digital
+                excepcional.
+              </p>
+            </div>
 
-          {/* Contact methods */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/contact' })}>
-              <Mail className="w-5 h-5 mr-2 text-primary-foreground" />
-              Hablemos
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 py-6 hover-lift"
-              onClick={() => navigate({ to: '/about' })}
-            >
-              Ver mi perfil
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            {/* Contact methods */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+              <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/contact' })}>
+                <Mail className="w-5 h-5 mr-2 text-primary-foreground" />
+                Hablemos
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-6 hover-lift"
+                onClick={() => navigate({ to: '/about' })}
+              >
+                Ver mi perfil
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

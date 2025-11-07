@@ -35,7 +35,7 @@ export function HeroSection() {
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
-        <div className="space-y-6 sm:space-y-8 animate-fade-in">
+        <div className="space-y-6 sm:space-y-8">
           {/* Avatar - diseño limpio y profesional */}
           <div className="flex justify-center w-full">
             <div className="relative group">

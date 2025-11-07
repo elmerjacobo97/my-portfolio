@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Terminal, Zap } from 'lucide-react';
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/motion';
 
 const services = [
   {
@@ -36,22 +37,26 @@ export function ServicesSection() {
   return (
     <section className="py-20 bg-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-slide-up">
-          <Badge variant="outline" className="mb-4">
-            <Zap className="w-3 h-3 mr-1 text-primary" />
-            Servicios
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Lo que hago</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Especializado en crear soluciones digitales que combinan funcionalidad, rendimiento y estética moderna
-          </p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-16">
+            <Badge variant="outline" className="mb-4">
+              <Zap className="w-3 h-3 mr-1 text-primary" />
+              Servicios
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Lo que hago</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Especializado en crear soluciones digitales que combinan funcionalidad, rendimiento y estética moderna
+            </p>
+          </div>
+        </FadeIn>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
           {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
+            <StaggerItem key={index}>
+              <ServiceCard {...service} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
