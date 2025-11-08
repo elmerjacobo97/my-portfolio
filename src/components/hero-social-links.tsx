@@ -10,7 +10,7 @@ export function HeroSocialLinks() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
-      className="flex justify-center lg:justify-start gap-3"
+      className="flex justify-center lg:justify-start gap-4 pt-4"
     >
       <TooltipProvider>
         <Tooltip>
@@ -19,7 +19,7 @@ export function HeroSocialLinks() {
               asChild
               variant="ghost"
               size="icon"
-              className="w-12 h-12 rounded-xl hover:bg-primary/10 hover:text-primary transition-all hover:scale-110"
+              className="w-8 h-8 hover:bg-primary/10 hover:text-primary transition-all hover:scale-110"
             >
               <a
                 href="https://github.com/elmerjacobo97/"
@@ -42,7 +42,7 @@ export function HeroSocialLinks() {
               asChild
               variant="ghost"
               size="icon"
-              className="w-12 h-12 rounded-xl hover:bg-primary/10 hover:text-primary transition-all hover:scale-110"
+              className="w-8 h-8 hover:bg-primary/10 hover:text-primary transition-all hover:scale-110"
             >
               <a
                 href="https://www.linkedin.com/in/elmerjacobo97/"
@@ -65,7 +65,7 @@ export function HeroSocialLinks() {
               asChild
               variant="ghost"
               size="icon"
-              className="w-12 h-12 rounded-xl hover:bg-primary/10 hover:text-primary transition-all hover:scale-110"
+              className="w-8 h-8 hover:bg-primary/10 hover:text-primary transition-all hover:scale-110"
             >
               <a
                 href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo..."
