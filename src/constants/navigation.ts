@@ -1,10 +1,11 @@
-import { Home, User, Code, Mail, Github, Linkedin } from 'lucide-react';
+import { Home, User, Code, Mail, Github, Linkedin, BookOpen } from 'lucide-react';
 
 export const navigation = [
   { name: 'Inicio', href: '/', icon: Home },
   { name: 'Sobre mí', href: '/about', icon: User },
   { name: 'Proyectos', href: '/projects', icon: Code },
   { name: 'Contacto', href: '/contact', icon: Mail },
+  { name: 'Blog', href: 'https://blog.elmerjacobo.dev', icon: BookOpen, external: true },
 ];
 
 export const socialLinks = [

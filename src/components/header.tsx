@@ -25,28 +25,48 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="relative flex items-center justify-center gap-2 px-4 py-2 text-muted-foreground hover:text-primary transition-colors duration-200 group"
-                activeProps={{
-                  className: 'text-primary',
-                }}
-              >
-                {({ isActive }) => (
-                  <>
-                    <item.icon className="w-4 h-4" />
+            {navigation.map((item) => {
+              const Icon = item.icon;
+
+              if (item.external) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative flex items-center justify-center gap-2 px-4 py-2 text-muted-foreground hover:text-primary transition-colors duration-200 group"
+                  >
+                    <Icon className="w-4 h-4" />
                     <span className="font-medium">{item.name}</span>
-                    <span
-                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 ${
-                        isActive ? 'w-[calc(100%-2rem)]' : 'w-0 group-hover:w-[calc(100%-2rem)]'
-                      }`}
-                    />
-                  </>
-                )}
-              </Link>
-            ))}
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 w-0 group-hover:w-[calc(100%-2rem)]" />
+                  </a>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="relative flex items-center justify-center gap-2 px-4 py-2 text-muted-foreground hover:text-primary transition-colors duration-200 group"
+                  activeProps={{
+                    className: 'text-primary',
+                  }}
+                >
+                  {({ isActive }) => (
+                    <>
+                      <Icon className="w-4 h-4" />
+                      <span className="font-medium">{item.name}</span>
+                      <span
+                        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 ${
+                          isActive ? 'w-[calc(100%-2rem)]' : 'w-0 group-hover:w-[calc(100%-2rem)]'
+                        }`}
+                      />
+                    </>
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Theme Toggle & Mobile Menu */}

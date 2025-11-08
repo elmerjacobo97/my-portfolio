@@ -7,6 +7,7 @@ interface NavigationItem {
   name: string;
   href: string;
   icon: LucideIcon;
+  external?: boolean;
 }
 
 interface MobileMenuProps {
@@ -18,18 +19,38 @@ export function MobileMenu({ navigation, onClose }: MobileMenuProps) {
   return (
     <div className="flex flex-col h-full">
       <nav className="flex flex-col space-y-1 mt-12">
-        {navigation.map((item) => (
-          <Link
-            key={item.name}
-            to={item.href}
-            className="flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors duration-200 [&.active]:text-primary [&.active]:font-medium p-3 rounded-lg hover:bg-muted/50"
-            activeProps={{ className: 'text-primary font-medium bg-muted/50' }}
-            onClick={onClose}
-          >
-            <item.icon className="w-5 h-5" />
-            <span className="text-base">{item.name}</span>
-          </Link>
-        ))}
+        {navigation.map((item) => {
+          const Icon = item.icon;
+
+          if (item.external) {
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors duration-200 p-3 rounded-lg hover:bg-muted/50"
+                onClick={onClose}
+              >
+                <Icon className="w-5 h-5" />
+                <span className="text-base">{item.name}</span>
+              </a>
+            );
+          }
+
+          return (
+            <Link
+              key={item.name}
+              to={item.href}
+              className="flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors duration-200 [&.active]:text-primary [&.active]:font-medium p-3 rounded-lg hover:bg-muted/50"
+              activeProps={{ className: 'text-primary font-medium bg-muted/50' }}
+              onClick={onClose}
+            >
+              <Icon className="w-5 h-5" />
+              <span className="text-base">{item.name}</span>
+            </Link>
+          );
+        })}
       </nav>
 
       <Separator className="my-6" />
