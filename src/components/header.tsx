@@ -7,6 +7,7 @@ import { VisuallyHidden } from '@/components/ui/visually-hidden';
 import { MobileMenu } from '@/components/mobile-menu';
 import { navigation, brandInfo } from '@/constants/navigation';
 import { ModeToggle } from '@/components/mode-toggle';
+import { trackLinkClick } from '@/lib/analytics';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -36,6 +37,7 @@ export function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative flex items-center justify-center gap-2 px-4 py-2 text-muted-foreground hover:text-primary transition-colors duration-200 group"
+                    onClick={() => trackLinkClick(item.href, item.name)}
                   >
                     <Icon className="w-4 h-4" />
                     <span className="font-medium">{item.name}</span>

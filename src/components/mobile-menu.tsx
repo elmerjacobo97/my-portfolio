@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { type LucideIcon } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { socialLinks } from '@/constants/navigation';
+import { trackLinkClick } from '@/lib/analytics';
 
 interface NavigationItem {
   name: string;
@@ -30,7 +31,10 @@ export function MobileMenu({ navigation, onClose }: MobileMenuProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors duration-200 p-3 rounded-lg hover:bg-muted/50"
-                onClick={onClose}
+                onClick={() => {
+                  trackLinkClick(item.href, item.name);
+                  onClose();
+                }}
               >
                 <Icon className="w-5 h-5" />
                 <span className="text-base">{item.name}</span>
