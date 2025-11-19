@@ -1,4 +1,5 @@
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { sleep } from '@/lib/utils';
 
@@ -39,11 +40,11 @@ export type ProjectsResponse = ApiResponse<Project[]>;
 /**
  * Obtener todos los proyectos desde la API
  */
-async function fetchProjects(): Promise<ProjectsResponse> {
+async function fetchProjects(language: string): Promise<ProjectsResponse> {
   // Simular un delay
   await sleep(1000);
   // Usar axios con ruta absoluta para archivos estáticos en /public
-  const response = await axios.get<ProjectsResponse>('/projects.json');
+  const response = await axios.get<ProjectsResponse>(`/projects-${language}.json`);
   return response.data;
 }
 
@@ -55,9 +56,12 @@ async function fetchProjects(): Promise<ProjectsResponse> {
  * Hook para obtener todos los proyectos
  */
 export function useProjects(): UseQueryResult<ProjectsResponse> {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language || 'es';
+
   return useQuery({
-    queryKey: ['portfolio', 'projects'],
-    queryFn: fetchProjects,
+    queryKey: ['portfolio', 'projects', currentLanguage],
+    queryFn: () => fetchProjects(currentLanguage),
     staleTime: 1000 * 60 * 5, // 5 minutos
   });
 }

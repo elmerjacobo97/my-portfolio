@@ -1,11 +1,11 @@
 import { Home, User, Code, Mail, Github, Linkedin, BookOpen } from 'lucide-react';
 
 export const navigation = [
-  { name: 'Inicio', href: '/', icon: Home },
-  { name: 'Sobre mí', href: '/about', icon: User },
-  { name: 'Proyectos', href: '/projects', icon: Code },
-  { name: 'Contacto', href: '/contact', icon: Mail },
-  { name: 'Blog', href: 'https://blog.elmerjacobo.dev', icon: BookOpen, external: true },
+  { name: 'header.nav.home', href: '/', icon: Home },
+  { name: 'header.nav.about', href: '/about', icon: User },
+  { name: 'header.nav.projects', href: '/projects', icon: Code },
+  { name: 'header.nav.contact', href: '/contact', icon: Mail },
+  { name: 'header.nav.blog', href: 'https://blog.elmerjacobo.dev', icon: BookOpen, external: true },
 ];
 
 export const socialLinks = [

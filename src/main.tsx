@@ -8,6 +8,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { initGA } from '@/lib/analytics';
+import '@/lib/i18n';
 import './index.css';
 
 // Inicializar Google Analytics
@@ -17,7 +18,7 @@ initGA();
 const router = createRouter({
   routeTree,
   // Habilitar la restauración del scroll
-  // scrollRestoration: true,
+  scrollRestoration: true,
 });
 
 // Register the router instance for type safety
@@ -30,7 +31,7 @@ declare module '@tanstack/react-router' {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="light" storageKey="my-porfolio-theme">
+      <ThemeProvider defaultTheme="light" storageKey="my-portfolio-theme">
         <RouterProvider router={router} />
         <Analytics />
         <SpeedInsights />

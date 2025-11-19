@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Menu, Code } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
@@ -7,10 +8,12 @@ import { VisuallyHidden } from '@/components/ui/visually-hidden';
 import { MobileMenu } from '@/components/mobile-menu';
 import { navigation, brandInfo } from '@/constants/navigation';
 import { ModeToggle } from '@/components/mode-toggle';
+import { LanguageToggle } from '@/components/language-toggle';
 import { trackLinkClick } from '@/lib/analytics';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { t } = useTranslation();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -40,7 +43,7 @@ export function Header() {
                     onClick={() => trackLinkClick(item.href, item.name)}
                   >
                     <Icon className="w-4 h-4" />
-                    <span className="font-medium">{item.name}</span>
+                    <span className="font-medium">{t(item.name)}</span>
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 w-0 group-hover:w-[calc(100%-2rem)]" />
                   </a>
                 );
@@ -58,7 +61,7 @@ export function Header() {
                   {({ isActive }) => (
                     <>
                       <Icon className="w-4 h-4" />
-                      <span className="font-medium">{item.name}</span>
+                      <span className="font-medium">{t(item.name)}</span>
                       <span
                         className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 ${
                           isActive ? 'w-[calc(100%-2rem)]' : 'w-0 group-hover:w-[calc(100%-2rem)]'
@@ -71,8 +74,9 @@ export function Header() {
             })}
           </nav>
 
-          {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center space-x-4">
+          {/* Theme Toggle, Language Toggle & Mobile Menu */}
+          <div className="flex items-center space-x-2">
+            <LanguageToggle />
             <ModeToggle />
 
             {/* Mobile menu button */}
@@ -80,13 +84,13 @@ export function Header() {
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
                   <Menu className="w-5 h-5" />
-                  <span className="sr-only">Abrir menú</span>
+                  <span className="sr-only">{t('header.openMenu')}</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <VisuallyHidden>
-                  <SheetTitle>Menú de navegación</SheetTitle>
-                  <SheetDescription>Navega por las diferentes secciones del sitio web</SheetDescription>
+                  <SheetTitle>{t('header.menuTitle')}</SheetTitle>
+                  <SheetDescription>{t('header.menuDescription')}</SheetDescription>
                 </VisuallyHidden>
                 <MobileMenu navigation={navigation} onClose={() => setIsMenuOpen(false)} />
               </SheetContent>

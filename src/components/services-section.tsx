@@ -1,39 +1,20 @@
+import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Terminal, Zap } from 'lucide-react';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/motion';
 
-const services = [
-  {
-    title: 'Desarrollo Frontend',
-    description: 'Interfaces modernas y responsivas',
-    icon: Code,
-    content: 'Creo experiencias de usuario excepcionales con las tecnologías más avanzadas',
-    skills: ['React', 'TypeScript', 'Next.js'],
-    iconColor: 'text-primary',
-    bgColor: 'bg-primary/10',
-  },
-  {
-    title: 'Desarrollo Backend',
-    description: 'APIs robustas y escalables',
-    icon: Terminal,
-    content: 'Arquitecturas sólidas que soportan aplicaciones de alta demanda',
-    skills: ['Node.js', 'Python', 'PostgreSQL'],
-    iconColor: 'text-primary',
-    bgColor: 'bg-primary/10',
-  },
-  {
-    title: 'Optimización & UX',
-    description: 'Experiencia rápida, intuitiva y accesible',
-    icon: Zap,
-    content: 'Optimizo cada detalle para lograr la máxima velocidad y usabilidad',
-    skills: ['SEO', 'Web Vitals', 'A11y'],
-    iconColor: 'text-primary',
-    bgColor: 'bg-primary/10',
-  },
-];
-
 export function ServicesSection() {
+  const { t } = useTranslation();
+  const services = t('services.items', { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+    content: string;
+    skills: string[];
+  }>;
+
+  const icons = [Code, Terminal, Zap];
+
   return (
     <section className="py-20 bg-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,11 +22,11 @@ export function ServicesSection() {
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               <Zap className="w-3 h-3 mr-1 text-primary" />
-              Servicios
+              {t('services.badge')}
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Lo que hago</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('services.title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Especializado en crear soluciones digitales que combinan funcionalidad, rendimiento y estética moderna
+              {t('services.subtitle')}
             </p>
           </div>
         </FadeIn>
@@ -53,7 +34,7 @@ export function ServicesSection() {
         <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
           {services.map((service, index) => (
             <StaggerItem key={index}>
-              <ServiceCard {...service} />
+              <ServiceCard {...service} icon={icons[index]} iconColor="text-primary" bgColor="bg-primary/10" />
             </StaggerItem>
           ))}
         </StaggerContainer>

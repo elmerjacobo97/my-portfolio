@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -60,241 +61,188 @@ export const Route = createFileRoute('/about/')({
 
 function AboutComponent() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const skillsData = t('about.skills.skillsData', { returnObjects: true }) as Record<string, { description: string; experience: string }>;
 
   const skillsByCategory = {
     Frontend: [
       {
         name: 'React',
         icon: ReactLogo,
-        description:
-          'Biblioteca de JavaScript para crear interfaces de usuario interactivas con componentes reutilizables y gestión eficiente del estado.',
-        experience: '4+ años',
-        color: '#61DAFB', // Cyan oficial de React
+        description: skillsData['React'].description,
+        experience: skillsData['React'].experience,
+        color: '#61DAFB',
       },
       {
         name: 'Next.js',
         icon: NextJSLogo,
-        description:
-          'Framework de React para construir aplicaciones web rápidas, con renderizado híbrido (SSR/SSG), rutas optimizadas y excelente rendimiento.',
-        experience: '3+ años',
-        color: 'currentColor', // Negro/Blanco según tema
+        description: skillsData['Next.js'].description,
+        experience: skillsData['Next.js'].experience,
+        color: 'currentColor',
       },
       {
         name: 'Astro',
         icon: AstroLogo,
-        description:
-          'Framework moderno para sitios web ultra-rápidos con arquitectura de islas y contenido estático optimizado.',
-        experience: '2+ años',
-        color: '#FF5D01', // Naranja oficial de Astro
+        description: skillsData['Astro'].description,
+        experience: skillsData['Astro'].experience,
+        color: '#FF5D01',
       },
       {
         name: 'TypeScript',
         icon: TypeScriptLogo,
-        description:
-          'Superset de JavaScript con tipado estático que permite escribir código más seguro, robusto y fácil de mantener.',
-        experience: '3+ años',
-        color: '#3178C6', // Azul oficial de TypeScript
+        description: skillsData['TypeScript'].description,
+        experience: skillsData['TypeScript'].experience,
+        color: '#3178C6',
       },
       {
         name: 'Tailwind CSS',
         icon: TailwindLogo,
-        description:
-          'Framework CSS utility-first para crear diseños modernos y responsivos de forma rápida sin salir del HTML.',
-        experience: '2+ años',
-        color: '#06B6D4', // Cyan oficial de Tailwind
+        description: skillsData['Tailwind CSS'].description,
+        experience: skillsData['Tailwind CSS'].experience,
+        color: '#06B6D4',
       },
     ],
     Backend: [
       {
         name: 'Node.js',
         icon: NodejsLogo,
-        description:
-          'Entorno de ejecución de JavaScript del lado del servidor para construir aplicaciones backend rápidas y escalables.',
-        experience: '3+ años',
-        color: '#339933', // Verde oficial de Node.js
+        description: skillsData['Node.js'].description,
+        experience: skillsData['Node.js'].experience,
+        color: '#339933',
       },
       {
         name: 'Express',
         icon: ExpressLogo,
-        description:
-          'Framework minimalista y flexible para Node.js, ideal para crear APIs RESTful y aplicaciones web de forma rápida.',
-        experience: '3+ años',
-        color: 'currentColor', // Negro/Blanco según tema
+        description: skillsData['Express'].description,
+        experience: skillsData['Express'].experience,
+        color: 'currentColor',
       },
       {
         name: 'NestJS',
         icon: NestJSLogo,
-        description:
-          'Framework para Node.js con arquitectura modular y soporte nativo para TypeScript, ideal para APIs escalables y mantenibles.',
-        experience: '2+ años',
-        color: '#E0234E', // Rojo oficial de NestJS
+        description: skillsData['NestJS'].description,
+        experience: skillsData['NestJS'].experience,
+        color: '#E0234E',
       },
       {
         name: 'PHP',
         icon: PHPLogo,
-        description:
-          'Lenguaje de programación del lado del servidor, ampliamente usado para desarrollo web dinámico y aplicaciones empresariales.',
-        experience: '2+ años',
-        color: '#777BB4', // Púrpura oficial de PHP
+        description: skillsData['PHP'].description,
+        experience: skillsData['PHP'].experience,
+        color: '#777BB4',
       },
       {
         name: 'Laravel',
         icon: LaravelLogo,
-        description:
-          'Framework PHP moderno y elegante con sintaxis expresiva, ideal para desarrollar aplicaciones web robustas y escalables.',
-        experience: '2+ años',
-        color: '#FF2D20', // Rojo oficial de Laravel
+        description: skillsData['Laravel'].description,
+        experience: skillsData['Laravel'].experience,
+        color: '#FF2D20',
       },
     ],
     Database: [
       {
         name: 'PostgreSQL',
         icon: PostgreSQLLogo,
-        description:
-          'Sistema de base de datos relacional avanzado y open-source con potentes características de rendimiento y confiabilidad.',
-        experience: '3+ años',
-        color: '#4169E1', // Azul oficial de PostgreSQL
+        description: skillsData['PostgreSQL'].description,
+        experience: skillsData['PostgreSQL'].experience,
+        color: '#4169E1',
       },
       {
         name: 'MySQL',
         icon: MySQLLogo,
-        description:
-          'Sistema de gestión de bases de datos relacional open-source, ampliamente utilizado para aplicaciones web de alto tráfico.',
-        experience: '2+ años',
-        color: '#4479A1', // Azul oficial de MySQL
+        description: skillsData['MySQL'].description,
+        experience: skillsData['MySQL'].experience,
+        color: '#4479A1',
       },
       {
         name: 'MongoDB',
         icon: MongoDBLogo,
-        description:
-          'Base de datos NoSQL orientada a documentos, flexible y escalable, ideal para aplicaciones modernas con datos no estructurados.',
-        experience: '2+ años',
-        color: '#47A248', // Verde oficial de MongoDB
+        description: skillsData['MongoDB'].description,
+        experience: skillsData['MongoDB'].experience,
+        color: '#47A248',
       },
       {
         name: 'SQLite',
         icon: SQLiteLogo,
-        description:
-          'Base de datos relacional ligera y embebida, ideal para aplicaciones móviles y de escritorio sin necesidad de un servidor dedicado.',
-        experience: '2+ años',
-        color: '#0F80CC', // Azul más claro para mejor contraste
+        description: skillsData['SQLite'].description,
+        experience: skillsData['SQLite'].experience,
+        color: '#0F80CC',
       },
     ],
     DevOps: [
       {
         name: 'Docker',
         icon: DockerLogo,
-        description:
-          'Plataforma de contenedores que permite empaquetar aplicaciones con todas sus dependencias para un despliegue consistente.',
-        experience: '2+ años',
-        color: '#2496ED', // Azul oficial de Docker
+        description: skillsData['Docker'].description,
+        experience: skillsData['Docker'].experience,
+        color: '#2496ED',
       },
       {
         name: 'Google Cloud',
         icon: GoogleCloudLogo,
-        description:
-          'Plataforma de servicios en la nube con infraestructura escalable, almacenamiento y soluciones de computación empresarial.',
-        experience: '1+ año',
-        color: '#4285F4', // Azul oficial de Google Cloud
+        description: skillsData['Google Cloud'].description,
+        experience: skillsData['Google Cloud'].experience,
+        color: '#4285F4',
       },
       {
         name: 'Git',
         icon: GitLogo,
-        description:
-          'Sistema de control de versiones distribuido para rastrear cambios en el código y facilitar la colaboración en equipo.',
-        experience: '4+ años',
-        color: '#F05032', // Naranja/Rojo oficial de Git
+        description: skillsData['Git'].description,
+        experience: skillsData['Git'].experience,
+        color: '#F05032',
       },
     ],
   };
 
-  const experience = [
-    {
-      title: 'Full Stack Developer',
-      company: 'ABEHA',
-      period: '2023 - Presente',
-      description:
-        'Desarrollo de aplicaciones web y móviles, creación de APIs con Laravel, integración con servicios externos y construcción de interfaces modernas y responsivas.',
-      achievements: [
-        'Diseño y desarrollo de dashboards administrativos para gestión interna',
-        'Creación y mantenimiento de APIs REST con Laravel para productos en producción',
-        'Implementación de flujos completos de autenticación, registro y manejo de usuarios',
-        'Optimización visual y de rendimiento utilizando Tailwind CSS y buenas prácticas de UI/UX',
-        'Participación en la documentación técnica de módulos y componentes',
-      ],
-      technologies: [
-        'React',
-        'Next.js',
-        'React Native',
-        'TypeScript',
-        'Vite',
-        'TanStack (Query, Router, Table)',
-        'Laravel',
-        'PostgreSQL',
-        'Tailwind CSS',
-        'REST APIs',
-        'Google Cloud',
-      ],
-    },
-    {
-      title: 'Full Stack Developer – Freelancer',
-      project: 'Service Management Platform',
-      period: '2022 - 2023',
-      description:
-        'Desarrollé una plataforma web completa para la gestión de clientes, servicios y soporte técnico, integrando un backend robusto con una interfaz moderna y fácil de usar.',
-      achievements: [
-        'Creación de un sistema de autenticación seguro con roles y permisos',
-        'Diseño de dashboard administrativo para seguimiento de actividades',
-        'Implementación de CRUD completos para usuarios, servicios y tickets de soporte',
-        'Despliegue en producción con integración a base de datos y logs de actividad',
-      ],
-      technologies: ['React', 'TypeScript', 'Laravel', 'PostgreSQL', 'Bootstrap', 'Sass', 'REST APIs', 'Vercel'],
-    },
-  ];
+  const experience = t('about.experience.items', { returnObjects: true }) as Array<{
+    title: string;
+    company?: string;
+    project?: string;
+    period: string;
+    description: string;
+    achievements: string[];
+    technologies: string[];
+  }>;
 
-  const education = [
-    {
-      degree: 'Formación Superior Autodidacta en Desarrollo Web',
-      institution: 'Recursos de la Industria',
-      period: '2020 - Actualidad',
-      description:
-        'He desarrollado habilidades avanzadas en desarrollo web y móvil de manera autodidacta, abarcando tanto Frontend como Backend, con un enfoque práctico en proyectos reales.',
-    },
-    {
-      degree: 'Especialización Práctica en Tecnologías Modernas',
-      institution: 'Udemy / Platzi / freeCodeCamp',
-      period: '2020 - Actualidad',
-      description:
-        'He profundizado mis conocimientos mediante cursos y proyectos prácticos, trabajando con frameworks y librerías modernas, buenas prácticas de desarrollo y metodologías ágiles.',
-    },
-  ];
+  const education = t('about.education.items', { returnObjects: true }) as Array<{
+    degree: string;
+    institution: string;
+    period: string;
+    description: string;
+  }>;
+
+  const interestsData = t('about.interests.items', { returnObjects: true }) as Array<{
+    name: string;
+    description: string;
+  }>;
 
   const interests = [
     {
-      name: 'Tecnología',
+      name: interestsData[0].name,
       icon: Cpu,
-      description: 'Siempre aprendiendo nuevas herramientas',
+      description: interestsData[0].description,
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
-      name: 'Fotografía',
+      name: interestsData[1].name,
       icon: Camera,
-      description: 'Transformando momentos cotidianos en recuerdos especiales',
+      description: interestsData[1].description,
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
-      name: 'Café',
+      name: interestsData[2].name,
       icon: Coffee,
-      description: 'Café mientras programo, el combo perfecto',
+      description: interestsData[2].description,
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
-      name: 'Viajes',
+      name: interestsData[3].name,
       icon: Globe,
-      description: 'Conociendo nuevos lugares cuando puedo',
+      description: interestsData[3].description,
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
@@ -311,17 +259,17 @@ function AboutComponent() {
               <div className="space-y-4">
                 <Badge variant="outline" className="w-fit">
                   <User className="w-3 h-3 mr-1" />
-                  Sobre mí
+                  {t('about.badge')}
                 </Badge>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-                  Construyendo el{' '}
+                  {t('about.title').split('<gradient>')[0]}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                    futuro digital
+                    {t('about.title').split('<gradient>')[1]?.split('</gradient>')[0]}
                   </span>
+                  {t('about.title').split('</gradient>')[1]}
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Soy un desarrollador full stack apasionado por crear experiencias digitales que marquen la diferencia.
-                  Con más de 4 años de experiencia, combino creatividad y tecnología para resolver problemas complejos.
+                  {t('about.subtitle')}
                 </p>
               </div>
 
@@ -329,19 +277,19 @@ function AboutComponent() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Trujillo, Perú</span>
+                  <span>{t('about.quickInfo.location')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Calendar className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>4+ años experiencia</span>
+                  <span>{t('about.quickInfo.experience')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Heart className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Disponible para proyectos</span>
+                  <span>{t('about.quickInfo.availability')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Users className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Trabajo en equipo</span>
+                  <span>{t('about.quickInfo.teamwork')}</span>
                 </div>
               </div>
 
@@ -349,14 +297,14 @@ function AboutComponent() {
               <div className="flex flex-row justify-start gap-4">
                 <Button className="hover-lift" onClick={() => navigate({ to: '/contact' })}>
                   <Mail className="w-4 h-4 mr-2 text-primary-foreground" />
-                  Contáctame
+                  {t('about.cta.contact')}
                 </Button>
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" className="hover-lift">
                       <FileText className="w-4 h-4 mr-2" />
-                      Currículum
+                      {t('about.cta.resume')}
                       <ChevronDown className="w-3 h-3 ml-2" />
                     </Button>
                   </DropdownMenuTrigger>
@@ -370,7 +318,7 @@ function AboutComponent() {
                         onClick={() => trackSelectContent('cv', 'view_pdf_about_page')}
                       >
                         <Eye className="w-4 h-4 mr-2" />
-                        Ver PDF
+                        {t('about.cta.viewPdf')}
                       </a>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
@@ -381,7 +329,7 @@ function AboutComponent() {
                         onClick={() => trackDownload('Elmer-Jacobo-CV.pdf')}
                       >
                         <Download className="w-4 h-4 mr-2" />
-                        Descargar PDF
+                        {t('about.cta.downloadPdf')}
                       </a>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -426,11 +374,11 @@ function AboutComponent() {
             <div className="text-center mb-12 md:mb-16">
               <Badge variant="outline" className="mb-4">
                 <Code2 className="w-3 h-3 mr-1" />
-                Habilidades
+                {t('about.skills.badge')}
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Tecnologías y herramientas</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.skills.title')}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Mi stack tecnológico actual, organizado por categorías
+                {t('about.skills.subtitle')}
               </p>
             </div>
           </FadeIn>
@@ -440,7 +388,7 @@ function AboutComponent() {
               <StaggerContainer key={category} staggerDelay={0.08}>
                 <FadeIn delay={categoryIndex * 0.1}>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-2">
-                    <span className="text-primary">{category}</span>
+                    <span className="text-primary">{t(`about.skills.categories.${category.toLowerCase()}` as any) || category}</span>
                     <div className="flex-1 h-px bg-border"></div>
                   </h3>
                 </FadeIn>
@@ -497,11 +445,11 @@ function AboutComponent() {
             <div className="text-center mb-12 md:mb-16">
               <Badge variant="outline" className="mb-4">
                 <Briefcase className="w-3 h-3 mr-1" />
-                Experiencia
+                {t('about.experience.badge')}
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Mi trayectoria profesional</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.experience.title')}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Un recorrido por mi evolución como desarrollador y los proyectos que han marcado mi carrera
+                {t('about.experience.subtitle')}
               </p>
             </div>
           </FadeIn>
@@ -551,7 +499,7 @@ function AboutComponent() {
                         <p className="text-muted-foreground mb-4 md:mb-6">{exp.description}</p>
 
                         <div className="mb-4 md:mb-6">
-                          <h4 className="font-semibold mb-2 md:mb-3">Logros principales:</h4>
+                          <h4 className="font-semibold mb-2 md:mb-3">{t('about.experience.achievements')}</h4>
                           <ul className="space-y-2">
                             {exp.achievements.map((achievement, i) => (
                               <li key={i} className="flex items-start gap-2">
@@ -563,7 +511,7 @@ function AboutComponent() {
                         </div>
 
                         <div>
-                          <h4 className="font-semibold mb-2 md:mb-3">Tecnologías utilizadas:</h4>
+                          <h4 className="font-semibold mb-2 md:mb-3">{t('about.experience.technologies')}</h4>
                           <div className="flex flex-wrap gap-2">
                             {exp.technologies.map((tech) => (
                               <Badge key={tech} variant="outline" className="text-xs">
@@ -589,11 +537,11 @@ function AboutComponent() {
             <div className="text-center mb-12 md:mb-16">
               <Badge variant="outline" className="mb-4">
                 <GraduationCap className="w-3 h-3 mr-1" />
-                Educación
+                {t('about.education.badge')}
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Más allá del código</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.education.title')}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Aprendizaje continuo que impulsa mi desarrollo técnico y creativo
+                {t('about.education.subtitle')}
               </p>
             </div>
           </FadeIn>
@@ -629,11 +577,11 @@ function AboutComponent() {
             <div className="text-center mb-12 md:mb-16">
               <Badge variant="outline" className="mb-4">
                 <Heart className="w-3 h-3 mr-1" />
-                Intereses
+                {t('about.interests.badge')}
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Más allá del código</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.interests.title')}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Las pasiones que me inspiran y mantienen mi creatividad en constante movimiento
+                {t('about.interests.subtitle')}
               </p>
             </div>
           </FadeIn>
@@ -668,18 +616,21 @@ function AboutComponent() {
             <div className="space-y-6 md:space-y-8">
               <div className="space-y-3 md:space-y-4">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-                  ¿Trabajamos{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">juntos?</span>
+                  {t('about.ctaSection.title').split('<gradient>')[0]}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    {t('about.ctaSection.title').split('<gradient>')[1]?.split('</gradient>')[0]}
+                  </span>
+                  {t('about.ctaSection.title').split('</gradient>')[1]}
                 </h2>
                 <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Siempre estoy buscando nuevos desafíos y oportunidades para crear algo extraordinario.
+                  {t('about.ctaSection.subtitle')}
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                 <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/contact' })}>
                   <Mail className="w-5 h-5 mr-2" />
-                  Hablemos
+                  {t('about.ctaSection.talk')}
                 </Button>
                 <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift">
                   <a
@@ -689,7 +640,7 @@ function AboutComponent() {
                     onClick={() => trackLinkClick('https://www.linkedin.com/in/elmerjacobo97/', 'LinkedIn CTA')}
                   >
                     <ExternalLink className="w-5 h-5 mr-2" />
-                    Ver mi LinkedIn
+                    {t('about.ctaSection.linkedin')}
                   </a>
                 </Button>
               </div>

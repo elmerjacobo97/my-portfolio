@@ -1,0 +1,83 @@
+{
+  "statistics": {
+    "totalTechnologies": 12,
+    "totalUsers": 1500,
+    "satisfactionRate": 96
+  },
+  "projects": [
+    {
+      "id": "1",
+      "title": "Tarjetly",
+      "description": "Digital platform to create and share smart business cards.",
+      "longDescription": "Tarjetly allows businesses and professionals to create digital business cards with interactive information, direct links and interaction analytics. The project includes an admin panel, visual editor and REST API with secure authentication.",
+      "image": "https://res.cloudinary.com/elmerjacobo/image/upload/v1761232911/My%20Portfolio/tarjetly_b9tpgq.png",
+      "category": "Web Application",
+      "featured": true,
+      "technologies": ["React", "TypeScript", "Tailwind CSS", "PHP", "Laravel", "MySQL"],
+      "liveUrl": "https://tarjetly.com",
+      "githubUrl": null,
+      "highlights": [
+        "Multi-company registration system",
+        "Automatic QR generation",
+        "Dashboard with real-time metrics"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Sismol",
+      "description": "Web administrative panel for managing and monitoring the water collection system.",
+      "image": "https://res.cloudinary.com/elmerjacobo/image/upload/v1761232912/My%20Portfolio/sismol_reucx0.png",
+      "category": "Web Application",
+      "featured": true,
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "PHP",
+        "Laravel",
+        "PostgreSQL",
+        "TanStack (Query, Table, Router)"
+      ],
+      "liveUrl": "https://sismol.c2e.mx/",
+      "githubUrl": null,
+      "highlights": [
+        "Dashboard with real-time metrics from collection sensors",
+        "User, permissions and administrative roles management",
+        "Data visualization with interactive tables and advanced filters",
+        "Responsive and accessible design optimized for desktop and tablets"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Tendero",
+      "description": "Mobile POS application for sales and inventory management in small businesses.",
+      "image": "https://res.cloudinary.com/elmerjacobo/image/upload/v1761625731/My%20Portfolio/tendero_stfcji.png",
+      "category": "Mobile Application",
+      "featured": false,
+      "technologies": ["React Native", "TypeScript", "C#", "Microsoft SQL Server", "Redux Toolkit", "TanStack Query"],
+      "liveUrl": "https://tendero.app",
+      "githubUrl": null,
+      "highlights": [
+        "Sales registration with automatic calculation",
+        "Product and basic inventory management",
+        "JWT authentication with user roles"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Tlalocapp",
+      "description": "Mobile platform to supervise and manage the collection and distribution of water resources.",
+      "image": "https://res.cloudinary.com/elmerjacobo/image/upload/v1761665056/My%20Portfolio/tlalocapp_oiyye6.png",
+      "category": "Mobile Application",
+      "featured": false,
+      "technologies": ["React Native", "TypeScript", "Laravel", "PostgreSQL", "Redux Toolkit", "TanStack Query"],
+      "liveUrl": "https://admin.tlalocapp.com/",
+      "githubUrl": null,
+      "highlights": [
+        "User and collection points registration",
+        "Consumption and measurements history",
+        "Operational reports and administrative panel"
+      ]
+    }
+  ]
+}

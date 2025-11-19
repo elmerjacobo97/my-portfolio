@@ -1,7 +1,8 @@
 import { useNavigate } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Code, Rocket } from 'lucide-react';
+import { Code, ArrowRight } from 'lucide-react';
 import { ProjectCard } from '@/components/project-card';
 import { useProjects } from '@/hooks/use-projects';
 import { ProjectCardSkeleton } from '@/components/project-card-skeleton';
@@ -9,6 +10,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/motion';
 
 export function ProjectsSection() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { data: projects, isLoading } = useProjects();
 
   return (
@@ -17,12 +19,12 @@ export function ProjectsSection() {
         <FadeIn>
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
-              <Code className="w-3 h-3 mr-1" />
-              Portafolio
+              <Code className="w-3 h-3 mr-1 text-primary" />
+              {t('projects.badge')}
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Proyectos destacados</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('projects.sectionTitle')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Una selección destacada de mis proyectos más impactantes y tecnológicamente avanzados
+              {t('projects.description')}
             </p>
           </div>
         </FadeIn>
@@ -49,8 +51,8 @@ export function ProjectsSection() {
           <FadeIn delay={0.5}>
             <div className="text-center mt-12">
               <Button type="button" size="lg" className="hover-lift" onClick={() => navigate({ to: '/projects' })}>
-                <Rocket className="w-5 h-5 mr-2" />
-                Ver todos los proyectos
+                  {t('projects.cta.viewAll')}
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </FadeIn>

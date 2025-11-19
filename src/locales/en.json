@@ -1,0 +1,440 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact",
+      "blog": "Blog"
+    },
+    "openMenu": "Open menu",
+    "menuTitle": "Navigation menu",
+    "menuDescription": "Navigate through the different sections of the website"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Elmer Jacobo",
+    "title1": "Full Stack",
+    "title2": "Developer",
+    "description": "I create <strong>digital experiences</strong> that unite design and development to turn ideas into efficient and attractive products.",
+    "status": "Available for new projects",
+    "cta": {
+      "viewProjects": "View projects",
+      "resume": "Resume",
+      "viewPdf": "View PDF",
+      "downloadPdf": "Download PDF"
+    },
+    "stats": {
+      "years": "Years",
+      "projects": "Projects"
+    },
+    "scroll": "Scroll",
+    "techStack": ["React", "React Native", "TypeScript", "Node.js", "PostgreSQL"]
+  },
+  "services": {
+    "badge": "Services",
+    "title": "What I do",
+    "subtitle": "Specialized in creating digital solutions that combine functionality, performance and modern aesthetics",
+    "items": [
+      {
+        "title": "Frontend Development",
+        "description": "Modern and responsive interfaces",
+        "content": "I create exceptional user experiences with the most advanced technologies",
+        "skills": ["React", "TypeScript", "Next.js"]
+      },
+      {
+        "title": "Backend Development",
+        "description": "Robust and scalable APIs",
+        "content": "Solid architectures that support high-demand applications",
+        "skills": ["Node.js", "Python", "PostgreSQL"]
+      },
+      {
+        "title": "Optimization & UX",
+        "description": "Fast, intuitive and accessible experience",
+        "content": "I optimize every detail to achieve maximum speed and usability",
+        "skills": ["SEO", "Web Vitals", "A11y"]
+      }
+    ]
+  },
+  "projects": {
+    "badge": "Portfolio",
+    "title": "My <gradient>Projects</gradient>",
+    "sectionTitle": "Featured projects",
+    "subtitle": "A collection of projects that demonstrate my experience in full stack development, from web applications to mobile solutions and SaaS platforms.",
+    "description": "A featured selection of my most impactful and technologically advanced projects",
+    "allProjects": "Complete portfolio",
+    "projectsCount": "{{count}} project{{s}} showcasing my experience and technical skills",
+    "filters": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile",
+      "fullstack": "Full Stack"
+    },
+    "stats": {
+      "projects": "Projects",
+      "technologies": "Technologies",
+      "users": "Users",
+      "satisfaction": "Satisfaction"
+    },
+    "viewProject": "View project",
+    "viewCode": "View code",
+    "featured": "Featured",
+    "loading": "Loading projects...",
+    "error": "Error loading projects",
+    "errorMessage": "{{message}}",
+    "retry": "Retry",
+    "noProjects": "No projects available",
+    "noProjectsMessage": "Projects will be displayed here when available",
+    "cta": {
+      "title": "Do you like what you <gradient>see?</gradient>",
+      "subtitle": "Every project is an opportunity to create something extraordinary. Let's talk about your next idea.",
+      "startProject": "Start project",
+      "viewGithub": "View on GitHub",
+      "viewAll": "View all projects"
+    }
+  },
+  "contact": {
+    "badge": "Let's collaborate",
+    "title": "Have a project <gradient>in mind?</gradient>",
+    "subtitle": "I would love to collaborate with you to create something amazing. Let's transform your vision into an exceptional digital reality.",
+    "cta": {
+      "talk": "Let's talk",
+      "viewProfile": "View my profile"
+    },
+    "form": {
+      "title": "Send me a message",
+      "description": "Tell me about your project and I'll contact you as soon as possible with a detailed proposal.",
+      "name": "Name *",
+      "namePlaceholder": "Your name",
+      "nameDescription": "Please enter your name.",
+      "email": "Email *",
+      "emailPlaceholder": "your@email.com",
+      "emailDescription": "Please enter your email.",
+      "subject": "Subject *",
+      "subjectPlaceholder": "Subject",
+      "subjectDescription": "E.g.: Inquiry about a web project",
+      "projectType": "Project type",
+      "projectTypePlaceholder": "Select a project type",
+      "projectTypeDescription": "Please select a project type.",
+      "message": "Message *",
+      "messagePlaceholder": "Tell me about your project, goals, timeline and estimated budget...",
+      "messageDescription": "E.g.: I need a website for my business",
+      "send": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent!",
+      "successDescription": "Thank you for writing! I'll get in touch with you very soon.",
+      "error": "Error sending",
+      "errorDescription": "There was a problem sending your message. Please try again or contact me directly.",
+      "validation": {
+        "nameRequired": "Name is required",
+        "nameMin": "Name must be at least 2 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email",
+        "subjectRequired": "Subject is required",
+        "subjectMin": "Subject must be at least 15 characters",
+        "messageRequired": "Message is required",
+        "messageMin": "Message must be at least 20 characters"
+      }
+    },
+    "info": {
+      "title": "Contact information",
+      "description": "Prefer direct contact? Here are all the ways to find me.",
+      "email": "Email",
+      "emailDescription": "I respond in less than 24 hours",
+      "phone": "Phone",
+      "phoneDescription": "Mon - Fri, 9:00 AM - 6:00 PM",
+      "location": "Location",
+      "locationDescription": "Available for remote work"
+    },
+    "promise": {
+      "response": "Response in 24h",
+      "consultation": "Free consultation",
+      "proposal": "Personalized proposal"
+    },
+    "projectTypes": [
+      "Web Development",
+      "Mobile Application",
+      "E-commerce",
+      "SaaS/Dashboard",
+      "API/Backend",
+      "Consulting",
+      "Other"
+    ],
+    "faq": {
+      "badge": "FAQ",
+      "title": "Frequently asked questions",
+      "subtitle": "Answers to the most common questions about my work process",
+      "items": [
+        {
+          "q": "How long does it take to develop a project?",
+          "a": "It depends on the project's complexity. A simple website can take 2-4 weeks, while a complex application can take 2-6 months. I'll give you a detailed timeline after evaluating your project."
+        },
+        {
+          "q": "Do you work with international clients?",
+          "a": "I work with clients from all over the world, but my primary communication is in Spanish. If your team speaks Spanish, I'll be happy to collaborate and coordinate schedules across different time zones."
+        },
+        {
+          "q": "Do you offer post-launch maintenance?",
+          "a": "Yes, I offer different maintenance plans that include security updates, performance optimizations, and new features according to your needs."
+        },
+        {
+          "q": "What is your preferred tech stack?",
+          "a": "I mainly work with React/Next.js for frontend, Node.js/NestJS or PHP/Laravel for backend, and PostgreSQL or MySQL for databases. However, I adapt to the specific needs of each project."
+        }
+      ]
+    },
+    "ctaSection": {
+      "title": "Ready to <gradient>start?</gradient>",
+      "subtitle": "It doesn't matter if your idea is in the conceptual stage or you already have detailed specifications. We can work together to make it a reality.",
+      "whatsapp": "Contact via WhatsApp",
+      "email": "Send email"
+    }
+  },
+  "about": {
+    "badge": "About me",
+    "title": "Building the <gradient>digital future</gradient>",
+    "subtitle": "I'm a full stack developer passionate about creating digital experiences that make a difference. With over 4 years of experience, I combine creativity and technology to solve complex problems.",
+    "quickInfo": {
+      "location": "Trujillo, Perú",
+      "experience": "4+ years experience",
+      "availability": "Available for projects",
+      "teamwork": "Team player"
+    },
+    "cta": {
+      "contact": "Contact me",
+      "resume": "Resume",
+      "viewPdf": "View PDF",
+      "downloadPdf": "Download PDF"
+    },
+    "skills": {
+      "badge": "Skills",
+      "title": "Technologies and tools",
+      "subtitle": "My current tech stack, organized by categories",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "database": "Database",
+        "devops": "DevOps"
+      },
+      "skillsData": {
+        "React": {
+          "description": "JavaScript library for building interactive user interfaces with reusable components and efficient state management.",
+          "experience": "4+ years"
+        },
+        "Next.js": {
+          "description": "React framework for building fast web applications with hybrid rendering (SSR/SSG), optimized routes and excellent performance.",
+          "experience": "3+ years"
+        },
+        "Astro": {
+          "description": "Modern framework for ultra-fast websites with islands architecture and optimized static content.",
+          "experience": "2+ years"
+        },
+        "TypeScript": {
+          "description": "JavaScript superset with static typing that allows writing safer, more robust and maintainable code.",
+          "experience": "3+ years"
+        },
+        "Tailwind CSS": {
+          "description": "Utility-first CSS framework for creating modern and responsive designs quickly without leaving HTML.",
+          "experience": "2+ years"
+        },
+        "Node.js": {
+          "description": "Server-side JavaScript runtime environment for building fast and scalable backend applications.",
+          "experience": "3+ years"
+        },
+        "Express": {
+          "description": "Minimalist and flexible framework for Node.js, ideal for creating RESTful APIs and web applications quickly.",
+          "experience": "3+ years"
+        },
+        "NestJS": {
+          "description": "Framework for Node.js with modular architecture and native TypeScript support, ideal for scalable and maintainable APIs.",
+          "experience": "2+ years"
+        },
+        "PHP": {
+          "description": "Server-side programming language, widely used for dynamic web development and enterprise applications.",
+          "experience": "2+ years"
+        },
+        "Laravel": {
+          "description": "Modern and elegant PHP framework with expressive syntax, ideal for developing robust and scalable web applications.",
+          "experience": "2+ years"
+        },
+        "PostgreSQL": {
+          "description": "Advanced open-source relational database system with powerful performance and reliability features.",
+          "experience": "3+ years"
+        },
+        "MySQL": {
+          "description": "Open-source relational database management system, widely used for high-traffic web applications.",
+          "experience": "2+ years"
+        },
+        "MongoDB": {
+          "description": "Document-oriented NoSQL database, flexible and scalable, ideal for modern applications with unstructured data.",
+          "experience": "2+ years"
+        },
+        "SQLite": {
+          "description": "Lightweight embedded relational database, ideal for mobile and desktop applications without needing a dedicated server.",
+          "experience": "2+ years"
+        },
+        "Docker": {
+          "description": "Container platform that allows packaging applications with all their dependencies for consistent deployment.",
+          "experience": "2+ years"
+        },
+        "Google Cloud": {
+          "description": "Cloud services platform with scalable infrastructure, storage and enterprise computing solutions.",
+          "experience": "1+ year"
+        },
+        "Git": {
+          "description": "Distributed version control system for tracking code changes and facilitating team collaboration.",
+          "experience": "4+ years"
+        }
+      }
+    },
+    "experience": {
+      "badge": "Experience",
+      "title": "My professional journey",
+      "subtitle": "A journey through my evolution as a developer and the projects that have marked my career",
+      "achievements": "Main achievements:",
+      "technologies": "Technologies used:",
+      "items": [
+        {
+          "title": "Full Stack Developer",
+          "company": "ABEHA",
+          "period": "2023 - Present",
+          "description": "Development of web and mobile applications, creation of APIs with Laravel, integration with external services and construction of modern and responsive interfaces.",
+          "achievements": [
+            "Design and development of administrative dashboards for internal management",
+            "Creation and maintenance of REST APIs with Laravel for production products",
+            "Implementation of complete authentication, registration and user management flows",
+            "Visual and performance optimization using Tailwind CSS and UI/UX best practices",
+            "Participation in technical documentation of modules and components"
+          ],
+          "technologies": [
+            "React",
+            "Next.js",
+            "React Native",
+            "TypeScript",
+            "Vite",
+            "TanStack (Query, Router, Table)",
+            "Laravel",
+            "PostgreSQL",
+            "Tailwind CSS",
+            "REST APIs",
+            "Google Cloud"
+          ]
+        },
+        {
+          "title": "Full Stack Developer – Freelancer",
+          "project": "Service Management Platform",
+          "period": "2022 - 2023",
+          "description": "I developed a complete web platform for customer, service and technical support management, integrating a robust backend with a modern and easy-to-use interface.",
+          "achievements": [
+            "Creation of a secure authentication system with roles and permissions",
+            "Design of administrative dashboard for activity tracking",
+            "Implementation of complete CRUDs for users, services and support tickets",
+            "Production deployment with database integration and activity logs"
+          ],
+          "technologies": [
+            "React",
+            "TypeScript",
+            "Laravel",
+            "PostgreSQL",
+            "Bootstrap",
+            "Sass",
+            "REST APIs",
+            "Vercel"
+          ]
+        }
+      ]
+    },
+    "education": {
+      "badge": "Education",
+      "title": "Beyond the code",
+      "subtitle": "Continuous learning that drives my technical and creative development",
+      "items": [
+        {
+          "degree": "Self-Taught Higher Education in Web Development",
+          "institution": "Industry Resources",
+          "period": "2020 - Present",
+          "description": "I have developed advanced skills in web and mobile development in a self-taught manner, covering both Frontend and Backend, with a practical focus on real projects."
+        },
+        {
+          "degree": "Practical Specialization in Modern Technologies",
+          "institution": "Udemy / Platzi / freeCodeCamp",
+          "period": "2020 - Present",
+          "description": "I have deepened my knowledge through courses and practical projects, working with modern frameworks and libraries, development best practices and agile methodologies."
+        }
+      ]
+    },
+    "interests": {
+      "badge": "Interests",
+      "title": "Beyond the code",
+      "subtitle": "The passions that inspire me and keep my creativity in constant motion",
+      "items": [
+        {
+          "name": "Technology",
+          "description": "Always learning new tools"
+        },
+        {
+          "name": "Photography",
+          "description": "Everyday moments, special memories"
+        },
+        {
+          "name": "Coffee",
+          "description": "Coffee while coding, the perfect combo"
+        },
+        {
+          "name": "Travel",
+          "description": "Discovering new places whenever I can"
+        }
+      ]
+    },
+    "ctaSection": {
+      "title": "Let's work <gradient>together?</gradient>",
+      "subtitle": "I'm always looking for new challenges and opportunities to create something extraordinary.",
+      "talk": "Let's talk",
+      "linkedin": "View my LinkedIn"
+    },
+    "github": {
+      "title": "GitHub Activity",
+      "description": "My most recent and featured repositories",
+      "loading": "Loading activity...",
+      "error": "Error loading GitHub activity",
+      "noRepos": "No repositories available"
+    }
+  },
+  "footer": {
+    "description": "Full Stack Developer passionate about creating exceptional digital experiences.",
+    "copyright": "© {{year}} Elmer Jacobo. All rights reserved.",
+    "madeWith": "Made with ❤️ using React & TailwindCSS",
+    "links": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact",
+      "social": "Social media"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "close": "Close",
+    "open": "Open",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "download": "Download",
+    "share": "Share",
+    "copy": "Copy",
+    "copied": "Copied",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "readMore": "Read more",
+    "showLess": "Show less"
+  }
+}

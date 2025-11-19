@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { type LucideIcon } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { socialLinks } from '@/constants/navigation';
@@ -17,6 +18,8 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ navigation, onClose }: MobileMenuProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col h-full">
       <nav className="flex flex-col space-y-1 mt-12">
@@ -37,7 +40,7 @@ export function MobileMenu({ navigation, onClose }: MobileMenuProps) {
                 }}
               >
                 <Icon className="w-5 h-5" />
-                <span className="text-base">{item.name}</span>
+                <span className="text-base">{t(item.name)}</span>
               </a>
             );
           }
@@ -51,7 +54,7 @@ export function MobileMenu({ navigation, onClose }: MobileMenuProps) {
               onClick={onClose}
             >
               <Icon className="w-5 h-5" />
-              <span className="text-base">{item.name}</span>
+              <span className="text-base">{t(item.name)}</span>
             </Link>
           );
         })}
@@ -61,7 +64,7 @@ export function MobileMenu({ navigation, onClose }: MobileMenuProps) {
 
       {/* Mobile Social Links */}
       <div className="space-y-3">
-        <p className="text-sm font-medium text-muted-foreground px-3">Redes sociales</p>
+        <p className="text-sm font-medium text-muted-foreground px-3">{t('footer.links.social', 'Redes sociales')}</p>
         <div className="flex flex-wrap gap-3 px-3">
           {socialLinks.map((social) => (
             <a

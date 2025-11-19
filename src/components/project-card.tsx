@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -13,6 +14,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, featured = false, className = '' }: ProjectCardProps) {
+  const { t } = useTranslation();
   const maxTechBadges = featured ? 6 : 4;
   const showHighlights = featured && project.highlights.length > 0;
   const remainingTechs = project.technologies.slice(maxTechBadges);
@@ -37,7 +39,7 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
           {project.featured && (
             <Badge variant="default" className="text-xs shadow-lg">
               <Star className="w-3 h-3 mr-1 fill-current" />
-              Destacado
+              {t('projects.featured')}
             </Badge>
           )}
         </div>
@@ -110,7 +112,7 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
                 onClick={() => trackLinkClick(project.liveUrl!, project.title)}
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
-                Ver proyecto
+                {t('projects.viewProject')}
               </a>
             </Button>
           )}
@@ -123,7 +125,7 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
                 onClick={() => trackLinkClick(project.githubUrl!, `${project.title} - GitHub`)}
               >
                 <Github className="w-4 h-4" />
-                {!project.liveUrl && <span className="ml-2">Ver código</span>}
+                {!project.liveUrl && <span className="ml-2">{t('projects.viewCode')}</span>}
               </a>
             </Button>
           )}

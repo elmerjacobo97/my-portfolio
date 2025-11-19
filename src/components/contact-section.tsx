@@ -1,4 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Mail, ArrowRight } from 'lucide-react';
@@ -6,6 +7,7 @@ import { FadeIn } from '@/components/ui/motion';
 
 export function ContactSection() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <section className="py-20 bg-gradient-to-br from-muted/20 to-background relative overflow-hidden">
@@ -19,17 +21,19 @@ export function ContactSection() {
           <div className="space-y-8">
             <Badge variant="outline" className="mx-auto">
               <Mail className="w-3 h-3 mr-1 text-primary" />
-              Colaboremos
+              {t('contact.badge')}
             </Badge>
 
             <div className="space-y-4">
               <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-                ¿Tienes un proyecto{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">en mente?</span>
+                {t('contact.title').split('<gradient>')[0]}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                  {t('contact.title').split('<gradient>')[1].split('</gradient>')[0]}
+                </span>
+                {t('contact.title').split('</gradient>')[1]}
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Me encantaría colaborar contigo para crear algo increíble. Transformemos tu visión en una realidad digital
-                excepcional.
+                {t('contact.subtitle')}
               </p>
             </div>
 
@@ -37,7 +41,7 @@ export function ContactSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={() => navigate({ to: '/contact' })}>
                 <Mail className="w-5 h-5 mr-2 text-primary-foreground" />
-                Hablemos
+                {t('contact.cta.talk')}
               </Button>
               <Button
                 variant="outline"
@@ -45,7 +49,7 @@ export function ContactSection() {
                 className="text-lg px-8 py-6 hover-lift"
                 onClick={() => navigate({ to: '/about' })}
               >
-                Ver mi perfil
+                {t('contact.cta.viewProfile')}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>

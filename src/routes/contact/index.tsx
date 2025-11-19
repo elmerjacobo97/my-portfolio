@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import { typeschemaResolver } from '@hookform/resolvers/typeschema';
@@ -21,57 +22,50 @@ export const Route = createFileRoute('/contact/')({
   component: ContactComponent,
 });
 
-const contactMethods = [
-  {
-    icon: Mail,
-    title: 'Email',
-    value: 'contacto@elmerjacobo.dev',
-    description: 'Respondo en menos de 24 horas',
-    link: 'mailto:contacto@elmerjacobo.dev',
-    external: false,
-    color: 'text-primary',
-  },
-  {
-    icon: Phone,
-    title: 'Teléfono',
-    value: '+51 92 7347 691',
-    description: 'Lun - Vie, 9:00 AM - 6:00 PM',
-    link: 'tel:+51927347691',
-    external: false,
-    color: 'text-primary',
-  },
-  {
-    icon: MapPin,
-    title: 'Ubicación',
-    value: 'Trujillo, Perú',
-    description: 'Disponible para trabajo remoto',
-    link: 'https://www.google.com/maps?q=Trujillo,+Perú',
-    external: true,
-    color: 'text-primary',
-  },
-];
-
-const projectTypes = [
-  'Desarrollo Web',
-  'Aplicación Móvil',
-  'E-commerce',
-  'SaaS/Dashboard',
-  'API/Backend',
-  'Consultoría',
-  'Otro',
-];
-
-const ContactSchema = z.object({
-  name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
-  email: z.string().min(1, 'El email es requerido').email('El email no es válido'),
-  subject: z.string().min(15, 'El asunto debe tener al menos 15 caracteres'),
-  message: z.string().min(20, 'El mensaje debe tener al menos 20 caracteres'),
-  projectType: z.string().optional(),
-});
-
 function ContactComponent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
+
+  const contactMethods = [
+    {
+      icon: Mail,
+      title: t('contact.info.email'),
+      value: 'contacto@elmerjacobo.dev',
+      description: t('contact.info.emailDescription'),
+      link: 'mailto:contacto@elmerjacobo.dev',
+      external: false,
+      color: 'text-primary',
+    },
+    {
+      icon: Phone,
+      title: t('contact.info.phone'),
+      value: '+51 92 7347 691',
+      description: t('contact.info.phoneDescription'),
+      link: 'tel:+51927347691',
+      external: false,
+      color: 'text-primary',
+    },
+    {
+      icon: MapPin,
+      title: t('contact.info.location'),
+      value: 'Trujillo, Perú',
+      description: t('contact.info.locationDescription'),
+      link: 'https://www.google.com/maps?q=Trujillo,+Perú',
+      external: true,
+      color: 'text-primary',
+    },
+  ];
+
+  const projectTypes = t('contact.projectTypes', { returnObjects: true }) as string[];
+
+  const ContactSchema = z.object({
+    name: z.string().min(2, t('contact.form.validation.nameMin')),
+    email: z.string().min(1, t('contact.form.validation.emailRequired')).email(t('contact.form.validation.emailInvalid')),
+    subject: z.string().min(15, t('contact.form.validation.subjectMin')),
+    message: z.string().min(20, t('contact.form.validation.messageMin')),
+    projectType: z.string().optional(),
+  });
 
   const form = useForm<z.infer<typeof ContactSchema>>({
     resolver: typeschemaResolver(ContactSchema),
@@ -118,8 +112,8 @@ function ContactComponent() {
         });
 
         toast({
-          title: '¡Mensaje enviado!',
-          description: '¡Gracias por escribirme! Me pondré en contacto contigo muy pronto.',
+          title: t('contact.form.success'),
+          description: t('contact.form.successDescription'),
         });
       }
     } catch {
@@ -131,8 +125,8 @@ function ContactComponent() {
 
       toast({
         variant: 'destructive',
-        title: 'Error al enviar',
-        description: 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctame directamente.',
+        title: t('contact.form.error'),
+        description: t('contact.form.errorDescription'),
       });
     } finally {
       setIsSubmitting(false);
@@ -148,19 +142,19 @@ function ContactComponent() {
             <div className="text-center space-y-6 lg:space-y-8">
               <Badge variant="outline" className="mx-auto">
                 <MessageCircle className="w-3 h-3 mr-1 text-primary" />
-                Contacto
+                {t('contact.badge')}
               </Badge>
 
               <div className="space-y-4 md:space-y-6">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  Hablemos sobre tu{' '}
+                  {t('contact.title').split('<gradient>')[0]}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                    próximo proyecto
+                    {t('contact.title').split('<gradient>')[1]?.split('</gradient>')[0]}
                   </span>
+                  {t('contact.title').split('</gradient>')[1]}
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-                  ¿Tienes una idea increíble? Me encantaría escucharla y ayudarte a convertirla en realidad. Trabajemos
-                  juntos para crear algo extraordinario.
+                  {t('contact.subtitle')}
                 </p>
               </div>
 
@@ -168,15 +162,15 @@ function ContactComponent() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4">
                 <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
                   <Clock className="w-4 h-4 text-primary" />
-                  <span className="text-sm">Respuesta en 24h</span>
+                  <span className="text-sm">{t('contact.promise.response')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
                   <Coffee className="w-4 h-4 text-primary" />
-                  <span className="text-sm">Consulta gratuita</span>
+                  <span className="text-sm">{t('contact.promise.consultation')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground w-48 sm:w-auto">
                   <Briefcase className="w-4 h-4 text-primary" />
-                  <span className="text-sm">Propuesta personalizada</span>
+                  <span className="text-sm">{t('contact.promise.proposal')}</span>
                 </div>
               </div>
             </div>
@@ -191,9 +185,9 @@ function ContactComponent() {
             {/* Contact Form */}
             <FadeIn direction="right" className="space-y-6 md:space-y-8 order-2 md:order-1">
               <div>
-                <h2 className="text-2xl lg:text-3xl font-bold mb-4">Envíame un mensaje</h2>
+                <h2 className="text-2xl lg:text-3xl font-bold mb-4">{t('contact.form.title')}</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Cuéntame sobre tu proyecto y te contactaré lo antes posible con una propuesta detallada.
+                  {t('contact.form.description')}
                 </p>
               </div>
 
@@ -207,11 +201,11 @@ function ContactComponent() {
                           name="name"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Nombre *</FormLabel>
+                              <FormLabel>{t('contact.form.name')}</FormLabel>
                               <FormControl>
-                                <Input type="text" placeholder="Tu nombre" className="w-full" {...field} />
+                                <Input type="text" placeholder={t('contact.form.namePlaceholder')} className="w-full" {...field} />
                               </FormControl>
-                              <FormDescription>Por favor, ingresa tu nombre.</FormDescription>
+                              <FormDescription>{t('contact.form.nameDescription')}</FormDescription>
                               <FormMessage />
                             </FormItem>
                           )}
@@ -221,11 +215,11 @@ function ContactComponent() {
                           name="email"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Email *</FormLabel>
+                              <FormLabel>{t('contact.form.email')}</FormLabel>
                               <FormControl>
-                                <Input type="email" placeholder="tu@email.com" className="w-full" {...field} />
+                                <Input type="email" placeholder={t('contact.form.emailPlaceholder')} className="w-full" {...field} />
                               </FormControl>
-                              <FormDescription>Por favor, ingresa tu email.</FormDescription>
+                              <FormDescription>{t('contact.form.emailDescription')}</FormDescription>
                               <FormMessage />
                             </FormItem>
                           )}
@@ -237,11 +231,11 @@ function ContactComponent() {
                         name="subject"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Asunto *</FormLabel>
+                            <FormLabel>{t('contact.form.subject')}</FormLabel>
                             <FormControl>
-                              <Input type="text" placeholder="Asunto" className="w-full" {...field} />
+                              <Input type="text" placeholder={t('contact.form.subjectPlaceholder')} className="w-full" {...field} />
                             </FormControl>
-                            <FormDescription>Ej: Consulta sobre un proyecto web</FormDescription>
+                            <FormDescription>{t('contact.form.subjectDescription')}</FormDescription>
                             <FormMessage />
                           </FormItem>
                         )}
@@ -252,14 +246,14 @@ function ContactComponent() {
                         name="projectType"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Tipo de proyecto</FormLabel>
+                            <FormLabel>{t('contact.form.projectType')}</FormLabel>
                             <Select
                               defaultValue={projectTypes[0]}
                               value={field.value}
                               onValueChange={(value) => field.onChange(value)}
                             >
                               <SelectTrigger className="h-10 w-full">
-                                <SelectValue placeholder="Selecciona un tipo de proyecto" />
+                                <SelectValue placeholder={t('contact.form.projectTypePlaceholder')} />
                               </SelectTrigger>
                               <SelectContent>
                                 {projectTypes.map((type) => (
@@ -268,7 +262,7 @@ function ContactComponent() {
                                   </SelectItem>
                                 ))}
                               </SelectContent>
-                              <FormDescription>Por favor, selecciona un tipo de proyecto.</FormDescription>
+                              <FormDescription>{t('contact.form.projectTypeDescription')}</FormDescription>
                               <FormMessage />
                             </Select>
                           </FormItem>
@@ -280,16 +274,16 @@ function ContactComponent() {
                         name="message"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Mensaje *</FormLabel>
+                            <FormLabel>{t('contact.form.message')}</FormLabel>
                             <FormControl>
                               <Textarea
                                 id="message"
-                                placeholder="Cuéntame sobre tu proyecto, objetivos, timeline y presupuesto estimado..."
+                                placeholder={t('contact.form.messagePlaceholder')}
                                 className="w-full"
                                 {...field}
                               />
                             </FormControl>
-                            <FormDescription>Ej: Necesito un sitio web para mi negocio</FormDescription>
+                            <FormDescription>{t('contact.form.messageDescription')}</FormDescription>
                             <FormMessage />
                           </FormItem>
                         )}
@@ -299,12 +293,12 @@ function ContactComponent() {
                         {isSubmitting ? (
                           <>
                             <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2" />
-                            Enviando...
+                            {t('contact.form.sending')}
                           </>
                         ) : (
                           <>
                             <Send className="w-5 h-5 mr-2 text-primary-foreground" />
-                            Enviar mensaje
+                            {t('contact.form.send')}
                           </>
                         )}
                       </Button>
@@ -317,9 +311,9 @@ function ContactComponent() {
             {/* Contact Information */}
             <FadeIn direction="left" className="space-y-6 lg:space-y-8 order-1 lg:order-2">
               <div>
-                <h2 className="text-2xl lg:text-3xl font-bold mb-4">Información de contacto</h2>
+                <h2 className="text-2xl lg:text-3xl font-bold mb-4">{t('contact.info.title')}</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  ¿Prefieres contacto directo? Aquí tienes todas las formas de encontrarme.
+                  {t('contact.info.description')}
                 </p>
               </div>
 
@@ -373,35 +367,18 @@ function ContactComponent() {
             <div className="text-center mb-12 lg:mb-16">
               <Badge variant="outline" className="mb-4">
                 <MessageCircle className="w-3 h-3 mr-1 text-primary" />
-                FAQ
+                {t('contact.faq.badge')}
               </Badge>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Preguntas frecuentes</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">{t('contact.faq.title')}</h2>
               <p className="text-base lg:text-lg text-muted-foreground">
-                Respuestas a las dudas más comunes sobre mi proceso de trabajo
+                {t('contact.faq.subtitle')}
               </p>
             </div>
           </FadeIn>
 
           {/* Mobile: Cards */}
           <StaggerContainer className="space-y-4 md:hidden" staggerDelay={0.1}>
-            {[
-              {
-                q: '¿Cuánto tiempo toma desarrollar un proyecto?',
-                a: 'Depende de la complejidad del proyecto. Un sitio web simple puede tomar 2-4 semanas, mientras que una aplicación compleja puede tomar 2-6 meses. Te daré un timeline detallado después de evaluar tu proyecto.',
-              },
-              {
-                q: '¿Trabajas con clientes internacionales?',
-                a: 'Trabajo con clientes de todo el mundo, pero mi comunicación principal es en español. Si tu equipo habla español, estaré encantado de colaborar y coordinar horarios en distintas zonas horarias.',
-              },
-              {
-                q: '¿Ofreces mantenimiento post-lanzamiento?',
-                a: 'Sí, ofrezco diferentes planes de mantenimiento que incluyen actualizaciones de seguridad, optimizaciones de rendimiento, y nuevas funcionalidades según tus necesidades.',
-              },
-              {
-                q: '¿Cuál es tu stack tecnológico preferido?',
-                a: 'Trabajo principalmente con React/Next.js para frontend, Node.js/NestJS o PHP/Laravel para backend, y PostgreSQL o MySQL para bases de datos. Sin embargo, me adapto a las necesidades específicas de cada proyecto.',
-              },
-            ].map((faq, index) => (
+            {(t('contact.faq.items', { returnObjects: true }) as Array<{ q: string; a: string }>).map((faq, index) => (
               <StaggerItem key={index}>
                 <Card className="shadow-sm bg-card/50 overflow-hidden">
                   <CardContent>
@@ -416,24 +393,7 @@ function ContactComponent() {
           {/* Tablet/Desktop: Accordion */}
           <FadeIn delay={0.2}>
             <Accordion type="single" collapsible className="hidden md:block">
-            {[
-              {
-                q: '¿Cuánto tiempo toma desarrollar un proyecto?',
-                a: 'Depende de la complejidad del proyecto. Un sitio web simple puede tomar 2-4 semanas, mientras que una aplicación compleja puede tomar 2-6 meses. Te daré un timeline detallado después de evaluar tu proyecto.',
-              },
-              {
-                q: '¿Trabajas con clientes internacionales?',
-                a: 'Trabajo con clientes de todo el mundo, pero mi comunicación principal es en español. Si tu equipo habla español, estaré encantado de colaborar y coordinar horarios en distintas zonas horarias.',
-              },
-              {
-                q: '¿Ofreces mantenimiento post-lanzamiento?',
-                a: 'Sí, ofrezco diferentes planes de mantenimiento que incluyen actualizaciones de seguridad, optimizaciones de rendimiento, y nuevas funcionalidades según tus necesidades.',
-              },
-              {
-                q: '¿Cuál es tu stack tecnológico preferido?',
-                a: 'Trabajo principalmente con React/Next.js para frontend, Node.js/NestJS o PHP/Laravel para backend, y PostgreSQL o MySQL para bases de datos. Sin embargo, me adapto a las necesidades específicas de cada proyecto.',
-              },
-            ].map((faq, index) => (
+            {(t('contact.faq.items', { returnObjects: true }) as Array<{ q: string; a: string }>).map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
                 <AccordionTrigger className="text-left hover:no-underline py-4 lg:py-6">
                   <h3 className="font-semibold text-base lg:text-lg pr-4">{faq.q}</h3>
@@ -455,12 +415,14 @@ function ContactComponent() {
             <div className="space-y-6 lg:space-y-8">
               <div className="space-y-4 lg:space-y-6">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                  ¿Listo para{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">empezar?</span>
+                  {t('contact.ctaSection.title').split('<gradient>')[0]}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    {t('contact.ctaSection.title').split('<gradient>')[1]?.split('</gradient>')[0]}
+                  </span>
+                  {t('contact.ctaSection.title').split('</gradient>')[1]}
                 </h2>
                 <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-                  No importa si tu idea está en etapa conceptual o ya tienes especificaciones detalladas. Podemos trabajar
-                  juntos para hacerla realidad.
+                  {t('contact.ctaSection.subtitle')}
                 </p>
               </div>
 
@@ -472,7 +434,7 @@ function ContactComponent() {
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-primary-foreground" />
-                    Contactar por WhatsApp
+                    {t('contact.ctaSection.whatsapp')}
                   </a>
                 </Button>
                 <Button
@@ -483,7 +445,7 @@ function ContactComponent() {
                 >
                   <a href="mailto:contacto@elmerjacobo.dev?subject=Hola!%20Vi%20tu%20portafolio&body=Me%20gustaría%20contactar%20contigo...">
                     <Mail className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
-                    Enviar email
+                    {t('contact.ctaSection.email')}
                   </a>
                 </Button>
               </div>

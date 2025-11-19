@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ProjectCard } from '@/components/project-card';
@@ -16,6 +17,7 @@ export const Route = createFileRoute('/projects/')({
 
 function ProjectsComponent() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { data: projects, isLoading, error, refetch } = useProjects();
 
   const totalUsers = projects?.statistics.totalUsers || 0;
@@ -31,17 +33,19 @@ function ProjectsComponent() {
             <div className="text-center space-y-6 lg:space-y-8">
               <Badge variant="outline" className="mx-auto">
                 <Code className="w-3 h-3 mr-1 text-primary" />
-                Portafolio
+                {t('projects.badge')}
               </Badge>
 
               <div className="space-y-4 lg:space-y-6">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  Mis{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Proyectos</span>
+                  {t('projects.title').split('<gradient>')[0]}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    {t('projects.title').split('<gradient>')[1]?.split('</gradient>')[0] || t('projects.title')}
+                  </span>
+                  {t('projects.title').split('</gradient>')[1] || ''}
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-                  Una colección de proyectos que demuestran mi experiencia en desarrollo full stack, desde aplicaciones
-                  web hasta soluciones móviles y plataformas SaaS.
+                  {t('projects.subtitle')}
                 </p>
               </div>
 
@@ -52,7 +56,7 @@ function ProjectsComponent() {
                     <NumberFlow value={projects?.projects.length || 0} />
                     <span>+</span>
                   </div>
-                  <div className="text-sm text-muted-foreground">Proyectos</div>
+                  <div className="text-sm text-muted-foreground">{t('projects.stats.projects')}</div>
                 </div>
 
                 <div className="text-center">
@@ -60,7 +64,7 @@ function ProjectsComponent() {
                     <NumberFlow value={projects?.statistics.totalTechnologies || 0} />
                     <span>+</span>
                   </div>
-                  <div className="text-sm text-muted-foreground">Tecnologías</div>
+                  <div className="text-sm text-muted-foreground">{t('projects.stats.technologies')}</div>
                 </div>
 
                 <div className="text-center">
@@ -68,7 +72,7 @@ function ProjectsComponent() {
                     <NumberFlow value={shortValue} />
                     <span>{suffix}</span>
                   </div>
-                  <div className="text-sm text-muted-foreground">Usuarios</div>
+                  <div className="text-sm text-muted-foreground">{t('projects.stats.users')}</div>
                 </div>
 
                 <div className="text-center">
@@ -76,7 +80,7 @@ function ProjectsComponent() {
                     <NumberFlow value={projects?.statistics.satisfactionRate || 0} />
                     <span>%</span>
                   </div>
-                  <div className="text-sm text-muted-foreground">Satisfacción</div>
+                  <div className="text-sm text-muted-foreground">{t('projects.stats.satisfaction')}</div>
                 </div>
               </div>
             </div>
@@ -102,10 +106,10 @@ function ProjectsComponent() {
               <div className="flex flex-col items-center justify-center py-20 space-y-4">
                 <AlertCircle className="w-12 h-12 text-destructive" />
                 <div className="text-center space-y-2">
-                  <p className="text-lg font-semibold">Error al cargar proyectos</p>
+                  <p className="text-lg font-semibold">{t('projects.error')}</p>
                   <p className="text-muted-foreground">{error.message}</p>
                   <Button onClick={() => refetch()} variant="outline" className="mt-4">
-                    Reintentar
+                    {t('projects.retry')}
                   </Button>
                 </div>
               </div>
@@ -118,12 +122,14 @@ function ProjectsComponent() {
                   <div className="text-center max-w-3xl mx-auto">
                     <Badge variant="outline" className="mb-4">
                       <Code className="w-3 h-3 mr-1 text-primary" />
-                      Portafolio completo
+                      {t('projects.allProjects')}
                     </Badge>
-                    <h2 className="text-2xl lg:text-3xl font-bold mb-4">Todos los proyectos</h2>
+                    <h2 className="text-2xl lg:text-3xl font-bold mb-4">{t('projects.allProjects')}</h2>
                     <p className="text-muted-foreground px-4">
-                      {projects.projects.length} proyecto{projects.projects.length !== 1 ? 's' : ''} que muestran mi
-                      experiencia y habilidades técnicas
+                      {t('projects.projectsCount', { 
+                        count: projects.projects.length,
+                        s: projects.projects.length !== 1 ? 's' : ''
+                      })}
                     </p>
                   </div>
                 </FadeIn>
@@ -143,8 +149,8 @@ function ProjectsComponent() {
               <div className="flex flex-col items-center justify-center py-20 space-y-4">
                 <Code className="w-12 h-12 text-muted-foreground" />
                 <div className="text-center space-y-2">
-                  <p className="text-lg font-semibold">No hay proyectos disponibles</p>
-                  <p className="text-muted-foreground">Los proyectos se mostrarán aquí cuando estén disponibles</p>
+                  <p className="text-lg font-semibold">{t('projects.noProjects')}</p>
+                  <p className="text-muted-foreground">{t('projects.noProjectsMessage')}</p>
                 </div>
               </div>
             )}
@@ -159,11 +165,14 @@ function ProjectsComponent() {
             <div className="space-y-6 lg:space-y-8">
               <div className="space-y-4 lg:space-y-6">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                  ¿Te gusta lo que{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">ves?</span>
+                  {t('projects.cta.title').split('<gradient>')[0]}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    {t('projects.cta.title').split('<gradient>')[1]?.split('</gradient>')[0]}
+                  </span>
+                  {t('projects.cta.title').split('</gradient>')[1]}
                 </h2>
                 <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-                  Cada proyecto es una oportunidad para crear algo extraordinario. Hablemos sobre tu próxima idea.
+                  {t('projects.cta.subtitle')}
                 </p>
               </div>
 
@@ -174,7 +183,7 @@ function ProjectsComponent() {
                   onClick={() => navigate({ to: '/contact' })}
                 >
                   <Zap className="w-4 lg:w-5 h-4 lg:h-5 mr-2 text-primary-foreground" />
-                  Iniciar proyecto
+                  {t('projects.cta.startProject')}
                 </Button>
                 <Button
                   asChild
@@ -191,7 +200,7 @@ function ProjectsComponent() {
                     }
                   >
                     <Code className="w-4 lg:w-5 h-4 lg:h-5 mr-2" />
-                    Ver en GitHub
+                    {t('projects.cta.viewGithub')}
                   </a>
                 </Button>
               </div>

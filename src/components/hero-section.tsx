@@ -1,4 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -17,6 +18,7 @@ import avatar from '@/assets/images/avatar.webp';
 
 export function HeroSection() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <section className="min-h-dvh flex items-center justify-center relative overflow-hidden py-12 sm:py-16 lg:py-20">
@@ -91,7 +93,7 @@ export function HeroSection() {
             >
               <Status status="online" className="text-xs sm:text-sm px-4 py-1.5 shadow-lg">
                 <StatusIndicator />
-                <StatusLabel>Disponible para nuevos proyectos</StatusLabel>
+                <StatusLabel>{t('hero.status')}</StatusLabel>
               </Status>
             </motion.div>
 
@@ -104,31 +106,37 @@ export function HeroSection() {
             >
               <div className="space-y-3 sm:space-y-4">
                 <p className="block text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">
-                  <span className="text-muted-foreground">
-                    <motion.span
-                      animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                      style={{ display: 'inline-block', transformOrigin: '70% 70%' }}
-                    >
-                      👋
-                    </motion.span>{' '}
-                    Hola, soy
-                  </span>{' '}
-                  <span className="text-foreground/80">Elmer Jacobo</span>
+                    <span className="text-muted-foreground">
+                      <motion.span
+                        animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                        style={{ display: 'inline-block', transformOrigin: '70% 70%' }}
+                      >
+                        👋
+                      </motion.span>{' '}
+                      {t('hero.greeting')}
+                    </span>{' '}
+                    <span className="text-foreground/80">{t('hero.name')}</span>
                 </p>
                 <h1 className="font-black leading-[0.9]">
                   <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-glow">
-                    Full Stack
+                    {t('hero.title1')}
                   </span>
                   <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-accent via-primary to-accent bg-[length:200%_auto] animate-glow">
-                    Developer
+                    {t('hero.title2')}
                   </span>
                 </h1>
               </div>
 
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Creo <span className="text-primary font-semibold">experiencias digitales</span> que unen diseño y
-                desarrollo para convertir ideas en productos eficientes y atractivos.
+                {t('hero.description').split('<strong>').map((part, i) => 
+                  i === 0 ? part : (
+                    <span key={i}>
+                      <span className="text-primary font-semibold">{part.split('</strong>')[0]}</span>
+                      {part.split('</strong>')[1]}
+                    </span>
+                  )
+                )}
               </p>
             </motion.div>
 
@@ -139,7 +147,7 @@ export function HeroSection() {
               transition={{ delay: 0.4 }}
               className="flex flex-wrap gap-2 justify-center lg:justify-start"
             >
-              {['React', 'React Native', 'TypeScript', 'Node.js', 'PostgreSQL'].map((tech) => (
+              {(t('hero.techStack', { returnObjects: true }) as string[]).map((tech: string) => (
                 <Badge
                   key={tech}
                   variant="secondary"
@@ -163,7 +171,7 @@ export function HeroSection() {
                 onClick={() => navigate({ to: '/projects' })}
               >
                 <Rocket className="w-5 h-5 mr-2" />
-                Ver proyectos
+                {t('hero.cta.viewProjects')}
               </Button>
 
               <DropdownMenu>
@@ -174,7 +182,7 @@ export function HeroSection() {
                     className="text-base xs:text-lg px-8 py-6 hover-lift w-full xs:w-auto"
                   >
                     <FileText className="w-5 h-5 mr-2" />
-                    Currículum
+                    {t('hero.cta.resume')}
                     <ChevronDown className="w-4 h-4 ml-2" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -188,7 +196,7 @@ export function HeroSection() {
                       onClick={() => trackSelectContent('cv', 'view_pdf')}
                     >
                       <Eye className="w-4 h-4 mr-2" />
-                      Ver PDF
+                      {t('hero.cta.viewPdf')}
                     </a>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
@@ -199,7 +207,7 @@ export function HeroSection() {
                       onClick={() => trackDownload('Elmer-Jacobo-CV.pdf')}
                     >
                       <Download className="w-4 h-4 mr-2" />
-                      Descargar PDF
+                      {t('hero.cta.downloadPdf')}
                     </a>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -258,7 +266,7 @@ export function HeroSection() {
                 >
                   <div className="text-center">
                     <div className="text-xl sm:text-2xl font-bold text-primary">4+</div>
-                    <div className="text-[10px] sm:text-xs text-muted-foreground">Años</div>
+                    <div className="text-[10px] sm:text-xs text-muted-foreground">{t('hero.stats.years')}</div>
                   </div>
                 </motion.div>
 
@@ -269,7 +277,7 @@ export function HeroSection() {
                 >
                   <div className="text-center">
                     <div className="text-xl sm:text-2xl font-bold text-primary">15+</div>
-                    <div className="text-[10px] sm:text-xs text-muted-foreground">Proyectos</div>
+                    <div className="text-[10px] sm:text-xs text-muted-foreground">{t('hero.stats.projects')}</div>
                   </div>
                 </motion.div>
               </div>
@@ -290,7 +298,7 @@ export function HeroSection() {
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="flex flex-col items-center gap-2 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
         >
-          <span className="text-xs font-medium">Scroll</span>
+          <span className="text-xs font-medium">{t('hero.scroll')}</span>
           <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-2">
             <motion.div
               animate={{ y: [0, 12, 0] }}
