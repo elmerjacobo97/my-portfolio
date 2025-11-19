@@ -1,19 +1,13 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { type LucideIcon } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { socialLinks } from '@/constants/navigation';
+import { navigation, socialLinks } from '@/constants/navigation';
 import { trackLinkClick } from '@/lib/analytics';
 
-interface NavigationItem {
-  name: string;
-  href: string;
-  icon: LucideIcon;
-  external?: boolean;
-}
+type NavigationItem = typeof navigation[number];
 
 interface MobileMenuProps {
-  navigation: NavigationItem[];
+  navigation: ReadonlyArray<NavigationItem>;
   onClose: () => void;
 }
 
@@ -25,8 +19,9 @@ export function MobileMenu({ navigation, onClose }: MobileMenuProps) {
       <nav className="flex flex-col space-y-1 mt-12">
         {navigation.map((item) => {
           const Icon = item.icon;
+          const isExternal = 'external' in item && item.external;
 
-          if (item.external) {
+          if (isExternal) {
             return (
               <a
                 key={item.name}
@@ -48,13 +43,13 @@ export function MobileMenu({ navigation, onClose }: MobileMenuProps) {
           return (
             <Link
               key={item.name}
-              to={item.href}
+              to={item.href as Exclude<typeof item.href, 'https://blog.elmerjacobo.dev'>}
               className="flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors duration-200 [&.active]:text-primary [&.active]:font-medium p-3 rounded-lg hover:bg-muted/50"
               activeProps={{ className: 'text-primary font-medium bg-muted/50' }}
               onClick={onClose}
             >
               <Icon className="w-5 h-5" />
-              <span className="text-base">{t(item.name)}</span>
+              <span className="font-medium">{t(item.name)}</span>
             </Link>
           );
         })}

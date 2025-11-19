@@ -31,8 +31,9 @@ export function Header() {
           <nav className="hidden md:flex items-center space-x-1">
             {navigation.map((item) => {
               const Icon = item.icon;
+              const isExternal = 'external' in item && item.external;
 
-              if (item.external) {
+              if (isExternal) {
                 return (
                   <a
                     key={item.name}
@@ -52,7 +53,7 @@ export function Header() {
               return (
                 <Link
                   key={item.name}
-                  to={item.href}
+                  to={item.href as Exclude<typeof item.href, 'https://blog.elmerjacobo.dev'>}
                   className="relative flex items-center justify-center gap-2 px-4 py-2 text-muted-foreground hover:text-primary transition-colors duration-200 group"
                   activeProps={{
                     className: 'text-primary',

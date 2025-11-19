@@ -6,7 +6,7 @@ export const navigation = [
   { name: 'header.nav.projects', href: '/projects', icon: Code },
   { name: 'header.nav.contact', href: '/contact', icon: Mail },
   { name: 'header.nav.blog', href: 'https://blog.elmerjacobo.dev', icon: BookOpen, external: true },
-];
+] as const;
 
 export const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/elmerjacobo97', icon: Github },
