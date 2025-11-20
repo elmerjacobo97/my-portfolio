@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { m, useInView } from 'framer-motion';
 import { useRef, type ReactNode } from 'react';
 
 interface FadeInProps {
@@ -21,7 +21,7 @@ export function FadeIn({ children, direction = 'up', delay = 0, duration = 0.5, 
   };
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{
         opacity: 0,
@@ -44,7 +44,7 @@ export function FadeIn({ children, direction = 'up', delay = 0, duration = 0.5, 
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -59,7 +59,7 @@ export function StaggerContainer({ children, staggerDelay = 0.1, className }: St
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
@@ -73,7 +73,7 @@ export function StaggerContainer({ children, staggerDelay = 0.1, className }: St
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -84,7 +84,7 @@ interface StaggerItemProps {
 
 export function StaggerItem({ children, className }: StaggerItemProps) {
   return (
-    <motion.div
+    <m.div
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
@@ -96,7 +96,7 @@ export function StaggerItem({ children, className }: StaggerItemProps) {
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -111,7 +111,7 @@ export function ScaleIn({ children, delay = 0, className }: ScaleInProps) {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -123,6 +123,6 @@ export function ScaleIn({ children, delay = 0, className }: ScaleInProps) {
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

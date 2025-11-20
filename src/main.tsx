@@ -7,6 +7,7 @@ import { queryClient } from '@/lib/query-client';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { domAnimation, LazyMotion } from 'framer-motion';
 import { initGA } from '@/lib/analytics';
 import '@/lib/i18n';
 import './index.css';
@@ -31,11 +32,15 @@ declare module '@tanstack/react-router' {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="light" storageKey="my-portfolio-theme">
-        <RouterProvider router={router} />
-        <Analytics />
-        <SpeedInsights />
-      </ThemeProvider>
+      {/* 2. ENVUELVE TU APP CON ESTO 👇 */}
+      <LazyMotion features={domAnimation}>
+        <ThemeProvider defaultTheme="light" storageKey="my-portfolio-theme">
+          <RouterProvider router={router} />
+          <Analytics />
+          <SpeedInsights />
+        </ThemeProvider>
+      </LazyMotion>
+      {/* -------------------------------- */}
     </QueryClientProvider>
   </StrictMode>
 );

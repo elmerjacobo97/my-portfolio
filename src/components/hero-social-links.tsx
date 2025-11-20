@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail } from 'lucide-react';
@@ -6,7 +6,7 @@ import { trackEvent } from '@/lib/analytics';
 
 export function HeroSocialLinks() {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
@@ -80,6 +80,6 @@ export function HeroSocialLinks() {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-    </motion.div>
+    </m.div>
   );
 }

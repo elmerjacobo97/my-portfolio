@@ -1,6 +1,6 @@
 import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -25,7 +25,7 @@ export function HeroSection() {
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30">
         {/* Main gradient orbs */}
-        <motion.div
+        <m.div
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -37,7 +37,7 @@ export function HeroSection() {
           }}
           className="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-primary/30 rounded-full blur-3xl"
         />
-        <motion.div
+        <m.div
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.4, 0.6, 0.4],
@@ -49,7 +49,7 @@ export function HeroSection() {
           }}
           className="absolute bottom-0 right-1/4 w-[35rem] h-[35rem] bg-accent/40 rounded-full blur-3xl"
         />
-        <motion.div
+        <m.div
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.2, 0.4, 0.2],
@@ -78,14 +78,14 @@ export function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Content */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1"
           >
             {/* Status Badge */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -95,10 +95,10 @@ export function HeroSection() {
                 <StatusIndicator />
                 <StatusLabel>{t('hero.status')}</StatusLabel>
               </Status>
-            </motion.div>
+            </m.div>
 
             {/* Main heading */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -107,13 +107,13 @@ export function HeroSection() {
               <div className="space-y-3 sm:space-y-4">
                 <p className="block text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">
                     <span className="text-muted-foreground">
-                      <motion.span
+                      <m.span
                         animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                         style={{ display: 'inline-block', transformOrigin: '70% 70%' }}
                       >
                         👋
-                      </motion.span>{' '}
+                      </m.span>{' '}
                       {t('hero.greeting')}
                     </span>{' '}
                     <span className="text-foreground/80">{t('hero.name')}</span>
@@ -138,10 +138,10 @@ export function HeroSection() {
                   )
                 )}
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Tech Stack Pills */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -156,10 +156,10 @@ export function HeroSection() {
                   {tech}
                 </Badge>
               ))}
-            </motion.div>
+            </m.div>
 
             {/* CTA Buttons */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -212,13 +212,13 @@ export function HeroSection() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-            </motion.div>
+            </m.div>
 
             <HeroSocialLinks />
-          </motion.div>
+          </m.div>
 
           {/* Right side - Avatar with decorative elements */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -226,20 +226,20 @@ export function HeroSection() {
           >
             <div className="relative lg:p-16">
               {/* Decorative rings - Hidden on mobile */}
-              <motion.div
+              <m.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                 className="absolute inset-0 m-4 hidden lg:block"
               >
                 <div className="w-full h-full rounded-full border-2 border-primary/20 border-dashed" />
-              </motion.div>
-              <motion.div
+              </m.div>
+              <m.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
                 className="absolute inset-0 hidden lg:block"
               >
                 <div className="w-full h-full rounded-full border-2 border-accent/20 border-dashed" />
-              </motion.div>
+              </m.div>
 
               {/* Main avatar container */}
               <div className="relative group">
@@ -259,7 +259,7 @@ export function HeroSection() {
                 </Avatar>
 
                 {/* Floating badges around avatar - Hidden on small mobile */}
-                <motion.div
+                <m.div
                   animate={{ y: [-5, 5, -5] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                   className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-background/80 backdrop-blur-sm border-2 border-accent/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-xl hidden xs:block"
@@ -268,9 +268,9 @@ export function HeroSection() {
                     <div className="text-xl sm:text-2xl font-bold text-primary">4+</div>
                     <div className="text-[10px] sm:text-xs text-muted-foreground">{t('hero.stats.years')}</div>
                   </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   animate={{ y: [5, -5, 5] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                   className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-background/80 backdrop-blur-sm border-2 border-accent/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-xl hidden xs:block"
@@ -279,35 +279,35 @@ export function HeroSection() {
                     <div className="text-xl sm:text-2xl font-bold text-primary">15+</div>
                     <div className="text-[10px] sm:text-xs text-muted-foreground">{t('hero.stats.projects')}</div>
                   </div>
-                </motion.div>
+                </m.div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
 
       {/* Scroll indicator - Only on large screens with enough vertical space */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-24 left-1/2 -translate-x-1/2 hidden xl:block"
       >
-        <motion.div
+        <m.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="flex flex-col items-center gap-2 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
         >
           <span className="text-xs font-medium">{t('hero.scroll')}</span>
           <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-2">
-            <motion.div
+            <m.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               className="w-1 h-2 bg-muted-foreground/50 rounded-full"
             />
           </div>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }
