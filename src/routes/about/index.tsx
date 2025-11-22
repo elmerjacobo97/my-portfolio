@@ -63,7 +63,10 @@ function AboutComponent() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const skillsData = t('about.skills.skillsData', { returnObjects: true }) as Record<string, { description: string; experience: string }>;
+  const skillsData = t('about.skills.skillsData', { returnObjects: true }) as Record<
+    string,
+    { description: string; experience: string }
+  >;
 
   const skillsByCategory = {
     Frontend: [
@@ -268,9 +271,7 @@ function AboutComponent() {
                   </span>
                   {t('about.title').split('</gradient>')[1]}
                 </h1>
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  {t('about.subtitle')}
-                </p>
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{t('about.subtitle')}</p>
               </div>
 
               {/* Quick Info */}
@@ -377,9 +378,7 @@ function AboutComponent() {
                 {t('about.skills.badge')}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.skills.title')}</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {t('about.skills.subtitle')}
-              </p>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t('about.skills.subtitle')}</p>
             </div>
           </FadeIn>
 
@@ -388,7 +387,9 @@ function AboutComponent() {
               <StaggerContainer key={category} staggerDelay={0.08}>
                 <FadeIn delay={categoryIndex * 0.1}>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-2">
-                    <span className="text-primary">{t(`about.skills.categories.${category.toLowerCase()}` as any) || category}</span>
+                    <span className="text-primary">
+                      {t(`about.skills.categories.${category.toLowerCase()}`, { defaultValue: category })}
+                    </span>
                     <div className="flex-1 h-px bg-border"></div>
                   </h3>
                 </FadeIn>
@@ -448,9 +449,7 @@ function AboutComponent() {
                 {t('about.experience.badge')}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.experience.title')}</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {t('about.experience.subtitle')}
-              </p>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t('about.experience.subtitle')}</p>
             </div>
           </FadeIn>
 
@@ -540,9 +539,7 @@ function AboutComponent() {
                 {t('about.education.badge')}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.education.title')}</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {t('about.education.subtitle')}
-              </p>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t('about.education.subtitle')}</p>
             </div>
           </FadeIn>
 
@@ -580,9 +577,7 @@ function AboutComponent() {
                 {t('about.interests.badge')}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.interests.title')}</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {t('about.interests.subtitle')}
-              </p>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t('about.interests.subtitle')}</p>
             </div>
           </FadeIn>
 
