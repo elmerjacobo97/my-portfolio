@@ -412,6 +412,15 @@
       "social": "Redes sociales"
     }
   },
+  "theme": {
+    "toggle": "Cambiar tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "language": {
+    "toggle": "Cambiar idioma"
+  },
   "common": {
     "loading": "Cargando...",
     "error": "Error",

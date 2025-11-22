@@ -13,7 +13,7 @@ const languages = [
 ];
 
 export function LanguageToggle() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const changeLanguage = (langCode: string) => {
     i18n.changeLanguage(langCode);
@@ -23,11 +23,11 @@ export function LanguageToggle() {
   const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
           <span className="text-xl">{currentLanguage.flag}</span>
-          <span className="sr-only">Toggle language</span>
+          <span className="sr-only">{t('language.toggle')}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

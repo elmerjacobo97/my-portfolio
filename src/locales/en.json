@@ -412,6 +412,15 @@
       "social": "Social media"
     }
   },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "toggle": "Toggle language"
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",
