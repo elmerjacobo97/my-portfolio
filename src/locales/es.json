@@ -125,6 +125,7 @@
       "successDescription": "¡Gracias por escribirme! Me pondré en contacto contigo muy pronto.",
       "error": "Error al enviar",
       "errorDescription": "Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctame directamente.",
+      "recaptchaRequired": "Por favor, completa el captcha para continuar.",
       "validation": {
         "nameRequired": "El nombre es requerido",
         "nameMin": "El nombre debe tener al menos 2 caracteres",

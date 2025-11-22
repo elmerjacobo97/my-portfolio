@@ -125,6 +125,7 @@
       "successDescription": "Thank you for writing! I'll get in touch with you very soon.",
       "error": "Error sending",
       "errorDescription": "There was a problem sending your message. Please try again or contact me directly.",
+      "recaptchaRequired": "Please complete the captcha to continue.",
       "validation": {
         "nameRequired": "Name is required",
         "nameMin": "Name must be at least 2 characters",

@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import { typeschemaResolver } from '@hookform/resolvers/typeschema';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { Briefcase, Clock, Coffee, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { z } from 'zod';
 import { Badge } from '@/components/ui/badge';
@@ -24,8 +25,10 @@ export const Route = createFileRoute('/contact/')({
 
 function ContactComponent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const { toast } = useToast();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const contactMethods = [
     {
@@ -80,6 +83,16 @@ function ContactComponent() {
   });
 
   const onSubmit = async (data: z.infer<typeof ContactSchema>) => {
+    // Validar reCAPTCHA antes de enviar
+    if (!recaptchaToken) {
+      toast({
+        variant: 'destructive',
+        title: t('contact.form.error'),
+        description: t('contact.form.recaptchaRequired'),
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -102,6 +115,9 @@ function ContactComponent() {
 
       if (result.status === 200) {
         form.reset();
+        // Resetear reCAPTCHA después de envío exitoso
+        recaptchaRef.current?.reset();
+        setRecaptchaToken(null);
 
         // Trackear envío exitoso del formulario
         trackEvent('generate_lead', {
@@ -289,7 +305,18 @@ function ContactComponent() {
                         )}
                       />
 
-                      <Button type="submit" size="lg" className="w-full hover-lift" disabled={isSubmitting}>
+                      {/* reCAPTCHA */}
+                      <div className="flex justify-center">
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                          onChange={(token) => setRecaptchaToken(token)}
+                          onExpired={() => setRecaptchaToken(null)}
+                          hl={i18n.language}
+                        />
+                      </div>
+
+                      <Button type="submit" size="lg" className="w-full hover-lift" disabled={isSubmitting || !recaptchaToken}>
                         {isSubmitting ? (
                           <>
                             <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2" />
