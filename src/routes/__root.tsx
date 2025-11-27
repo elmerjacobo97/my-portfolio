@@ -12,6 +12,8 @@ import NotFoundError from '@/components/errors/not-found-error';
 import GeneralError from '@/components/errors/general-error';
 import { trackPageView } from '@/lib/analytics';
 import { usePageAnalytics } from '@/hooks/use-page-analytics';
+import { DockMenu } from '@/components/dock-menu';
+import { FloatingControls } from '@/components/floating-controls';
 
 function RootComponent() {
   const router = useRouterState();
@@ -37,10 +39,14 @@ function RootComponent() {
       <div className="min-h-screen bg-background relative overflow-hidden">
         <div className="relative z-10">
           <Header />
-          <main className="pt-16">
+          <FloatingControls />
+          <main className="pt-16 md:pt-0 pb-24">
             <Outlet />
           </main>
           <Footer />
+          <div className="hidden md:block">
+            <DockMenu />
+          </div>
         </div>
       </div>
       <Toaster />

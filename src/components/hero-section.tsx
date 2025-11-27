@@ -106,17 +106,17 @@ export function HeroSection() {
             >
               <div className="space-y-3 sm:space-y-4">
                 <p className="block text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">
-                    <span className="text-muted-foreground">
-                      <m.span
-                        animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                        style={{ display: 'inline-block', transformOrigin: '70% 70%' }}
-                      >
-                        👋
-                      </m.span>{' '}
-                      {t('hero.greeting')}
-                    </span>{' '}
-                    <span className="text-foreground/80">{t('hero.name')}</span>
+                  <span className="text-muted-foreground">
+                    <m.span
+                      animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                      style={{ display: 'inline-block', transformOrigin: '70% 70%' }}
+                    >
+                      👋
+                    </m.span>{' '}
+                    {t('hero.greeting')}
+                  </span>{' '}
+                  <span className="text-foreground/80">{t('hero.name')}</span>
                 </p>
                 <h1 className="font-black leading-[0.9]">
                   <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-glow">
@@ -129,14 +129,18 @@ export function HeroSection() {
               </div>
 
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                {t('hero.description').split('<strong>').map((part, i) => 
-                  i === 0 ? part : (
-                    <span key={i}>
-                      <span className="text-primary font-semibold">{part.split('</strong>')[0]}</span>
-                      {part.split('</strong>')[1]}
-                    </span>
-                  )
-                )}
+                {t('hero.description')
+                  .split('<strong>')
+                  .map((part, i) =>
+                    i === 0 ? (
+                      part
+                    ) : (
+                      <span key={i}>
+                        <span className="text-primary font-semibold">{part.split('</strong>')[0]}</span>
+                        {part.split('</strong>')[1]}
+                      </span>
+                    )
+                  )}
               </p>
             </m.div>
 
@@ -291,7 +295,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-24 left-1/2 -translate-x-1/2 hidden xl:block"
+        className="absolute bottom-28 left-1/2 -translate-x-1/2 hidden xl:block"
       >
         <m.div
           animate={{ y: [0, 10, 0] }}

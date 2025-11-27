@@ -16,7 +16,7 @@ export function Header() {
   const { t } = useTranslation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border md:hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -27,8 +27,8 @@ export function Header() {
             <span className="font-bold text-lg group-hover:text-primary transition-colors">{brandInfo.name}</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          {/* Desktop Navigation - Hidden because we use Dock on Desktop now */}
+          <nav className="hidden">
             {navigation.map((item) => {
               const Icon = item.icon;
               const isExternal = 'external' in item && item.external;
