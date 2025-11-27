@@ -17,7 +17,7 @@ export const Dock = ({ className, children }: DockProps) => {
       className={cn(
         'mx-auto flex h-16 items-end gap-4 rounded-2xl px-4 pb-3',
         // Glass effect using theme colors
-        'bg-card/95 backdrop-blur-md',
+        'bg-card/60 backdrop-blur-xl',
         // Border
         'border border-border',
         // Shadow
