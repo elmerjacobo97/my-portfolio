@@ -1,19 +1,35 @@
 {
-  "name": "Elmer Jacobo | Desarrollador Full Stack",
+  "name": "Elmer Jacobo - Desarrollador Full Stack",
   "short_name": "ElmerJacobo",
+  "description": "Portafolio profesional de Elmer Jacobo, desarrollador Full Stack especializado en React y Node.js",
+  "theme_color": "#3206A4",
+  "background_color": "#FAFAFF",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "lang": "es",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "theme_color": "#3206A4",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "categories": ["portfolio", "developer", "technology"],
+  "screenshots": [
+    {
+      "src": "/preview.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "form_factor": "wide"
+    }
+  ]
 }
