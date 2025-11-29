@@ -31,3 +31,4 @@ stats.html
 *.sln
 *.sw?
 .vercel
+.kiro

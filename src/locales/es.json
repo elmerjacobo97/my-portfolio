@@ -332,16 +332,7 @@
             "Implementación de CRUD completos para usuarios, servicios y tickets de soporte",
             "Despliegue en producción con integración a base de datos y logs de actividad"
           ],
-          "technologies": [
-            "React",
-            "TypeScript",
-            "Laravel",
-            "PostgreSQL",
-            "Bootstrap",
-            "Sass",
-            "REST APIs",
-            "Vercel"
-          ]
+          "technologies": ["React", "TypeScript", "Laravel", "PostgreSQL", "Bootstrap", "Sass", "REST APIs", "Vercel"]
         }
       ]
     },
@@ -446,5 +437,14 @@
     "previous": "Anterior",
     "readMore": "Leer más",
     "showLess": "Mostrar menos"
+  },
+  "pwa": {
+    "updateAvailable": "Nueva versión disponible",
+    "updateDescription": "Hay una nueva versión del sitio. Recarga para obtener las últimas mejoras.",
+    "readyOffline": "Listo para usar sin conexión",
+    "offlineDescription": "La aplicación está lista para funcionar sin conexión a internet.",
+    "reload": "Recargar",
+    "later": "Más tarde",
+    "close": "Cerrar"
   }
 }
