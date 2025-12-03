@@ -77,7 +77,7 @@ export function AboutHero() {
                 <DropdownMenuContent align="start" className="w-48">
                   <DropdownMenuItem asChild>
                     <a
-                      href="/ELMER-JACOBO-OTINIANO-CV.pdf"
+                      href="https://docs.google.com/document/d/1fy4Od_4WoEu3_2Namww1evF5vnZd96avfyJqB6tce-I/edit?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center cursor-pointer"
@@ -89,7 +89,7 @@ export function AboutHero() {
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <a
-                      href="/ELMER-JACOBO-OTINIANO-CV.pdf"
+                      href="https://docs.google.com/document/d/1fy4Od_4WoEu3_2Namww1evF5vnZd96avfyJqB6tce-I/export?format=pdf"
                       download="Elmer-Jacobo-CV.pdf"
                       className="flex items-center cursor-pointer"
                       onClick={() => trackDownload('Elmer-Jacobo-CV.pdf')}
