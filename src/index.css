@@ -53,6 +53,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --animate-spin: spin 2s linear infinite;
 }
 
 /* ============================================
@@ -204,9 +205,9 @@
 /* ============================================
    📊 REFERENCIA RÁPIDA HEX
    ============================================
-   
+
    🎨 TU PÚRPURA BASE: #3206A4
-   
+
    TEMA CLARO:
    -----------
    Background:    #FAFAFF (blanco con tinte púrpura)
@@ -216,7 +217,7 @@
    Accent:        #E3DAF7 (púrpura pastel)
    Muted:         #F0F0F5 (gris púrpura claro)
    Border:        #D9D4E5 (borde púrpura suave)
-   
+
    TEMA OSCURO:
    ------------
    Background:    #0A0520 (negro púrpura profundo - MEJORADO)
@@ -232,16 +233,25 @@
    Hero:          #0A0520 → #1A0D42 → #0A0520
    Primary:       #3206A4 → #6B2AE8
    Cards:         #120931 → #0A0520
-   
+
    ESTADOS (ambos temas):
    ----------------------
    Error:         #E74C3C (rojo)
    Success:       #27AE60 / #2ECC71 (verde)
    Warning:       #F39C12 / #F1C40F (amarillo)
-   
+
    EFECTOS ESPECIALES:
    -------------------
    Glow/Shadow:   rgba(107, 42, 232, 0.3-0.6)
    Hover Lift:    rgba(107, 42, 232, 0.4)
-   
+
    ============================================ */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

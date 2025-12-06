@@ -14,6 +14,7 @@ import { Rocket, Download, Eye, FileText, ChevronDown } from 'lucide-react';
 import { trackDownload, trackSelectContent } from '@/lib/analytics';
 import { Status, StatusIndicator, StatusLabel } from '@/components/status';
 import { HeroSocialLinks } from '@/components/hero-social-links';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 import avatar from '@/assets/images/avatar.webp';
 
 export function HeroSection() {
@@ -22,45 +23,9 @@ export function HeroSection() {
 
   return (
     <section className="min-h-dvh flex items-center justify-center relative overflow-hidden py-12 sm:py-16 lg:py-20">
-      {/* Animated gradient background */}
+      {/* Animated gradient background with beams */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30">
-        {/* Main gradient orbs */}
-        <m.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-primary/30 rounded-full blur-3xl"
-        />
-        <m.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.4, 0.6, 0.4],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute bottom-0 right-1/4 w-[35rem] h-[35rem] bg-accent/40 rounded-full blur-3xl"
-        />
-        <m.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-primary/20 rounded-full blur-3xl"
-        />
+        <BackgroundBeams />
       </div>
 
       {/* Grid pattern overlay */}
@@ -152,11 +117,7 @@ export function HeroSection() {
               className="flex flex-wrap gap-2 justify-center lg:justify-start"
             >
               {(t('hero.techStack', { returnObjects: true }) as string[]).map((tech: string) => (
-                <Badge
-                  key={tech}
-                  variant="secondary"
-                  className="px-3 py-1 text-sm font-medium bg-primary/5 hover:bg-primary/10 transition-colors"
-                >
+                <Badge key={tech} variant="outline" className="transition-colors">
                   {tech}
                 </Badge>
               ))}
