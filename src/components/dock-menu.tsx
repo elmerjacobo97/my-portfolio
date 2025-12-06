@@ -59,8 +59,8 @@ export function DockMenu() {
               </DockIcon>
             ))}
 
-            <div className="h-full py-2">
-              <Separator orientation="vertical" className="h-full bg-border/50" />
+            <div className="h-full w-px flex items-center">
+              <Separator orientation="vertical" className="h-10 bg-border/50" />
             </div>
 
             {socialItems.map((item) => (

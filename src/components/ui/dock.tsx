@@ -15,7 +15,7 @@ export const Dock = ({ className, children }: DockProps) => {
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        'mx-auto flex h-16 items-end gap-4 rounded-2xl px-4 pb-3',
+        'mx-auto flex h-16 items-end gap-4 rounded-2xl px-4 py-3',
         // Glass effect using theme colors
         'bg-card/60 backdrop-blur-xl',
         // Border
