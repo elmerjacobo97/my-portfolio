@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Heart } from 'lucide-react';
+import packageJson from '../../package.json';
 
 export function Footer() {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ export function Footer() {
             <Heart className="w-4 h-4 text-red-500" />
             <span>{t('footer.madeWith').split('❤️')[1]}</span>
           </div>
+          <p className="text-muted-foreground text-xs">v{packageJson.version}</p>
         </div>
       </div>
     </footer>
