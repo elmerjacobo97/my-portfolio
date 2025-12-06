@@ -15,6 +15,7 @@ import { trackDownload, trackSelectContent } from '@/lib/analytics';
 import { Status, StatusIndicator, StatusLabel } from '@/components/status';
 import { HeroSocialLinks } from '@/components/hero-social-links';
 import { BackgroundBeams } from '@/components/ui/background-beams';
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import avatar from '@/assets/images/avatar.webp';
 
 export function HeroSection() {
@@ -93,20 +94,15 @@ export function HeroSection() {
                 </h1>
               </div>
 
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                {t('hero.description')
-                  .split('<strong>')
-                  .map((part, i) =>
-                    i === 0 ? (
-                      part
-                    ) : (
-                      <span key={i}>
-                        <span className="text-primary font-semibold">{part.split('</strong>')[0]}</span>
-                        {part.split('</strong>')[1]}
-                      </span>
-                    )
-                  )}
-              </p>
+              <TextGenerateEffect
+                words={t('hero.description')
+                  .replace(/<\/strong>/g, '')
+                  .replace(/<strong>/g, '')}
+                className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+                filter={true}
+                duration={0.5}
+                staggerDelay={0.1}
+              />
             </m.div>
 
             {/* Tech Stack Pills */}
