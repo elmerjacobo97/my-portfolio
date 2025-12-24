@@ -46,7 +46,7 @@ function RootComponent() {
         <AppSidebar />
         <SidebarInset>
           {/* Header for mobile */}
-          <header className="md:hidden sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
+          <header className="md:hidden fixed top-0 left-0 right-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <h1 className="font-semibold flex-1">Elmer Jacobo</h1>
@@ -55,6 +55,9 @@ function RootComponent() {
               <ModeToggle />
             </div>
           </header>
+
+          {/* Spacer for fixed header on mobile */}
+          <div className="md:hidden h-16" />
 
           <FloatingControls />
 
