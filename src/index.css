@@ -105,14 +105,15 @@
   --border: oklch(88% 0.02 280); /* #D9D4E5 - Borde púrpura suave */
   --input: oklch(88% 0.02 280); /* #D9D4E5 - Bordes de inputs */
   --ring: oklch(35% 0.22 280); /* #3206A4 - Focus rings (tu púrpura) */
-  --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  /* 📌 SIDEBAR (Integrado con paleta púrpura) */
+  --sidebar: oklch(97% 0.01 280); /* Fondo claro con tinte púrpura */
+  --sidebar-foreground: oklch(25% 0.08 280); /* Texto púrpura oscuro */
+  --sidebar-primary: oklch(35% 0.22 280); /* Tu púrpura principal */
+  --sidebar-primary-foreground: oklch(98% 0.002 280);
+  --sidebar-accent: oklch(92% 0.04 280); /* Hover púrpura suave */
+  --sidebar-accent-foreground: oklch(20% 0.08 280);
+  --sidebar-border: oklch(88% 0.02 280); /* Borde púrpura suave */
+  --sidebar-ring: oklch(35% 0.22 280);
 }
 
 /* ============================================
@@ -154,14 +155,15 @@
   --border: oklch(25% 0.05 280); /* #221652 - Borde púrpura oscuro */
   --input: oklch(22% 0.06 280); /* #1C1147 - Input púrpura oscuro */
   --ring: oklch(58% 0.22 280); /* #6B2AE8 - Focus rings púrpura brillante */
-  --sidebar: hsl(240 5.9% 10%);
-  --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  /* 📌 SIDEBAR (Integrado con paleta púrpura) */
+  --sidebar: oklch(10% 0.05 280); /* Púrpura oscuro profundo */
+  --sidebar-foreground: oklch(95% 0.005 280); /* Texto claro */
+  --sidebar-primary: oklch(58% 0.22 280); /* Tu púrpura brillante */
+  --sidebar-primary-foreground: oklch(98% 0.002 280);
+  --sidebar-accent: oklch(18% 0.06 280); /* Hover púrpura oscuro */
+  --sidebar-accent-foreground: oklch(90% 0.02 280);
+  --sidebar-border: oklch(22% 0.05 280); /* Borde púrpura sutil */
+  --sidebar-ring: oklch(58% 0.22 280);
 }
 
 /* ============================================

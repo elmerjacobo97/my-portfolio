@@ -10,8 +10,8 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
-  Github,
-  Linkedin,
+  GithubIcon,
+  LinkedinIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -24,7 +24,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarSeparator,
   useSidebar,
 } from '@/components/ui/sidebar';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -52,8 +51,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   ];
 
   const socialItems = [
-    { name: 'GitHub', icon: Github, href: 'https://github.com/elmerjacobo97' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/elmerjacobo97/' },
+    { name: 'GitHub', icon: GithubIcon, href: 'https://github.com/elmerjacobo97' },
+    { name: 'LinkedIn', icon: LinkedinIcon, href: 'https://www.linkedin.com/in/elmerjacobo97/' },
   ];
 
   return (
@@ -189,10 +188,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarSeparator className="my-4" />
-
         {/* Social Links */}
-        <SidebarGroup className="p-0">
+        <SidebarGroup className="p-0 pt-4 border-t border-sidebar-border/50">
           <SidebarGroupContent>
             <SidebarMenu className="gap-1.5">
               {socialItems.map((item) => {
@@ -235,7 +232,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               )}
             >
               <Avatar className={cn('border-2 border-primary/20', isCollapsed ? 'size-9' : 'size-10')}>
-                <AvatarImage src={avatarImg} alt="Elmer Jacobo" className="" />
+                <AvatarImage src={avatarImg} alt="Elmer Jacobo" className="object-cover" />
                 <AvatarFallback className="bg-primary/10 text-sm font-bold text-primary">EJ</AvatarFallback>
               </Avatar>
               {!isCollapsed && (
