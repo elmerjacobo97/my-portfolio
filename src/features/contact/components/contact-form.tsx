@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { FadeIn } from '@/components/ui/motion';
+import { TiltCard } from '@/components/ui/tilt-card';
 import { useToast } from '@/hooks/use-toast';
 import { trackEvent } from '@/lib/analytics';
 
@@ -119,112 +120,113 @@ export function ContactForm() {
         <p className="text-muted-foreground leading-relaxed">{t('contact.form.description')}</p>
       </div>
 
-      <Card className="shadow-sm bg-card/50 overflow-hidden">
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      <TiltCard tiltAmount={4} scale={1.01} glare={true}>
+        <Card className="shadow-sm bg-card/50 overflow-hidden">
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.form.name')}</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="text"
+                            placeholder={t('contact.form.namePlaceholder')}
+                            className="w-full"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormDescription>{t('contact.form.nameDescription')}</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.form.email')}</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder={t('contact.form.emailPlaceholder')}
+                            className="w-full"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormDescription>{t('contact.form.emailDescription')}</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
                 <FormField
                   control={form.control}
-                  name="name"
+                  name="subject"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t('contact.form.name')}</FormLabel>
+                      <FormLabel>{t('contact.form.subject')}</FormLabel>
                       <FormControl>
                         <Input
                           type="text"
-                          placeholder={t('contact.form.namePlaceholder')}
+                          placeholder={t('contact.form.subjectPlaceholder')}
                           className="w-full"
                           {...field}
                         />
                       </FormControl>
-                      <FormDescription>{t('contact.form.nameDescription')}</FormDescription>
+                      <FormDescription>{t('contact.form.subjectDescription')}</FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="projectType"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t('contact.form.email')}</FormLabel>
+                      <FormLabel>{t('contact.form.projectType')}</FormLabel>
+                      <Select defaultValue={projectTypes[0]} value={field.value} onValueChange={field.onChange}>
+                        <SelectTrigger className="h-10 w-full">
+                          <SelectValue placeholder={t('contact.form.projectTypePlaceholder')} />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {projectTypes.map((type: string) => (
+                            <SelectItem key={type} value={type}>
+                              {type}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                        <FormDescription>{t('contact.form.projectTypeDescription')}</FormDescription>
+                        <FormMessage />
+                      </Select>
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('contact.form.message')}</FormLabel>
                       <FormControl>
-                        <Input
-                          type="email"
-                          placeholder={t('contact.form.emailPlaceholder')}
-                          className="w-full"
-                          {...field}
-                        />
+                        <Textarea placeholder={t('contact.form.messagePlaceholder')} className="w-full" {...field} />
                       </FormControl>
-                      <FormDescription>{t('contact.form.emailDescription')}</FormDescription>
+                      <FormDescription>{t('contact.form.messageDescription')}</FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-              </div>
 
-              <FormField
-                control={form.control}
-                name="subject"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('contact.form.subject')}</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        placeholder={t('contact.form.subjectPlaceholder')}
-                        className="w-full"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>{t('contact.form.subjectDescription')}</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="projectType"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('contact.form.projectType')}</FormLabel>
-                    <Select defaultValue={projectTypes[0]} value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="h-10 w-full">
-                        <SelectValue placeholder={t('contact.form.projectTypePlaceholder')} />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {projectTypes.map((type: string) => (
-                          <SelectItem key={type} value={type}>
-                            {type}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                      <FormDescription>{t('contact.form.projectTypeDescription')}</FormDescription>
-                      <FormMessage />
-                    </Select>
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('contact.form.message')}</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder={t('contact.form.messagePlaceholder')} className="w-full" {...field} />
-                    </FormControl>
-                    <FormDescription>{t('contact.form.messageDescription')}</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* reCAPTCHA - Comentado temporalmente */}
-              {/* <div className="flex justify-center">
+                {/* reCAPTCHA - Comentado temporalmente */}
+                {/* <div className="flex justify-center">
                 <ReCAPTCHA
                   ref={recaptchaRef}
                   sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
@@ -234,23 +236,24 @@ export function ContactForm() {
                 />
               </div> */}
 
-              <Button type="submit" size="lg" className="w-full hover-lift" disabled={isSubmitting}>
-                {isSubmitting ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2" />
-                    {t('contact.form.sending')}
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 mr-2 text-primary-foreground" />
-                    {t('contact.form.send')}
-                  </>
-                )}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+                <Button type="submit" size="lg" className="w-full hover-lift" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2" />
+                      {t('contact.form.sending')}
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 mr-2 text-primary-foreground" />
+                      {t('contact.form.send')}
+                    </>
+                  )}
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      </TiltCard>
     </FadeIn>
   );
 }
