@@ -22,7 +22,7 @@ export default defineConfig({
       brotliSize: true, // Opcional: si usas compresión Brotli
     }) as PluginOption,
     VitePWA({
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'og-image.png'],
       manifest: {
         name: 'Elmer Jacobo - Desarrollador Full Stack',
