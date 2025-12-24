@@ -23,6 +23,7 @@ export function ServicesSection() {
     'from-purple-500/20 to-pink-500/20',
     'from-orange-500/20 to-yellow-500/20',
   ];
+  const iconColors = ['text-blue-500', 'text-purple-500', 'text-orange-500'];
 
   return (
     <section className="py-24 md:py-32 bg-muted/20 relative overflow-hidden">
@@ -68,7 +69,7 @@ export function ServicesSection() {
                           gradients[index]
                         )}
                       >
-                        <Icon className="w-8 h-8 text-primary" />
+                        <Icon className={cn('w-8 h-8', iconColors[index])} />
                       </m.div>
                       <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
                       <CardDescription className="text-base">{service.description}</CardDescription>
