@@ -1,3 +1,10 @@
+/**
+ * DOCK MENU - COMENTADO
+ * Este componente ha sido reemplazado por el Sidebar
+ * Se mantiene comentado para referencia futura
+ */
+
+/*
 import { Link, useLocation } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { Home, User, Briefcase, Mail, BookOpen, Github, Linkedin } from 'lucide-react';
@@ -52,7 +59,6 @@ export function DockMenu() {
                     )}
                   </TooltipTrigger>
                   <TooltipContent>
-                    {/* @ts-expect-error - Dynamic translation key from navItems */}
                     <p>{t(item.name)}</p>
                   </TooltipContent>
                 </Tooltip>
@@ -88,3 +94,4 @@ export function DockMenu() {
     </div>
   );
 }
+*/
