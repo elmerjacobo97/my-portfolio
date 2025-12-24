@@ -96,8 +96,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 className="flex flex-1 items-center justify-between gap-3 overflow-hidden"
               >
                 <div className="grid min-w-0 flex-1 text-left leading-tight">
-                  <span className="truncate text-base font-bold">Elmer Jacobo</span>
-                  <span className="truncate text-sm text-muted-foreground">Full Stack Developer</span>
+                  <span className="truncate text-sm font-bold">Elmer Jacobo</span>
+                  <span className="truncate text-xs text-muted-foreground">Full Stack Developer</span>
                 </div>
                 <button
                   onClick={toggleSidebar}
