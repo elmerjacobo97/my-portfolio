@@ -20,7 +20,7 @@ export function ProjectsGrid({ projects, isLoading, error, refetch }: ProjectsGr
 
   if (isLoading) {
     return (
-      <section className="py-16 md:py-20 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-muted/30 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
@@ -44,7 +44,7 @@ export function ProjectsGrid({ projects, isLoading, error, refetch }: ProjectsGr
 
   if (error) {
     return (
-      <section className="py-16 md:py-20 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-muted/30 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
@@ -67,7 +67,7 @@ export function ProjectsGrid({ projects, isLoading, error, refetch }: ProjectsGr
 
   if (!projects || projects.length === 0) {
     return (
-      <section className="py-16 md:py-20 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-muted/30 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
@@ -86,7 +86,7 @@ export function ProjectsGrid({ projects, isLoading, error, refetch }: ProjectsGr
   }
 
   return (
-    <section className="py-16 md:py-20 relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-muted/30 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />

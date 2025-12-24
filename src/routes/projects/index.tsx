@@ -14,15 +14,7 @@ function ProjectsComponent() {
   return (
     <div className="w-full min-h-screen">
       <ProjectsHero projectCount={data?.projects.length || 0} statistics={data?.statistics} />
-
-      <section className="py-12 lg:py-20 bg-background">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-12 lg:space-y-16">
-            <ProjectsGrid projects={data?.projects} isLoading={isLoading} error={error} refetch={refetch} />
-          </div>
-        </div>
-      </section>
-
+      <ProjectsGrid projects={data?.projects} isLoading={isLoading} error={error} refetch={refetch} />
       <ProjectsCta />
     </div>
   );
