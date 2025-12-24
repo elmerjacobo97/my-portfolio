@@ -40,6 +40,7 @@ export function ProjectCard({ project, featured = false, className = '' }: Proje
             className="absolute inset-0 w-full h-full object-cover"
             whileHover={{ scale: 1.08 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
+            loading="lazy"
           />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5" />
