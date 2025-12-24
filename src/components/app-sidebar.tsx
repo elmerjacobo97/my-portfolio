@@ -12,6 +12,7 @@ import {
   ExternalLink,
   GithubIcon,
   LinkedinIcon,
+  InstagramIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -30,6 +31,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import avatarImg from '@/assets/images/avatar.webp';
+import packageJson from '../../package.json';
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { t } = useTranslation();
@@ -53,6 +55,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const socialItems = [
     { name: 'GitHub', icon: GithubIcon, href: 'https://github.com/elmerjacobo97' },
     { name: 'LinkedIn', icon: LinkedinIcon, href: 'https://www.linkedin.com/in/elmerjacobo97/' },
+    { name: 'Instagram', icon: InstagramIcon, href: 'https://www.instagram.com/elmerjacobo97/' },
   ];
 
   return (
@@ -209,7 +212,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         className={cn('gap-4', isCollapsed && 'gap-0')}
                       >
                         <Icon className={cn('shrink-0', isCollapsed ? 'size-6' : 'size-5')} />
-                        {!isCollapsed && <span className="truncate text-[15px] font-medium">{item.name}</span>}
+                        {!isCollapsed && (
+                          <>
+                            <span className="flex-1 truncate text-[15px] font-medium">{item.name}</span>
+                            <ExternalLink className="size-4 text-muted-foreground" />
+                          </>
+                        )}
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -238,7 +246,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               {!isCollapsed && (
                 <div className="grid min-w-0 flex-1 text-left leading-tight">
                   <span className="truncate text-sm font-semibold">Elmer Jacobo</span>
-                  <span className="truncate text-xs text-muted-foreground">v2.0.0</span>
+                  <span className="truncate text-xs text-muted-foreground">v{packageJson.version}</span>
                 </div>
               )}
             </Link>
