@@ -36,7 +36,7 @@ import packageJson from '../../package.json';
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { t } = useTranslation();
   const location = useLocation();
-  const { state, toggleSidebar } = useSidebar();
+  const { state, toggleSidebar, isMobile, setOpenMobile } = useSidebar();
   const isCollapsed = state === 'collapsed';
 
   const navItems = [
@@ -167,7 +167,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           )}
                         </a>
                       ) : (
-                        <Link to={item.href} className={cn('gap-4', isCollapsed && 'gap-0')}>
+                        <Link
+                          to={item.href}
+                          className={cn('gap-4', isCollapsed && 'gap-0')}
+                          onClick={() => isMobile && setOpenMobile(false)}
+                        >
                           <Icon className={cn('shrink-0', isCollapsed ? 'size-6' : 'size-5')} />
                           {!isCollapsed && (
                             <>
@@ -238,6 +242,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 'flex items-center gap-3 rounded-xl p-2.5 transition-colors hover:bg-sidebar-accent',
                 isCollapsed && 'justify-center p-2'
               )}
+              onClick={() => isMobile && setOpenMobile(false)}
             >
               <Avatar className={cn('border-2 border-primary/20', isCollapsed ? 'size-9' : 'size-10')}>
                 <AvatarImage src={avatarImg} alt="Elmer Jacobo" className="object-cover" />

@@ -16,6 +16,8 @@ import { AppSidebar } from '@/components/app-sidebar';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { FloatingControls } from '@/components/floating-controls';
 import { Snowfall } from '@/components/ui/snowfall';
+import { ModeToggle } from '@/components/mode-toggle';
+import { LanguageToggle } from '@/components/language-toggle';
 import { Separator } from '@/components/ui/separator';
 
 function RootComponent() {
@@ -47,7 +49,11 @@ function RootComponent() {
           <header className="md:hidden sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
-            <h1 className="font-semibold">Elmer Jacobo</h1>
+            <h1 className="font-semibold flex-1">Elmer Jacobo</h1>
+            <div className="flex items-center gap-1">
+              <LanguageToggle />
+              <ModeToggle />
+            </div>
           </header>
 
           <FloatingControls />
