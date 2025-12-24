@@ -235,7 +235,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               )}
             >
               <Avatar className={cn('border-2 border-primary/20', isCollapsed ? 'size-9' : 'size-10')}>
-                <AvatarImage src={avatarImg} alt="Elmer Jacobo" />
+                <AvatarImage src={avatarImg} alt="Elmer Jacobo" className="" />
                 <AvatarFallback className="bg-primary/10 text-sm font-bold text-primary">EJ</AvatarFallback>
               </Avatar>
               {!isCollapsed && (

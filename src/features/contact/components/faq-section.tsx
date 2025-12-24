@@ -1,57 +1,75 @@
 import { useTranslation } from 'react-i18next';
-import { Badge } from '@/components/ui/badge';
+import { m } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { MessageCircle } from 'lucide-react';
-import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/motion';
+import { HelpCircle } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/section-header';
 
 export function FaqSection() {
   const { t } = useTranslation();
   const faqs = t('contact.faq.items', { returnObjects: true }) as Array<{ q: string; a: string }>;
 
   return (
-    <section className="py-12 lg:py-20 bg-muted/20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <div className="text-center mb-12 lg:mb-16">
-            <Badge variant="outline" className="mb-4">
-              <MessageCircle className="w-3 h-3 mr-1 text-primary" />
-              {t('contact.faq.badge')}
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">{t('contact.faq.title')}</h2>
-            <p className="text-base lg:text-lg text-muted-foreground">{t('contact.faq.subtitle')}</p>
-          </div>
-        </FadeIn>
+    <section className="py-20 md:py-28 bg-muted/20 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <SectionHeader
+          badge={t('contact.faq.badge')}
+          badgeIcon={HelpCircle}
+          title={t('contact.faq.title')}
+          subtitle={t('contact.faq.subtitle')}
+        />
 
         {/* Mobile: Cards */}
-        <StaggerContainer className="space-y-4 md:hidden" staggerDelay={0.1}>
+        <div className="space-y-4 md:hidden">
           {faqs.map((faq, index) => (
-            <StaggerItem key={index}>
-              <Card className="shadow-sm bg-card/50 overflow-hidden">
-                <CardContent>
+            <m.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+            >
+              <Card className="border-border/50 shadow-sm bg-card/80 backdrop-blur-sm">
+                <CardContent className="pt-5">
                   <h3 className="font-semibold text-base mb-3">{faq.q}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
                 </CardContent>
               </Card>
-            </StaggerItem>
+            </m.div>
           ))}
-        </StaggerContainer>
+        </div>
 
         {/* Desktop: Accordion */}
-        <FadeIn delay={0.2}>
-          <Accordion type="single" collapsible className="hidden md:block">
+        <m.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="hidden md:block"
+        >
+          <Accordion type="single" collapsible>
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
-                <AccordionTrigger className="text-left hover:no-underline py-4 lg:py-6">
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-border/50">
+                <AccordionTrigger className="text-left hover:no-underline py-5">
                   <h3 className="font-semibold text-base lg:text-lg pr-4">{faq.q}</h3>
                 </AccordionTrigger>
-                <AccordionContent className="pb-4 lg:pb-6">
-                  <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">{faq.a}</p>
+                <AccordionContent className="pb-5">
+                  <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-        </FadeIn>
+        </m.div>
       </div>
     </section>
   );

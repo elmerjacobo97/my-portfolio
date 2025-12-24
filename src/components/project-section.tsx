@@ -1,12 +1,13 @@
 import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { Badge } from '@/components/ui/badge';
+import { m } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Code, ArrowRight } from 'lucide-react';
+import { Code, ArrowRight, Sparkles } from 'lucide-react';
 import { ProjectCard } from '@/components/project-card';
 import { useProjects } from '@/hooks/use-projects';
 import { ProjectCardSkeleton } from '@/components/project-card-skeleton';
-import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/motion';
+import { SectionHeader } from '@/components/ui/section-header';
+import { TiltCard } from '@/components/ui/tilt-card';
 
 export function ProjectsSection() {
   const navigate = useNavigate();
@@ -14,48 +15,70 @@ export function ProjectsSection() {
   const { data: projects, isLoading } = useProjects();
 
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">
-              <Code className="w-3 h-3 mr-1 text-primary" />
-              {t('projects.badge')}
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('projects.sectionTitle')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t('projects.description')}
-            </p>
-          </div>
-        </FadeIn>
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <SectionHeader
+          badge={t('projects.badge')}
+          badgeIcon={Code}
+          title={t('projects.sectionTitle')}
+          subtitle={t('projects.description')}
+        />
 
         {isLoading && (
-          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xs:gap-6 md:gap-8">
-            {Array.from({ length: 4 }).map((_, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {Array.from({ length: 3 }).map((_, index) => (
               <ProjectCardSkeleton key={index} />
             ))}
           </div>
         )}
 
         {!isLoading && projects && projects.projects.length > 0 && (
-          <StaggerContainer className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xs:gap-6 md:gap-8" staggerDelay={0.1}>
-            {projects?.projects.slice(0, 4).map((project) => (
-              <StaggerItem key={project.id}>
-                <ProjectCard project={project} />
-              </StaggerItem>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {projects.projects.slice(0, 3).map((project, index) => (
+              <m.div
+                key={project.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+                className="h-full"
+              >
+                <TiltCard tiltAmount={6} scale={1.02} className="h-full">
+                  <ProjectCard project={project} className="h-full" />
+                </TiltCard>
+              </m.div>
             ))}
-          </StaggerContainer>
+          </div>
         )}
 
-        {!isLoading && projects && projects.projects.length > 4 && (
-          <FadeIn delay={0.5}>
-            <div className="text-center mt-12">
-              <Button type="button" size="lg" className="hover-lift" onClick={() => navigate({ to: '/projects' })}>
-                  {t('projects.cta.viewAll')}
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
-          </FadeIn>
+        {!isLoading && projects && projects.projects.length > 3 && (
+          <m.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-center mt-12 md:mt-16"
+          >
+            <Button
+              size="lg"
+              className="group px-8 py-6 text-base font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
+              onClick={() => navigate({ to: '/projects' })}
+            >
+              <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+              {t('projects.cta.viewAll')}
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </m.div>
         )}
       </div>
     </section>

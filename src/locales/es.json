@@ -33,7 +33,7 @@
   },
   "services": {
     "badge": "Servicios",
-    "title": "Lo que hago",
+    "title": "Lo que <gradient>hago</gradient>",
     "subtitle": "Especializado en crear soluciones digitales que combinan funcionalidad, rendimiento y estética moderna",
     "items": [
       {
@@ -59,7 +59,7 @@
   "projects": {
     "badge": "Portafolio",
     "title": "Mis <gradient>Proyectos</gradient>",
-    "sectionTitle": "Proyectos destacados",
+    "sectionTitle": "Proyectos <gradient>destacados</gradient>",
     "subtitle": "Una colección de proyectos que demuestran mi experiencia en desarrollo full stack, desde aplicaciones web hasta soluciones móviles y plataformas SaaS.",
     "description": "Una selección destacada de mis proyectos más impactantes y tecnológicamente avanzados",
     "allProjects": "Portafolio completo",
@@ -163,7 +163,7 @@
     ],
     "faq": {
       "badge": "FAQ",
-      "title": "Preguntas frecuentes",
+      "title": "Preguntas <gradient>frecuentes</gradient>",
       "subtitle": "Respuestas a las dudas más comunes sobre mi proceso de trabajo",
       "items": [
         {
@@ -209,7 +209,7 @@
     },
     "skills": {
       "badge": "Habilidades",
-      "title": "Tecnologías y herramientas",
+      "title": "Tecnologías y <gradient>herramientas</gradient>",
       "subtitle": "Mi stack tecnológico actual, organizado por categorías",
       "categories": {
         "frontend": "Frontend",
@@ -290,7 +290,7 @@
     },
     "experience": {
       "badge": "Experiencia",
-      "title": "Mi trayectoria profesional",
+      "title": "Mi trayectoria <gradient>profesional</gradient>",
       "subtitle": "Un recorrido por mi evolución como desarrollador y los proyectos que han marcado mi carrera",
       "achievements": "Logros principales:",
       "technologies": "Tecnologías utilizadas:",
@@ -338,7 +338,7 @@
     },
     "education": {
       "badge": "Educación",
-      "title": "Más allá del código",
+      "title": "Formación <gradient>académica</gradient>",
       "subtitle": "Aprendizaje continuo que impulsa mi desarrollo técnico y creativo",
       "items": [
         {
@@ -357,7 +357,7 @@
     },
     "interests": {
       "badge": "Intereses",
-      "title": "Más allá del código",
+      "title": "Más allá del <gradient>código</gradient>",
       "subtitle": "Las pasiones que me inspiran y mantienen mi creatividad en constante movimiento",
       "items": [
         {
@@ -385,7 +385,7 @@
       "linkedin": "Ver mi LinkedIn"
     },
     "github": {
-      "title": "Actividad en GitHub",
+      "title": "Actividad en <gradient>GitHub</gradient>",
       "description": "Mis repositorios más recientes y destacados",
       "loading": "Cargando actividad...",
       "error": "Error al cargar la actividad de GitHub",

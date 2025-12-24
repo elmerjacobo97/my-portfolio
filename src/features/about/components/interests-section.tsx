@@ -1,10 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { Badge } from '@/components/ui/badge';
+import { m } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Heart, Cpu, Camera, Coffee, Globe } from 'lucide-react';
-import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/motion';
+import { SectionHeader } from '@/components/ui/section-header';
+import { TiltCard } from '@/components/ui/tilt-card';
 
-const interestIcons = [Cpu, Camera, Coffee, Globe];
+const interestIcons = [
+  { icon: Cpu, color: '#3b82f6', bg: 'bg-blue-500/10' },
+  { icon: Camera, color: '#ec4899', bg: 'bg-pink-500/10' },
+  { icon: Coffee, color: '#f59e0b', bg: 'bg-amber-500/10' },
+  { icon: Globe, color: '#10b981', bg: 'bg-emerald-500/10' },
+];
 
 export function InterestsSection() {
   const { t } = useTranslation();
@@ -16,42 +22,56 @@ export function InterestsSection() {
 
   const interests = interestsData.map((item, index) => ({
     ...item,
-    icon: interestIcons[index],
-    color: 'text-primary',
-    bgColor: 'bg-primary/10',
+    ...interestIcons[index],
   }));
 
   return (
-    <section className="py-16 md:py-20 bg-muted/20">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <div className="text-center mb-12 md:mb-16">
-            <Badge variant="outline" className="mb-4">
-              <Heart className="w-3 h-3 mr-1" />
-              {t('about.interests.badge')}
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.interests.title')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t('about.interests.subtitle')}</p>
-          </div>
-        </FadeIn>
+    <section className="py-20 md:py-28 bg-muted/20 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 -right-32 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      </div>
 
-        <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6" staggerDelay={0.1}>
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <SectionHeader
+          badge={t('about.interests.badge')}
+          badgeIcon={Heart}
+          title={t('about.interests.title')}
+          subtitle={t('about.interests.subtitle')}
+        />
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {interests.map((interest, index) => (
-            <StaggerItem key={index}>
-              <Card className="group hover-lift shadow-sm bg-card/50">
-                <CardContent className="text-center flex flex-col items-center">
-                  <div
-                    className={`mx-auto w-12 h-12 sm:w-16 sm:h-16 ${interest.bgColor} rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4`}
-                  >
-                    <interest.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${interest.color}`} />
-                  </div>
-                  <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">{interest.name}</h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm">{interest.description}</p>
-                </CardContent>
-              </Card>
-            </StaggerItem>
+            <m.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+            >
+              <TiltCard tiltAmount={8} scale={1.03}>
+                <Card className="h-full border-border/50 shadow-sm bg-card/80 backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10">
+                  <CardContent className="text-center flex flex-col items-center py-6">
+                    <m.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                      className={`w-12 h-12 sm:w-14 sm:h-14 ${interest.bg} rounded-xl flex items-center justify-center mb-4`}
+                    >
+                      <interest.icon className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: interest.color }} />
+                    </m.div>
+                    <h3 className="font-semibold text-sm sm:text-base mb-1">{interest.name}</h3>
+                    <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{interest.description}</p>
+                  </CardContent>
+                </Card>
+              </TiltCard>
+            </m.div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

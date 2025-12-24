@@ -33,7 +33,7 @@
   },
   "services": {
     "badge": "Services",
-    "title": "What I do",
+    "title": "What I <gradient>do</gradient>",
     "subtitle": "Specialized in creating digital solutions that combine functionality, performance and modern aesthetics",
     "items": [
       {
@@ -59,7 +59,7 @@
   "projects": {
     "badge": "Portfolio",
     "title": "My <gradient>Projects</gradient>",
-    "sectionTitle": "Featured projects",
+    "sectionTitle": "Featured <gradient>projects</gradient>",
     "subtitle": "A collection of projects that demonstrate my experience in full stack development, from web applications to mobile solutions and SaaS platforms.",
     "description": "A featured selection of my most impactful and technologically advanced projects",
     "allProjects": "Complete portfolio",
@@ -163,7 +163,7 @@
     ],
     "faq": {
       "badge": "FAQ",
-      "title": "Frequently asked questions",
+      "title": "Frequently asked <gradient>questions</gradient>",
       "subtitle": "Answers to the most common questions about my work process",
       "items": [
         {
@@ -209,7 +209,7 @@
     },
     "skills": {
       "badge": "Skills",
-      "title": "Technologies and tools",
+      "title": "Technologies and <gradient>tools</gradient>",
       "subtitle": "My current tech stack, organized by categories",
       "categories": {
         "frontend": "Frontend",
@@ -290,7 +290,7 @@
     },
     "experience": {
       "badge": "Experience",
-      "title": "My professional journey",
+      "title": "My professional <gradient>journey</gradient>",
       "subtitle": "A journey through my evolution as a developer and the projects that have marked my career",
       "achievements": "Main achievements:",
       "technologies": "Technologies used:",
@@ -338,7 +338,7 @@
     },
     "education": {
       "badge": "Education",
-      "title": "Beyond the code",
+      "title": "Academic <gradient>background</gradient>",
       "subtitle": "Continuous learning that drives my technical and creative development",
       "items": [
         {
@@ -357,7 +357,7 @@
     },
     "interests": {
       "badge": "Interests",
-      "title": "Beyond the code",
+      "title": "Beyond the <gradient>code</gradient>",
       "subtitle": "The passions that inspire me and keep my creativity in constant motion",
       "items": [
         {
@@ -385,7 +385,7 @@
       "linkedin": "View my LinkedIn"
     },
     "github": {
-      "title": "GitHub Activity",
+      "title": "<gradient>GitHub</gradient> Activity",
       "description": "My most recent and featured repositories",
       "loading": "Loading activity...",
       "error": "Error loading GitHub activity",
