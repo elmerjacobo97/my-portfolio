@@ -14,7 +14,7 @@ import { Rocket, Download, Eye, FileText, ChevronDown } from 'lucide-react';
 import { trackDownload, trackSelectContent } from '@/lib/analytics';
 import { Status, StatusIndicator, StatusLabel } from '@/components/status';
 import { HeroSocialLinks } from '@/components/hero-social-links';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+// import { BackgroundBeams } from '@/components/ui/background-beams';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import avatar from '@/assets/images/avatar.webp';
 
@@ -26,10 +26,10 @@ export function HeroSection() {
     <section className="min-h-dvh flex items-center justify-center relative overflow-hidden py-12 sm:py-16 lg:py-20">
       {/* Animated gradient background with beams */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30">
-        <BackgroundBeams />
+        {/* <BackgroundBeams /> */}
       </div>
 
-      {/* Grid pattern overlay */}
+      {/* Grid pattern overlay 
       <div
         className="absolute inset-0 opacity-[0.15] dark:opacity-10"
         style={{
@@ -40,6 +40,7 @@ export function HeroSection() {
           backgroundSize: '80px 80px',
         }}
       />
+      */}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

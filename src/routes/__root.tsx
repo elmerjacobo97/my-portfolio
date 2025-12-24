@@ -14,6 +14,7 @@ import { trackPageView } from '@/lib/analytics';
 import { usePageAnalytics } from '@/hooks/use-page-analytics';
 import { DockMenu } from '@/components/dock-menu';
 import { FloatingControls } from '@/components/floating-controls';
+import { Snowfall } from '@/components/ui/snowfall';
 
 function RootComponent() {
   const router = useRouterState();
@@ -35,6 +36,7 @@ function RootComponent() {
 
   return (
     <React.Fragment>
+      <Snowfall />
       <ScrollProgressBar />
       <div className="min-h-screen bg-background relative overflow-hidden">
         <div className="relative z-10">
