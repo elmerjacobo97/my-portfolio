@@ -390,6 +390,10 @@
       "loading": "Loading activity...",
       "error": "Error loading GitHub activity",
       "noRepos": "No repositories available"
+    },
+    "gitlab": {
+      "title": "<gradient>GitLab</gradient> Activity",
+      "description": "My development activity on GitLab"
     }
   },
   "footer": {

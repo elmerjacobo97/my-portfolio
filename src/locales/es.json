@@ -390,6 +390,10 @@
       "loading": "Cargando actividad...",
       "error": "Error al cargar la actividad de GitHub",
       "noRepos": "No hay repositorios disponibles"
+    },
+    "gitlab": {
+      "title": "Actividad en <gradient>GitLab</gradient>",
+      "description": "Mi actividad de desarrollo en GitLab"
     }
   },
   "footer": {
