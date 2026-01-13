@@ -100,30 +100,32 @@ export function GitLabActivity() {
                 ) : error ? (
                   <p className="text-center text-muted-foreground">Error al cargar actividad</p>
                 ) : (
-                  <div className="flex flex-col gap-4">
-                    <div className="flex justify-center overflow-x-auto">
-                      <ContributionCalendar
-                        data={calendarData}
-                        dateOptions={{
-                          start: oneYearAgo.toISOString().split('T')[0],
-                          end: today.toISOString().split('T')[0],
-                          daysOfTheWeek: daysOfWeek,
-                          startsOnSunday: true,
-                          includeBoundary: true,
-                        }}
-                        styleOptions={{
-                          theme: purpleTheme,
-                          cx: 12,
-                          cy: 12,
-                          cr: 2,
-                        }}
-                        visibilityOptions={{
-                          hideDescription: true,
-                          hideMonthLabels: false,
-                          hideDayLabels: false,
-                        }}
-                        scroll={false}
-                      />
+                  <div className="flex flex-col gap-4 items-center">
+                    <div className="overflow-x-auto w-full flex justify-center">
+                      <div className="inline-block">
+                        <ContributionCalendar
+                          data={calendarData}
+                          dateOptions={{
+                            start: oneYearAgo.toISOString().split('T')[0],
+                            end: today.toISOString().split('T')[0],
+                            daysOfTheWeek: daysOfWeek,
+                            startsOnSunday: true,
+                            includeBoundary: true,
+                          }}
+                          styleOptions={{
+                            theme: purpleTheme,
+                            cx: 12,
+                            cy: 12,
+                            cr: 2,
+                          }}
+                          visibilityOptions={{
+                            hideDescription: true,
+                            hideMonthLabels: false,
+                            hideDayLabels: false,
+                          }}
+                          scroll={false}
+                        />
+                      </div>
                     </div>
                     <p className="text-sm text-muted-foreground text-center">
                       {totalContributions}{' '}
