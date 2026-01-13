@@ -45,6 +45,7 @@
     "lucide-react": "^0.525.0",
     "motion": "^12.23.25",
     "react": "^19.2.3",
+    "react-contribution-calendar": "^2.0.4",
     "react-dom": "^19.2.3",
     "react-ga4": "^2.1.0",
     "react-github-calendar": "^4.5.11",
